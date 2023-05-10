@@ -73,3 +73,11 @@ Examples are reported in **Sec. XX**
 <br/>
 
 # 3 - ResRel-MPI.py 
+
+This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule without hydrogen atoms (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). On the other hand, three arguments are optional: 
+
+* _`Nmappings`_: Number of random mappings at fixed number of sites retained [`-m/--mapp INT`]
+* _`Nframes`_: Number of frames read in our trajectory [`-f/--frames all` or `-f/--frames INT`]
+* _`Nstep`_: Number that describes the step when the number of retained sites is changed [`-s/--step INT/FLOAT+%` or `-s/--step INT`] 
+
+In order to launch the **ResRel-MPI.py** scripts, the command-line is the following:
