@@ -1,4 +1,4 @@
-# 0 - Introduction 
+# 1 - Introduction 
 
 When coarsening biomolecules, the identification of the optimal number of sites such that the loss of information starting from an all-atom conformation of biomoleculs is not trivial. So far, a lot of coarse-grained and multi-resolution model have been developed. One of the most promising one is the CANVAS model. CANVAS is the acronym of Coarse-grained Anisotropic Network model for VAriable resolution Simulation.
 
@@ -22,7 +22,57 @@ In this way the process of coarsening protein with a CANVAS model will be comple
 
 <br/>
 
-# 1 - Usage 
+# 2- Requirements
+
+* **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
+  The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
+  If you are working on _Linux_ or _MacOs_ system, Python3 should be already installed. 
+  On the other hand, if you are using Windows operating system, it is not certain for its presence.
+  Please, be care of working with Python3 (3.7 or 3.9 is the best choice) as the code could return an error if using Python2.
+  
+* **`Python3 Libraries`**: The most of libraries used in these codes are installed by default by python after first installation. However, four of them usually require a subsequent installation: 
+
+   * [**`MDAnalysis`**](https://www.mdanalysis.org): It is an open source Python library that helps you to quickly write your own analysis algorithm 
+                       for studying trajectories produced by the most popular simulation packages. 
+         
+   * [**`NumPy`**](https://numpy.org): It  stands for _Numerical Python_ and it is a Python library used for working with arrays. 
+                  It also has functions for working in domain of linear algebra, fourier transform, and matrices. 
+                  NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.   
+              
+   * [**`Matplotlib`**](https://matplotlib.org): It is a low level graph plotting library in python that serves as a visualization utility created by John D. Hunter. 
+                       It is open source and we can use it freely. Moreover, Matplotlib is mostly written in python, a few segments are written in C,
+                       Objective-C and Javascript for Platform compatibility.
+                   
+   * [**`SciPy`**](https://scipy.org): It is a free and open-source Python library used for scientific computing and technical computing. 
+                  It was created by Travis Oliphant. SciPy contains modules for optimization, linear algebra, integration, interpolation, 
+                  special functions, FFT, signal and image processing, ODE solvers and other tasks common in science and engineering.
+
+
+              
+                   
+      To install the lastest stable releases with conda do:
+      
+      ```bash 
+      conda config --add channels conda-forge
+   
+      conda install mdanalysis
+      conda install numpy
+      conda install matplotlib
+      conda install scipy
+      ```
+   
+      On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
+
+      ```bash
+      pip3 install --upgrade MDAnalysis
+      pip3 install numpy
+      pip3 install matplotlib
+      pip3 install scipy
+      ```
+   
+<br/>
+
+# 3 - Usage 
 
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI-py` and `Hs-Hk-plot.py` in succession by using Python3: 
 * **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms (H, H1, H2, HW, etc...) from both the reference file (usually 'gro' or 'pdf', 'psf', etc...) and the trajectory one ('xtc', 'trr', 'dcd', 'gro', 'lammpstrj', etc...). The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, we do not want to consider the hydrogens, as they are not heavy-atoms. If you already have reference and trajectory without hydrogen, this code can be ignored. 
@@ -60,9 +110,9 @@ The output of the program are the coordinate file (_`Reference_noH.gro`_) and th
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
-## 2.1 - Arguments of "remove_H_atoms.py"
+## 3.1 - Arguments of "remove_H_atoms.py"
 
-As shown in **Sec. 2** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
+As shown in **Sec. 3** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
 
 * **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ...) 
 
@@ -72,7 +122,7 @@ Examples are reported in **Sec. XX**
 
 <br/>
 
-# 3 - ResRel-MPI.py 
+# 4 - ResRel-MPI.py 
 
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule without hydrogen atoms (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). On the other hand, three arguments are optional: 
 
