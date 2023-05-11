@@ -147,6 +147,10 @@ A short explaination of arguments is provided by launching the command `python3 
 
 The output of this code is twofold: 
 
-    * _trace_${ProteinName}.txt_: it gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point). Moreover, also an estimation of the remainder total time is done.   
-`Hs-Hk-Nsites-${ProteinName}.txt`:
+* **`trace_${ProteinName}.txt`**: it simply gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point). Moreover, also an estimation of the remainder total time is done; 
+    
+* **`Hs-Hk-Nsites-${ProteinName}.txt`**: it is a more important file, as it contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. This file is organized in 3 rows. It will be useful for drawing plots an computing the optimal number of sites, that is the purpose of the third script, namely "Hs-Hk-plots.py". 
 
+A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`
+
+Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
