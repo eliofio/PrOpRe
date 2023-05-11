@@ -94,6 +94,10 @@ Before running the python scripts, read carefully the next section that provides
 
 # 4 - remove_H_atoms.py
 
+## 4.1 Scope 
+
+## 4.2 Usage 
+
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
 
 In order to launch the **remove_H_atoms.py** scripts, the command-line is the following:
@@ -112,7 +116,7 @@ A short explaination of arguments is provided by launching the command `python3 
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
-## 4.1 - Arguments of "remove_H_atoms.py"
+## 4.3 - Arguments
 
 As shown in **Sec. 4** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
 
@@ -126,12 +130,18 @@ Examples are reported in **Sec. XX**
 
 # 5 - ResRel-MPI.py 
 
+## 5.1 - Scope 
+
+## 5.2 - Requirements
+
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule without hydrogen atoms (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). On the other hand, four arguments are optional: 
 
 * _`Nmappings`_: Number of random mappings at fixed number of sites retained; 
 * _`Nframes`_: Number of frames read in our trajectory; 
 * _`Nstep`_: Number that describes the step when the number of retained sites is changed;  
 * _`ncpu`_: Number of cpus that will be used for parallizing the calculation of RSD map for each mapping. 
+
+## 5.3 - Usage 
 
 In order to launch the **ResRel-MPI.py** scripts, the command-line is the following:
 
@@ -146,17 +156,10 @@ python3 remove_H_atoms.py --ref <Reference_noH.gro> --traj <Trajectory_noH.xtc> 
 
 A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`.
 
-The output of this code is twofold: 
-
-* **`trace_${ProteinName}.txt`**: it simply gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point). Moreover, also an estimation of the remainder total time is done; 
-    
-* **`Hs-Hk-Nsites-${ProteinName}.txt`**: it is a more important file, as it contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. This file is organized in 3 rows. It will be useful for drawing plots an computing the optimal number of sites, that is the purpose of the third script, namely "Hs-Hk-plots.py". 
-that Number that describes the variation of the number of retained sites
-A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`
-
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
-## 5.1 - Arguments of "ResRel-MPI.py"
+
+## 5.4 - Arguments
 
 As shown in **Sec. 5** the coordinate file and the trajectory of all-atom structure of the biomolecule without hydrogens (_Reference_noH.gro_ and _Trajectory_noH.xtc_, respectively) are, always, mandatory. On the other hand, the number of mappings at fixed number of sites (Nmappings), the number of frames read from trajectory (Nframes), and the step corresponing at the variation of the number of sites (Nstep) are optional arguments. A short explaination of the above mentioned files is the following:
 
@@ -174,6 +177,35 @@ In case this percentage returns a step = 0, an error is printed on screen. Defau
     * It is also possible to write directly the step without calculating it as percentage of the total number of atoms. In such case, the step must be an INTEGER number between 1 and Natoms-1, otherwise an error is returned. For example if Natoms=10000 and Nstep=100, then starting from Natoms, in each for-loop the number of retained sites wll decrease by 100, until 3 is reached (Natoms, Natoms-100, Natoms-200, ..., 3); 
     
 * **`NumberCpu`**: Optional argument (`-n/--ncpu`) that corresponds at the number of cpus that you would like to employ for parallizing the calculation of RSD map for each mapping. By default, the code will be parallelized by employing the maximum number of cores available in a single node in your laptop/cluster. However, such number can be easily changed using `-n/--ncpu <nCPU>`, and the code will be parallelized by employing nCPU cores. As just mentioned, on the other hand, in case `-n/--npu <nCPU>` is **not** set, the code will be parallelized by employing the maximum number of allowed cores in your laptop/cluster. 
+
+
+
+## 5.5 Output 
+
+The output of this code is twofold: 
+
+* **`trace_${ProteinName}.txt`**: it simply gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point). Moreover, also an estimation of the remainder total time is done; 
+    
+* **`Hs-Hk-Nsites-${ProteinName}.txt`**: it is a more important file, as it contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. This file is organized in 3 rows. It will be useful for drawing plots an computing the optimal number of sites, that is the purpose of the third script, namely "Hs-Hk-plots.py". 
+that Number that describes the variation of the number of retained sites
+A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`
+
+# 6 - Hs-Hk-plot.py 
+
+## 6.1 - Scope 
+This code has dual purpose: 
+1. It creates and saves four plots:
+    * Resolution & Relevance plot: same colors are indicative of Hs-Hk points come out from same number of retained sites and different mappings.
+        Moreover a zoom of the region of interest (where the slope is close to -1) is also shown on the same plot;      
+    *  Zoom of Relevance & Resolution curve (Hk-Hs) in the windows where the slope is -1; 
+    *  Slope against an increasing index (1 to N points); 
+    *  Histogram of Frequencies, that is the number of sites with more occourrences.
+
+2. Calculating the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized; the result will be reported in "Opt-number-of-sites.txt". 
+
+## 6.2 - Tasks 
+
+## 6.3 - Arguments 
 
 
 
