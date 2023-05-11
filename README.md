@@ -154,3 +154,16 @@ The output of this code is twofold:
 A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
+
+## 5.1 - Arguments of "ResRel-MPI.py"
+
+As shown in **Sec. 5** the coordinate file and the trajectory of all-atom structure of the biomolecule without hydrogens (_Reference_noH.gro_ and _Trajectory_noH.xtc_, respectively) are, always, mandatory. On the other hand, the number of mappings at fixed number of sites (Nmappings), the number of frames read from trajectory (Nframes), and the step corresponing at the variation of the number of sites (Nstep) are optional arguments. A short explaination of the above mentioned files is the following:
+
+* **`Coordinate FILE noH`**: Mandatory File of atom Coordinates **without** hydrogen atoms (xyz, gro, pdb, psf, ...); 
+
+* **`Trajectory FILE noH`**: Mandatory File containing the trajectory of the biomolecule **without** hydrogens (trr, dcd, lammpstrj, gro, ...); 
+
+* **`NMappings`**: Optional argument (-m/--mapp) that specifies the number of random mappings _M_ at fixed number of sites retained. Any integer number higher than 0 is accepted. The default value is _M = 50_. For a fixed number of sites the code choses randomly _M_ combinations with respect the total number of atoms. Changing such value, more or less combinations are chosen; 
+
+* **`Nframes`**: Optional arguments (-f/--frames) that specifies the number of frames _F_ read in our trajectory. In order to guarantee this precise number of frames and the spanning of entire trajectory, an initial number of frames will be discarded and the trajectory is read every _nSteps_. The default value is _F = 1000_. Any integer number (less than the original number of frames) is accepted. If the string "_all_" is set, then every frame of trajectory is read (`-f all`). A trajectory, in general, could contain more than 1000 frames. However, since the calculation of the RSD map goes as Nframes squared ($N^2$), increasing the number of frames would require much more time. Higher the number of cores containing your cluster in a single node, more frames can be token in account. Be careful choosing such value or selecting all frames. 
+
