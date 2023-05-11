@@ -96,9 +96,13 @@ Before running the python scripts, read carefully the next section that provides
 
 ## 4.1 Scope 
 
-## 4.2 Usage 
+
+## 4.2 Requirements
 
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
+
+
+## 4.2 Usage
 
 In order to launch the **remove_H_atoms.py** scripts, the command-line is the following:
 
@@ -110,11 +114,10 @@ python3 remove_H_atoms.py -r <Coordinate FILE> -t <Trajectory FILE>
 python3 remove_H_atoms.py --ref <Coordinate FILE> --traj <Trajectory FILE>
 ```
 
-The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. 
-
 A short explaination of arguments is provided by launching the command `python3 remove_H_atoms.py -h` or `python3 remove_H_atoms.py --help`. Alternatively, for printing a short usage message, please type: `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -u`
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
+
 
 ## 4.3 - Arguments
 
@@ -125,6 +128,12 @@ As shown in **Sec. 4** the coordinate/topology file of all-atom structure of the
 * **`Trajectory FILE`**: Mandatory File containing the trajectory of the biomolecule (trr, dcd, lammpstrj, gro, ...)
 
 Examples are reported in **Sec. XX**
+
+
+## 4.4 - Output
+
+The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. 
+
 
 <br/>
 
