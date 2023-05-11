@@ -213,6 +213,19 @@ This code has dual purpose:
 2. Calculating the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized; the result will be reported in "Opt-number-of-sites.txt". 
 
 ## 6.2 - Tasks 
+The Relevance and Resolution plot is made up _N_ points (by default _N about 10000_ points). Thus, in order to find the optimal number of sites is necessary to "simplify" the ResRel curve. A TALE SCOPO average values of Resolution ($\bar H_s$) and Relevance ($\bar H_k$) are computed. This calculation can be done in two different ways:  
+
+* **`density`**: The x-axes is divided in _X_ intervals such that each of one contains the same number of points _D_ (by default _D = 100_). Thus, the interval lenght is not fixed. What is fixed is the number (density) of Hs-Hk points in each interval. Then, in each interval the average values for Hs and Hk are computed (Hs_avg and Hk_avg). If using this option (recommended) the calculation of the average values
+                                        for Resolution (Hs) and Relevance (Hk) is based on the same density of points.
+                                        Indeed, every N points (the default value is 100) the average calculation
+                                        for Hs and Hk is performed. In this way, the computation of average values is more fair
+                                        since the lenght of interval is not fixed, but it is chosen in order that
+                                        the number of points (Hs-Hk) is always the same.
+                                        The default value for N is 100 points; however, such value con be changed using the flag [-d]. 
+                                        
+                                        CONTINUA....
+
+* **`bin`**: 
 
 ## 6.3 - Arguments 
 
