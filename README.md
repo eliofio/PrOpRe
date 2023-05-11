@@ -92,7 +92,7 @@ Before running the python scripts, read carefully the next section that provides
 
 <br/>
 
-# 2 - remove_H_atoms.py
+# 4 - remove_H_atoms.py
 
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
 
@@ -106,13 +106,13 @@ python3 remove_H_atoms.py -r <Coordinate FILE> -t <Trajectory FILE>
 python3 remove_H_atoms.py --ref <Coordinate FILE> --traj <Trajectory FILE>
 ```
 
-The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. For further information, please type on terminal `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -h`. 
+The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. A short explaination of arguments is provided by launching the command `python3 remove_H_atoms.py -h` or `python3 remove_H_atoms.py --help`. Alternatively, for printing a short usage message, please type: `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -u`
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
-## 3.1 - Arguments of "remove_H_atoms.py"
+## 4.1 - Arguments of "remove_H_atoms.py"
 
-As shown in **Sec. 3** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
+As shown in **Sec. 4** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
 
 * **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ...) 
 
@@ -122,12 +122,22 @@ Examples are reported in **Sec. XX**
 
 <br/>
 
-# 4 - ResRel-MPI.py 
+# 5 - ResRel-MPI.py 
 
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule without hydrogen atoms (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). On the other hand, three arguments are optional: 
 
-* _`Nmappings`_: Number of random mappings at fixed number of sites retained [`-m/--mapp INT`]
-* _`Nframes`_: Number of frames read in our trajectory [`-f/--frames all` or `-f/--frames INT`]
-* _`Nstep`_: Number that describes the step when the number of retained sites is changed [`-s/--step INT/FLOAT+%` or `-s/--step INT`] 
+* _`Nmappings`_: Number of random mappings at fixed number of sites retained; 
+* _`Nframes`_: Number of frames read in our trajectory; 
+* _`Nstep`_: Number that describes the step when the number of retained sites is changed;  
 
 In order to launch the **ResRel-MPI.py** scripts, the command-line is the following:
+
+```sh
+python3 ResRel-MPI.py -r <Reference_noH.gro> -t <Trajectory_noH.xtc> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] 
+
+   or:
+
+python3 remove_H_atoms.py --ref <Reference_noH.gro> --traj <Trajectory_noH.xtc> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>]
+```
+> **NOTE: Please, take in account that "Reference_noH.gro" and "Trajectory_noH.xtc" - i.e. the reference coordinate file and the trajectory one without hydrogen atoms, respectively - are the output files obtained after launching remove_H_atoms.py. This code does not return an error, if using files with hydrogens. However, in order that the calculation of Resolution and Relevance points for each mapping works good, it is necessary to remove H atoms beacuse the latter are not heavy atoms, and thus they move and rotate too much. Please, take care of it. 
+
