@@ -145,9 +145,15 @@ This is the core program because has the scope of calculating the Relevance-Reso
 6. Reducing progressively the number _N_ of retained sites, (4) and (5) steps are done, until no atoms are retained.
 7. At the end, a complete curve Hs-Hk points is drawn, ready to be analyzed, with the main purpose of calculating the optimal number of sites (next code).
 
-For the sake of clarity, Figure 1 below shows, schematically, the steps abovementioned.  
+For the sake of clarity, Figure 1 below shows, schematically, the steps abovementioned. Whereas, Fig. 2 shows in details a flux diagram of steps (4)-(5)-(6). 
 
+<div align="center">
 
+<img src="4-5-6.jpg" alt="Scheme" width="400">
+</div>
+<div align = "center">
+<b>Fig.2</b> - <i> Pictorial representation of atomistic/medium-grained/coarse-grained division for <b>choice2</b> </i>
+</div>
 
 
 ## 5.2 - Requirements
