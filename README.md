@@ -137,7 +137,8 @@ The output of the program are the coordinate file (_`Reference_noH.gro`_) and th
 
 ## 5.1 - Scope 
 This is the core program because has the scope of calculating the Relevance-Resolution (changing the number of retained sites and for different mappings) points. As first, the code computes the all-atom _RSD map_ among each frame and the other ones (an allignment between a couple of frames is required every time). This calculation allows to compute the value of cutoff such that all atomistic conformation can be distinguished when clusterizing. 
-```QUI```
+
+QUI....
 
 
 after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time)
