@@ -149,7 +149,7 @@ For the sake of clarity, Figure 1 below shows, schematically, the steps abovemen
 
 <div align="center">
 
-<img src="4-5-6.jpg" alt="Scheme" width="400">
+<img src="4-5-6.jpg" alt="Scheme" width="700">
 </div>
 <div align = "center">
 <b>Fig.2</b> - <i> Pictorial representation of atomistic/medium-grained/coarse-grained division for <b>choice2</b> </i>
