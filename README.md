@@ -95,17 +95,13 @@ Before running the python scripts, read carefully the next section that provides
 # 4 - remove_H_atoms.py
 
 ## 4.1 Scope 
-This script has the preliminary, but important, scope of removing all the hydrogen atoms (H, H1, H2, HW, etc...) from both the reference file (usually 'gro' or 'pdf', 'psf', etc...) and the trajectory one ('xtc', 'trr', 'dcd', 'gro', 'lammpstrj', etc...). Hydrogen atoms in a protein move and rotate more compared to heavy atoms. This is because hydrogen atoms have a much smaller mass than heavy atoms like carbon, nitrogen, and oxygen. This phenomenon is known as the reduced mass effect and is an important factor in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. For this reason, in the calculation of the RSD map, on of the key points for computing Resolution and Relevance after keeping a group of atoms, it is recommended avoid hydrogens.
-
-
-The reason lies in the fact that, in the calculation of the RSD map and, in particular, in the calculation of Resolution and Relevance after keeping a group of atoms, it is recommended to not consider the hydrogens, as they are not heavy-atoms. If you already have reference and trajectory without hydrogen, this code can be ignored.
+This script has the preliminary, but important, scope of removing all the hydrogen atoms (H, H1, H2, HW, etc...) from both the reference file (usually 'gro' or 'pdf', 'psf', etc...) and the trajectory one ('xtc', 'trr', 'dcd', 'gro', 'lammpstrj', etc...). Hydrogen atoms in a protein move and rotate more compared to heavy atoms. This is because hydrogen atoms have a much smaller mass than heavy atoms like carbon, nitrogen, and oxygen. This phenomenon is known as the reduced mass effect and is an important factor in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. For this reason, in the calculation of the RSD map, on of the key points for computing Resolution and Relevance after keeping a group of atoms, it is recommended to avoid hydrogens. If you already have reference and trajectory without hydrogen, this code can be ignored.
 
 ## 4.2 Requirements
 This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
 
 
 ## 4.2 Usage
-
 In order to launch the **remove_H_atoms.py** scripts, the command-line is the following:
 
 ```sh
@@ -122,7 +118,6 @@ Before running the python scripts, read carefully the next section that provides
 
 
 ## 4.3 - Arguments
-
 As shown in **Sec. 4** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
 
 * **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ...) 
@@ -133,7 +128,6 @@ Examples are reported in **Sec. XX**
 
 
 ## 4.4 - Output
-
 The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. 
 
 
