@@ -136,12 +136,8 @@ The output of the program are the coordinate file (_`Reference_noH.gro`_) and th
 # 5 - ResRel-MPI.py 
 
 ## 5.1 - Scope 
-This is the core program because has the scope of calculating the Relevance-Resolution (changing the number of retained sites and for different mappings) points. As first, the code computes the all-atom _RSD map_ among each frame and the other ones (an allignment between a couple of frames is required every time). This calculation allows to compute the value of cutoff such that all atomistic conformation can be distinguished when clusterizing with the average linkage UPGMA algorythm. Then, reducing progessively the number _N_ of retained sites, different mapping are proposed at fixed _N_ and, based on the cutoff chosen before, the number of clusters at such cutoff is calculated and it is possible to compute Hs-Hk points for a specific number of fixed sites and mapping. a number _M_ of mapping are proposed for fixed _N_ of sites, then the latter is progessively reduced until no atoms are retained. Hence, a complete curve Hs-Hk is drawn, ready to be analyzed, with the main purpose of calculating the optiaml number of sites (next code) 
+This is the core program because has the scope of calculating the Relevance-Resolution (changing the number of retained sites and for different mappings) points. As first, the code computes the all-atom _RSD map_ among each frame and the other ones (an allignment between a couple of frames is required every time). This calculation allows to compute the value of cutoff such that all atomistic conformation can be distinguished when clusterizing with the average linkage UPGMA algorythm. Then, starting with a number of retained sites equals to _Natoms-1_, different _M_ mappings are proposed and, based on the cutoff chosen before, the number of clusters at such cutoff is calculated in such configuation and,  Hs-Hk points are computed in for each mapping. Then, reducing progressively the number _N_ of retained sites until no atoms are retained, other mappings are proposed and the same procedure is applied for the calculation of Hs-Hk points. Hence, a complete curve Hs-Hk is drawn, ready to be analyzed, with the main purpose of calculating the optiaml number of sites (next code).
 
-QUI....
-
-
-after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time)
 
 ## 5.2 - Requirements
 
