@@ -145,11 +145,11 @@ This is the core program because has the scope of calculating the Relevance-Reso
 6. Reducing progressively the number _N_ of retained sites, (4) and (5) steps are done, until no atoms are retained.
 7. At the end, a complete curve Hs-Hk points is drawn, ready to be analyzed, with the main purpose of calculating the optimal number of sites (next code).
 
-For the sake of clarity, Figure 1, below, shows in details a flux diagram of steps (4)-(5)-(6), whose final scope is to compute Relevance and resolution points. 
+For the sake of clarity, the 4-5-6 step described above are depicted in **Fig. 1** in terms of flux diagram, with the purpose of showing that two nested for-loop are required for the calcution of all Hs-Hk points: the external loop is done on the number of retained sites $N_s$, whereas the more internal one is on the _M_ random mappings at fixed number of retained sites.
 
 <div align="center">
 
-<img src="4-5-6.jpg" alt="Scheme" width="600">
+<img src="4-5-6.jpg" alt="Scheme" width="500">
 </div>
 <div align = "center">
 <b>Fig.1</b> - <i> Schematic representation of Relevance and Resolution points calculation. Two nested for loop are required: the external one is done on the number of retained sites (N<sub>s</sub>), the more internal one is on the "M" random mappings at fixed number of retained sites.</i>
