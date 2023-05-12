@@ -149,7 +149,7 @@ For the sake of clarity, the 4-5-6 step described above are depicted in **Fig. 1
 
 <div align="center">
 
-<img src="4-5-6.jpg" alt="Scheme" width="500">
+<img src="4-5-6.jpg" alt="Scheme" width="550">
 </div>
 <div align = "center">
 <b>Fig.1</b> - <i> Schematic representation of Relevance and Resolution points calculation. Two nested for loop are required: the external one is done on the number of retained sites (N<sub>s</sub>), the more internal one is on the "M" random mappings at fixed number of retained sites.</i>
