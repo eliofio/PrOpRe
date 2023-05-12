@@ -242,7 +242,18 @@ The Relevance and Resolution plot is made up _N_ points (by default _N about 100
 
 * **`bin`**: 
 
+
+### 6.2.1 Requirements for 'density' task 
+
+### 6.2.2 Usage for 'density' task
+
+### 6.2.3 Requirements for 'bin' task 
+
+### 6.2.4 Usage for 'bin' tas
+
 ## 6.3 - Arguments 
+
+## 6.4 - Output
 
 
 
