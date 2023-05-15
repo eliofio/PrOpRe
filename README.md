@@ -247,7 +247,7 @@ The Relevance and Resolution plot is made up _N_ points (by default _N about 100
                                         
                   
 
-* **`bin`**: If using this option the x-axes is divided in _W_ windows (intervals) having the same lenght (by defaults _W = 50_). Thus, fixing the interval, the x-axis (Resolution) that goes from 0 to 1, by definition of Resolution, is divided in _W_ windows and the **bin** is thus defined as _1/W_. Then, in each interval the average values for Hs and Hk are computed (Hs_avg and Hk_avg). Be careful using this option instead of "density" one, because its choice could be not ideal: indeed, the density of points along the curve is different: there will be windows very dense of points, and other ones with few points. In this way,  the computation of average values could be not fair and not precise because of different dennsity of points. Use this option with caution. The default value for _W_ is 50 windows; however, such value can be changed using the flag [-w]. 
+* **`bin`**: If using this option the x-axes is divided in _W_ windows (intervals) having the same lenght (by defaults _W = 50_). Thus, fixing the interval, the x-axis (Resolution) that goes from 0 to 1, by definition of Resolution, is divided in _W_ windows and the **bin** is thus defined as _1/W_. Then, in each interval the average values of Hs (Hs_avg) are the central values of bin lenght while Hk_avg is computed. Be careful using this option instead of "density" one, because its choice could be not ideal: indeed, the density of points along the curve is different: there will be windows very dense of points, and other ones with few points. In this way,  the computation of average values could be not fair and not precise because of different dennsity of points. Use this option with caution. The default value for _W_ is 50 windows; however, such value can be changed using the flag [-w]. 
 
    <div align="center">
    <img src="bin.jpg" alt="Scheme" width="800">
@@ -261,7 +261,25 @@ According with one of the two options, follow Sec. 6.3 if the choice is "density
 ## 6.3 - "Density" Task 
 
 ### 6.3.1 - Requirements 
+_`density`_ task requires one mandatory file, that is **`Hs-Hk-Nsites-${ProteinName}.txt`**, the core file that contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. On the other hand, two arguments are optional: 
+
+* _`DensityPoints`_: integer number that specify the fixed number of points in each (variable lenght) interval.
+* _`SlopeRage`_: it specifies how to find the best interval such that new average curve made up of Hs_avg and Hk_avg is close to -1.
+
+All the details of the arguments just described can be found in **Sec.XXX**.
+
 ### 6.3.2 - Usage 
+In order to launch the **density** task the command-line is the following:
+
+```
+python3 Hs-Hk-plot.py density -f <Hs-Hk-N FILE> [-d <density>] [-s <slopeRange>] 
+
+   or:
+   
+python3 Hs-Hk-plot.py density --file <Hs-Hk-N FILE> [--DensityPoints <density>] [--SlopeRange <slopeRange>] 
+
+
+```
 ### 6.3.3 - Arguments 
 
 ## 6.4 - "BIN" Task 
