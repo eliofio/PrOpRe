@@ -1,3 +1,17 @@
+# Contents 
+
+1. [Introduction] 
+2. Requirements 
+3. Usage 
+4. remove_H_atoms.py 
+
+  4.1 Scope 
+  4.2 Requirements 
+  4.3 Usage 
+  4.4 Arguments 
+  4.5 Output
+
+
 # 1 - Introduction
 
 When coarsening biomolecules, the identification of the optimal number of sites such that the loss of information starting from an all-atom conformation of biomoleculs is not trivial. So far, a lot of coarse-grained and multi-resolution model have been developed. One of the most promising one is the CANVAS model. CANVAS is the acronym of Coarse-grained Anisotropic Network model for VAriable resolution Simulation.
