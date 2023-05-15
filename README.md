@@ -1,8 +1,7 @@
 # Contents 
 
-[1 - Introduction](#1---introduction-1) 
-[2 - Requirements](#2---requirements-1)
-
+[1 - Introduction](#1---introduction-1) <br />
+[**2 - Requirements**](#2---requirements-1)<br />
 
 #### [2 - Requirements](#2---requirements-1)
 #### [3 - Usage] 
