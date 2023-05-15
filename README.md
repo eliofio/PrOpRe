@@ -239,16 +239,22 @@ The Relevance and Resolution plot is made up _N_ points (by default _N about 100
                                         The default value for N is 100 points; however, such value con be changed using the flag [-d]. 
                                         
    <div align="center">
-
    <img src="density.jpg" alt="Scheme" width="800">
    </div>
-  <div align = "center">
-  <b>Fig.2</b> - <i> Pictorial representation.</i>
-  </div>
+   <div align = "center">
+   <b>Fig.2</b> - <i> Pictorial representation.</i>
+   </div>
                                         
                   
 
 * **`bin`**: If using this option the x-axes is divided in _W_ windows (intervals) having the same lenght (by defaults _W = 50_). Thus, fixing the interval, the x-axis (Resolution) that goes from 0 to 1, by definition of Resolution, is divided in _W_ windows and the **bin** is thus defined as _1/W_. Then, in each interval the average values for Hs and Hk are computed (Hs_avg and Hk_avg). Be careful using this option instead of "density" one, because its choice could be not ideal: indeed, the density of points along the curve is different: there will be windows very dense of points, and other ones with few points. In this way,  the computation of average values could be not fair and not precise because of different dennsity of points. Use this option with caution. The default value for _W_ is 50 windows; however, such value can be changed using the flag [-w]. 
+
+   <div align="center">
+   <img src="bin.jpg" alt="Scheme" width="800">
+   </div>
+   <div align = "center">
+   <b>Fig.3</b> - <i> Pictorial representation.</i>
+   </div>
 
 According with one of the two options, follow Sec. 6.3 if the choice is "density", the Sec. 6.4 in case of "bin" choice. 
 
