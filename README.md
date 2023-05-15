@@ -38,7 +38,7 @@ The CANVAS strategy leverages the blurred and approximate nature of coarse-grain
 
 In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where all the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the C-alpha atoms are kept and modelled as CG beads. 
 
-However, in this approach, it is required the knowledge of system in order to understand which part of it requires a fully atomistic description, namely we must know which part of the system plays a crucial role, in which part of the system the chemical details have a major effect. Asnwering this question could not be easy. 
+However, in this approach, it is required the knowledge of the chemistry, the biology of the system in order to understand which part of it requires a fully atomistic description, namely we must know which part of the system plays a crucial role, in which part of the system the chemical details have a major effect. Asnwering this question could not be easy. 
 
 Recently, a new approach has been developed, named Resolution and Relevance, with the purpose of identifying the level of resolution that optimally balances simplicity and informativeness. The resolution-relevance framework, or critical variable selection, is a recently developed method for identifying important variables without any prior knowledge of, or assumption on, their nature. The idea at the heart of the approach is that the information on the generative model that underlies the elements of an empirical sample is contained in the distribution of their frequencies, that is to say, in the number of times different outcomes occur in the data set. 
 
