@@ -36,7 +36,7 @@ When coarsening biomolecules, the identification of the optimal number of sites 
 
 The CANVAS strategy leverages the blurred and approximate nature of coarse-grained models to identify effective sites based on a user-provided input, and determines the interactions among them based on the molecule’s structure and all-atom force field, making it unnecessary to run reference simulations. This strategy makes the parametrisation of the model practically instantaneous, and allows the modulation of the system’s resolution in a quasi-continuous manner across the structure, from all-atom to (very) coarse-grained. Most notably, the interaction between regions of the system at different resolution (including the solvent) is accounted for and straightforward to set up, allowing the seamless implementation in standard MD software packages (e.g. GROMACS or LAMMPS).
 
-In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where all the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the C-alpha atoms are kept and modelled as CG beads. 
+In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where all the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the $C_\alpha$ atoms are kept and modelled as CG beads. 
 
 However, in this approach, it is required the knowledge of the chemistry, the biology of the system in order to understand which part of it requires a fully atomistic description, namely we must know which part of the system plays a crucial role, in which part of the system the chemical details have a major effect. Asnwering this question could not be easy. 
 
@@ -107,18 +107,18 @@ In this way the process of coarsening protein with a CANVAS model will be comple
 # 3 - Usage 
 
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI-py` and `Hs-Hk-plot.py` in succession by using Python3: 
-* **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms  from both the reference file  and the trajectory one. The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, it is preferable to not consider the hydrogens, as they are not heavy-atoms. T his code can be ignored if having  reference and trajectory without hydrogen atoms. Details can be found in **Sec.4**. 
+* **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms  from both the reference file  and the trajectory one. The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, it is preferable to not consider the hydrogens, as they are not heavy-atoms. This code can be ignored if having  reference and trajectory without hydrogen atoms. Details can be found in **Sec. 4**. 
 
 * **`ResRel-MPY.py`**: This is the core program beacuse has the scope of calculating the Relevance-Resolution (changing the number of sites and for different mappings) points after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time). Basically, it writes a file splitted in 3 rows:
     * 1st row: values of Resolution (Hs); 
     * 2nd row: values of Relevance (Hk); 
     * 3rd row: number of retained sites for that specific Hs and Hk. 
-Details can be found in **Sec.5**. 
+Details can be found in **Sec. 5**. 
   
 * **`Hs-Hk-plot`**: this code has a dual purpose:
     * Drawing a saving different plot regard Resolution and Relevance, slope, and histogram of frequencies 
     * Calculating the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized.
-Details will be provided in **Sec.6**.
+Details will be provided in **Sec. 6**.
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each task and argument. Moreover, take care to not moving them outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs and it is printed on screen.
 
