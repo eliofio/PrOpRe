@@ -176,6 +176,7 @@ python3 ResRel-MPI.py -r <Reference_noH.gro> -t <Trajectory_noH.xtc> [-m <NMappi
 
 python3 remove_H_atoms.py --ref <Reference_noH.gro> --traj <Trajectory_noH.xtc> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>]
 ```
+
 > **NOTE: Please, take in account that "Reference_noH.gro" and "Trajectory_noH.xtc" - i.e. the reference coordinate file and the trajectory one without hydrogen atoms, respectively - are the output files obtained after launching remove_H_atoms.py. This code does not return an error, if using files with hydrogens. However, in order that the calculation of Resolution and Relevance points for each mapping works good, it is necessary to remove H atoms beacuse the latter are not heavy atoms, and thus they move and rotate too much. Please, take care of it.**
 
 A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`.
@@ -338,9 +339,15 @@ As explained in Sec. 6.4.1, "density" task requires one mandatory file, and two 
     * Another possibility is to take the closest value of slope to -1. In this case 'closest' string has to be used [-s/--SlopeRange closest]
 
 
-## 6.5 - Arguments 
+## 6.5 - Output
+This code returns 4 plots in PDF format, and a TXT file: 
+* _`Reso.pdf`_: Resolution & Relevance curve: same colors are indicative of Hs-Hk points come out from same number of retained sites and different mappings.
+        Moreover a zoom of the region of interest (where the slope $\mu$ is close to -1) is also shown on the same plot;      
+* _`Zoom-Reso.pdf`_: Zoom of Relevance & Resolution curve (Hk-Hs) in the windows where the slope is -1; 
+* _`slope.pdf`_: Slope against an increasing index (_1_ to _N_ points); 
+* _`histo_Nsites.pdf`_ Histogram of Frequencies, that is the number of sites with more occourrences.
 
-## 6.6 - Output
+* _`Opt-number-of-sites.txt`_: file showing a summary of the arguments employed and, more important, the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized.
 
 
 
