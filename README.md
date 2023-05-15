@@ -272,11 +272,11 @@ All the details of the arguments just described can be found in **Sec.XXX**.
 In order to launch the **density** task the command-line is the following:
 
 ```
-python3 Hs-Hk-plot.py density -f <Hs-Hk-N FILE> [-d <density>] [-s <slopeRange>] 
+python3 Hs-Hk-plot.py density -f <Hs-Hk-N FILE> [-d <density>] [-s <range>] 
 
    or:
    
-python3 Hs-Hk-plot.py density --file <Hs-Hk-N FILE> [--DensityPoints <density>] [--SlopeRange <slopeRange>] 
+python3 Hs-Hk-plot.py density --file <Hs-Hk-N FILE> [--DensityPoints <density>] [--SlopeRange <range>] 
 
 
 ```
