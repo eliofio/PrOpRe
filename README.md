@@ -107,18 +107,18 @@ In this way the process of coarsening protein with a CANVAS model will be comple
 # 3 - Usage 
 
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI-py` and `Hs-Hk-plot.py` in succession by using Python3: 
-* **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms (H, H1, H2, HW, etc...) from both the reference file (usually 'gro' or 'pdf', 'psf', etc...) and the trajectory one ('xtc', 'trr', 'dcd', 'gro', 'lammpstrj', etc...). The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, we do not want to consider the hydrogens, as they are not heavy-atoms. If you already have reference and trajectory without hydrogen, this code can be ignored. 
+* **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms  from both the reference file  and the trajectory one. The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, it is preferable to not consider the hydrogens, as they are not heavy-atoms. T his code can be ignored if having  reference and trajectory without hydrogen atoms. Details can be found in **Sec.4**. 
 
-* **`ResRel-MPY.py`**: this is the core program beacuse has the scope of calculating the Relevance-Resolution (changing the number of sites and for different mappings) points after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time). Basically, it writes a file splitted in 3 rows:
-    * 1st row: values of Resolution (Hs)
-    * 2nd row: values of Relevance (Hk)
-    * 3rd row: number of retained sites for that specific Hs and Hk 
+* **`ResRel-MPY.py`**: This is the core program beacuse has the scope of calculating the Relevance-Resolution (changing the number of sites and for different mappings) points after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time). Basically, it writes a file splitted in 3 rows:
+    * 1st row: values of Resolution (Hs); 
+    * 2nd row: values of Relevance (Hk); 
+    * 3rd row: number of retained sites for that specific Hs and Hk. 
+Details can be found in **Sec.5**. 
   
 * **`Hs-Hk-plot`**: this code has a dual purpose:
     * Drawing a saving different plot regard Resolution and Relevance, slope, and histogram of frequencies 
     * Calculating the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized.
-
-Details will be provided in Sec. XXX.
+Details will be provided in **Sec.6**.
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each task and argument. Moreover, take care to not moving them outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs and it is printed on screen.
 
