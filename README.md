@@ -230,13 +230,7 @@ This code has dual purpose:
 ## 6.2 - Tasks 
 The Relevance and Resolution plot is made up _N_ points (by default _N about 10000_ points). Thus, in order to find the optimal number of sites is necessary to "simplify" the ResRel curve. A TALE SCOPO average values of Resolution ($\bar H_s$) and Relevance ($\bar H_k$) are computed. This calculation can be done in two different ways:  
 
-* **`density`**: The x-axes is divided in _X_ intervals such that each of one contains the same number of points _D_ (by default _D = 100_). Thus, the interval lenght is not fixed. What is fixed is the number (density) of Hs-Hk points in each interval. Then, in each interval the average values for Hs and Hk are computed (Hs_avg and Hk_avg). If using this option (recommended) the calculation of the average values
-                                        for Resolution (Hs) and Relevance (Hk) is based on the same density of points.
-                                        Indeed, every N points (the default value is 100) the average calculation
-                                        for Hs and Hk is performed. In this way, the computation of average values is more fair
-                                        since the lenght of interval is not fixed, but it is chosen in order that
-                                        the number of points (Hs-Hk) is always the same.
-                                        The default value for N is 100 points; however, such value con be changed using the flag [-d]. 
+* **`density`**: The x-axes is divided in _X_ intervals such that each of one contains the same number of points _D_ (by default _D = 100_). Thus, the interval lenght is not fixed. What is fixed is the number (density) of Hs-Hk points in each interval. Then, in each interval the average values for Hs and Hk are computed (Hs_avg and Hk_avg). If using this option (recommended) the calculation of the average values for Resolution (Hs) and Relevance (Hk) is based on the same density of points. Indeed, every N points (the default value is 100) the average calculation for Hs and Hk is performed. In this way, the computation of average values is more fair since the lenght of interval is not fixed, but it is chosen in order that the number of points (Hs-Hk) is always the same. The default value for N is 100 points; however, such value con be changed using the flag [-d]. 
                                         
    <div align="center">
    <img src="density.jpg" alt="Scheme" width="800">
@@ -271,18 +265,30 @@ All the details of the arguments just described can be found in **Sec.XXX**.
 ### 6.3.2 - Usage 
 In order to launch the **density** task the command-line is the following:
 
-```
-python3 Hs-Hk-plot.py density -f <Hs-Hk-N FILE> [-d <density>] [-s <range>] 
+```sh
+python3 Hs-Hk-plot.py density -f <Hs-Hk-Nsites-${ProteinName}.txt> [-d <density>] [-s <range>] 
 
    or:
    
-python3 Hs-Hk-plot.py density --file <Hs-Hk-N FILE> [--DensityPoints <density>] [--SlopeRange <range>] 
-
-
+python3 Hs-Hk-plot.py density --file <Hs-Hk-Nsites-${ProteinName}.txt> [--DensityPoints <density>] [--SlopeRange <range>] 
 ```
-### 6.3.3 - Arguments 
+> **NOTE: Please, take in account that "Hs-Hk-Nsites-${ProteinName}.txt" is the output of "ResRel-MPI.py" described in details in Sec.5. Such file contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk**
 
-## 6.4 - "BIN" Task 
+For further information, please type on terminal `python3 Hs-Hk-plot.py density`
+
+
+### 6.3.3 - Arguments 
+As explained in Sec. 6.3.1, "density" task requires one mandatory file, and two optional files: 
+
+* _`Hs-Hk-Nsites-${ProteinName}.txt`_: Mandatory file that contains the Resolution (Hs), Relevance (Hk) and the number of sites (N) in the 1st, 2nd and 3rd row, respectively. This is the ouptut of 'ResRel-MPI.py' program. It is organized in 3 rows. Each one contains the value of Hs, Hk, and Nsites separated by one space.
+    ----------------------------------------------------
+    | Hs-1       Hs-2       Hs-3       .....  Hs-N     |
+    | Hk-1       Hk-2       Hk-3       .....  Hk-N     |
+    | Nsites-1   Nsites-2   Nsites-3   .....  Nsites-N |
+    ----------------------------------------------------- 
+
+
+## 6.4 - "bin" Task 
 
 ### 6.4.1 - Requirements 
 ### 6.4.2 - Usage 
