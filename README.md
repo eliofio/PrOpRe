@@ -1,6 +1,6 @@
 # Contents 
 
-#### [1 - Introduction](#introduction)
+#### [1 - Introduction](#1---introduction-1)
 #### [2 - Requirements](#-2-requirements)
 3. Usage 
 4. remove_H_atoms.py 
@@ -36,7 +36,7 @@ In this way the process of coarsening protein with a CANVAS model will be comple
 
 <br/>
 
-# 2- Requirements
+# 2 - Requirements
 
 * **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
   The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
