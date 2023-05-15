@@ -258,7 +258,7 @@ According with one of the two options, follow Sec. 6.3 if the choice is "density
 _`density`_ task requires one mandatory file, that is **`Hs-Hk-Nsites-${ProteinName}.txt`**, the core file that contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. On the other hand, two arguments are optional: 
 
 * _`DensityPoints`_: integer number that specify the fixed number of points in each (variable lenght) interval.
-* _`SlopeRage`_: it specifies how to find the best interval such that new average curve made up of Hs_avg and Hk_avg is close to -1.
+* _`SlopeRange`_: it specifies how to find the best interval such that new average curve made up of Hs_avg and Hk_avg is close to -1.
 
 All the details of the arguments just described can be found in **Sec.XXX**.
 
@@ -281,18 +281,61 @@ For further information, please type on terminal `python3 Hs-Hk-plot.py density`
 As explained in Sec. 6.3.1, "density" task requires one mandatory file, and two optional files: 
 
 * _`Hs-Hk-Nsites-${ProteinName}.txt`_: Mandatory file that contains the Resolution (Hs), Relevance (Hk) and the number of sites (N) in the 1st, 2nd and 3rd row, respectively. This is the ouptut of 'ResRel-MPI.py' program. It is organized in 3 rows. Each one contains the value of Hs, Hk, and Nsites separated by one space.
+  ```
     ----------------------------------------------------
     | Hs-1       Hs-2       Hs-3       .....  Hs-N     |
     | Hk-1       Hk-2       Hk-3       .....  Hk-N     |
     | Nsites-1   Nsites-2   Nsites-3   .....  Nsites-N |
-    ----------------------------------------------------- 
+    ----------------------------------------------------
+  ```
+  
+* _`DensityPoints`_: Optional argument (`-d/--DensityPoints`) that specifies the number of points _D_ that fall in each interval (of variable lenght) as shown in Fig.2. By default, such value is _D = 100_. In interval of same density, the calulation of Hs_avg and Hk_avg is computed. Using this flag the dafult value can be easily changed. 
 
+* _`SlopeRange`_: Optional argument (`-s/--SlopeRange`) that specifies how to find the best interval of this average new curve for computing the optimal number of sites. From literature we know that the slope $\mu = -1$ is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). Therefore, specifically, after computing the average values of Hs and Hk, whatever the option chosen, two ways of defining this argument are possible:
+    * It is possible to define a range close to -1 in terms of percentage (default: from -1.10 to -0.90 that corresponds at 10% and taking the rightmost value in such range (i.e. with higher Resolution). Higher range values could be not good, since we want a slope very close to -1. Default value = 10%; 
+    * Another possibility is to take the closest value of slope to -1. In this case 'closest' string has to be used [-s/--SlopeRange closest]
 
 ## 6.4 - "bin" Task 
 
 ### 6.4.1 - Requirements 
+_`bin`_ task requires one mandatory file, that is **`Hs-Hk-Nsites-${ProteinName}.txt`**, the core file that contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. On the other hand, two arguments are optional: 
+
+* _`NumberWindows`_: integer number that specifies the fixed lenght of interval in which the x-axis (Resolution) is divided, whereas the density of points in each interval is variable. 
+* _`SlopeRange`_: it specifies how to find the best interval such that new average curve made up of Hs_avg and Hk_avg is close to -1.
+
+All the details of the arguments just described can be found in **Sec.6.4.3**.
+
 ### 6.4.2 - Usage 
+In order to launch the **bin** task the command-line is the following:
+
+```sh
+python3 Hs-Hk-plot.py bin -f <Hs-Hk-Nsites-${ProteinName}.txt> [-w <nWindows>] [-s <range>] 
+
+   or:
+   
+python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWindows <nWindows>] [--SlopeRange <range>] 
+```
+> **NOTE: Please, take in account that "Hs-Hk-Nsites-${ProteinName}.txt" is the output of "ResRel-MPI.py" described in details in Sec.5. Such file contains all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk**
+
+For further information, please type on terminal `python3 Hs-Hk-plot.py bin`.
+
 ### 6.4.3 - Arguments 
+As explained in Sec. 6.4.1, "density" task requires one mandatory file, and two optional files: 
+
+* _`Hs-Hk-Nsites-${ProteinName}.txt`_: Mandatory file that contains the Resolution (Hs), Relevance (Hk) and the number of sites (N) in the 1st, 2nd and 3rd row, respectively. This is the ouptut of 'ResRel-MPI.py' program. It is organized in 3 rows. Each one contains the value of Hs, Hk, and Nsites separated by one space.
+  ```
+    ----------------------------------------------------
+    | Hs-1       Hs-2       Hs-3       .....  Hs-N     |
+    | Hk-1       Hk-2       Hk-3       .....  Hk-N     |
+    | Nsites-1   Nsites-2   Nsites-3   .....  Nsites-N |
+    ----------------------------------------------------
+  ```
+  
+* _`NumberWindows`_: Optional argument (`-w/--NumberWindows`) that specifies the number of intervals into which the x-axes (Resolution) is divided. Thus, the lenght of the interval is fixed, whereas the number of points that fall inside each interval is variable, as shown schematically in Fig.3. By default, _W = 50_. Knowing the value of _W_ it is possible to define the bin as _1/W_ (at numeratore "1" is the total lenght of x-axis: indeed, the resolution goes between 0 and 1, and thus the lenght is actually 1). In interval of same bin lenght, the calulation of Hk_avg is computed, whereas by construction, the value of Hs_avg corresponds at the center value of binlenght. Using this flag (-w) the default value can be easily changed. 
+
+* _`SlopeRange`_: Optional argument (`-s/--SlopeRange`) that specifies how to find the best interval of this average new curve for computing the optimal number of sites. From literature we know that the slope $\mu = -1$ is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). Therefore, specifically, after computing the average values of Hs and Hk, whatever the option chosen, two ways of defining this argument are possible:
+    * It is possible to define a range close to -1 in terms of percentage (default: from -1.10 to -0.90 that corresponds at 10% and taking the rightmost value in such range (i.e. with higher Resolution). Higher range values could be not good, since we want a slope very close to -1. Default value = 10%; 
+    * Another possibility is to take the closest value of slope to -1. In this case 'closest' string has to be used [-s/--SlopeRange closest]
 
 
 ## 6.5 - Arguments 
