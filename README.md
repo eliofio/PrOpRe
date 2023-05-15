@@ -19,9 +19,14 @@
 &emsp; [6.1 - Scope](#61---scope)   <br />
 &emsp; [6.2 - Tasks](#62---tasks)   <br /> 
 &emsp; [6.3 - "Density" Task](#63---density-task)  <br />
-&emsp;&nbsp; [6.3.1 - Requirements](#631---requirements)  <br />
+&emsp;&emsp; [6.3.1 - Requirements](#631---requirements)  <br />
 &emsp;&emsp; [6.3.2 - Usage](#632---usage)  <br />
 &emsp;&emsp; [6.3.3 - Arguments](#633---arguments) <br />
+&emsp; [6.4 - "Bin" Task](#64---bin-task)  <br />
+&emsp;&emsp; [6.4.1 - Requirements](#641---requirements)  <br />
+&emsp;&emsp; [6.4.2 - Usage](#642---usage)  <br />
+&emsp;&emsp; [6.4.3 - Arguments](#643---arguments) <br />
+&emsp; [6.5 - Output](#65---output) 
 
 
 
