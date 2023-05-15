@@ -1,6 +1,6 @@
 # Contents 
 
-[**1 - Introduction**](#1---introduction) <br />
+<p>[**1 - Introduction**](#1---introduction) </p>
 [**2 - Requirements**](#2---requirements) <br />
 [**3 - Usage**](#3---usage)  <br />
 [**4 - remove_H_atoms.py**](#4---remove_h_atomspy) <br />
