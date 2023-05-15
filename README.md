@@ -1,6 +1,9 @@
 # Contents 
 
-[1 - Introduction](#1---introduction-1)
+[1 - Introduction](#1---introduction-1) 
+[2 - Requirements](#2---requirements-1)
+
+
 #### [2 - Requirements](#2---requirements-1)
 #### [3 - Usage] 
 #### [4 - remove_H_atoms.py] 
