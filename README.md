@@ -2,7 +2,7 @@
 
 [**1 - Introduction**](#1---introduction) <br />
 [**2 - Requirements**](#2---requirements) <br />
-[**3 - Usage**](https://github.com/eliofio11/ResRel-identification-Optimal-N-Sites/blob/main/README.md#3---usage) <br />
+#### [**3 - Usage**](3---usage) <br />
 #### [4 - remove_H_atoms.py] 
 ##### &emsp; [4.1 - Scope]
 ##### &emsp; [4.2 Requirements]
