@@ -240,10 +240,10 @@ The Relevance and Resolution plot is made up _N_ points (by default _N about 100
                                         
    <div align="center">
 
-   <img src="density.jpg" alt="Scheme" width="700">
+   <img src="density.jpg" alt="Scheme" width="800">
    </div>
   <div align = "center">
-  <b>Fig.2</b> - <i> Schematic representation of Relevance and Resolution points calculation. Two nested for loop are required: the external one is done on the number of retained sites (N<sub>s</sub>), the more internal one is on the "M" random mappings at fixed number of retained sites.</i>
+  <b>Fig.2</b> - <i> Pictorial representation.</i>
   </div>
                                         
                   
