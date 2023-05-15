@@ -2,13 +2,13 @@
 
 [**1 - Introduction**](#1---introduction) <br />
 [**2 - Requirements**](#2---requirements) <br />
-[**3 - Usage**](#3---usage)  <br />
+[**3 - Usage**](#3---usage)  <br /><br />
 [**4 - remove_H_atoms.py**](#4---remove_h_atomspy) <br />
 &emsp; [4.1 - Scope](#41---scope) <br />
-##### &emsp; [4.2 Requirements]
-##### &emsp; [4.3 Usage]
-##### &emsp; [4.4 Arguments]
-##### &emsp; [4.5 Output]
+&emsp; [4.2 Requirements](#42---requirements) <br />
+&emsp; [4.3 Usage](#43---usage)
+&emsp; [4.4 Arguments](#43---arguments)
+&emsp; [4.5 Output](#45---output)
 
 
 
