@@ -31,21 +31,29 @@
 
 
 # 1 - Introduction
-
-When coarsening biomolecules, the identification of the optimal number of sites such that the loss of information  –  starting from an all-atom conformation of biomoleculs  –  is minimized, is not trivial. So far, a lot of coarse-grained and multi-resolution model have been developed. One of the most promising one is the CANVAS model. CANVAS is the acronym of Coarse-grained Anisotropic Network model for VAriable resolution Simulation.
+When it comes to coarsening biomolecules, determining the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).
 
 The CANVAS strategy leverages the blurred and approximate nature of coarse-grained models to identify effective sites based on a user-provided input, and determines the interactions among them based on the molecule’s structure and all-atom force field, making it unnecessary to run reference simulations. This strategy makes the parametrisation of the model practically instantaneous, and allows the modulation of the system’s resolution in a quasi-continuous manner across the structure, from all-atom to (very) coarse-grained. Most notably, the interaction between regions of the system at different resolution (including the solvent) is accounted for and straightforward to set up, allowing the seamless implementation in standard MD software packages (e.g. GROMACS or LAMMPS).
 
-In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where all the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the $C_\alpha$ atoms are kept and modelled as CG beads. 
+In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the $C_\alpha$ atoms are kept and modelled as CG beads. 
 
-However, in this approach, it is required the knowledge of the chemistry, the biology of the system in order to understand which part of it requires a fully atomistic description, namely we must know which part of the system plays a crucial role, in which part of the system the chemical details have a major effect. Asnwering this question could not be easy. 
+However, this approach requires prior knowledge of the system's chemistry and biology to determine which parts necessitate a fully atomistic description, namely in which part of the system the chemical details have a significant impact. Answering this question can be challenging.
 
-Recently, a new approach has been developed, named Resolution and Relevance, with the purpose of identifying the level of resolution that optimally balances simplicity and informativeness. The resolution-relevance framework, or critical variable selection, is a recently developed method for identifying important variables without any prior knowledge of, or assumption on, their nature. The idea at the heart of the approach is that the information on the generative model that underlies the elements of an empirical sample is contained in the distribution of their frequencies, that is to say, in the number of times different outcomes occur in the data set. 
+Recently, a new approach called Resolution and Relevance has been developed to identify the optimal resolution level that balances simplicity and informativeness. This framework, also known as critical variable selection, allows for the identification of important variables without prior knowledge or assumptions about their nature. The core idea behind this approach is that the generative model underlying empirical samples can be inferred from the distribution of their frequencies, i.e., the number of times different outcomes occur in the dataset.
 
-Based on this approach above described, our purpose is to identify the optimal number of sites when using a coarse-grained and, in particular, a multiple resolution description of proteins by using CANVAS model. This project requires a combination of three methods/softwares: Relevance and Resolution, Mapping Entropy, and CANVAS:
-* The former software is entirely written in Python and it has the scope of identifying the optimal number of sites when coarse graining biomolecules.
-* The Mapping Entropy tool, on the other hand, is written in C. In input requires the optimal number of sites, and returns the selection of the sites the minimizes the loss of information when reducing the number of degrees of a system.
-* The CANVAS model whose code is written in Python and available on github repository, allows to model a biomolecule with three levels of resolutions as above explained. In input requires the result come out from ME tool.
+Building upon the aforementioned approach, our goal is to identify the optimal number of sites for multi-resolution protein descriptions using the CANVAS model. This project involves the combination of three methods/software: Relevance and Resolution, Mapping Entropy, and CANVAS: 
+
+* The Relevance and Resolution software, written in Python, aims to determine the optimal number of sites for biomolecule coarse-graining.
+
+* The Mapping Entropy tool, written in C, takes the optimal number of sites as input and returns the site selection that minimizes information loss during the reduction of degrees of freedom in a system.
+
+* The CANVAS model, available on a GitHub repository and implemented in Python, allows for the modeling of biomolecules at three levels of resolution as described earlier. It requires the output from the Mapping Entropy tool as input.
+
+### CHATgpt
+#In this section, we present the tool for identifying the optimal number of sites. The final output will be the Number of Optimal Sites. Subsequently, this number will serve as #input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to #the output of the Mapping Entropy tool.
+
+#This automated process will facilitate the coarsening of proteins using the CANVAS model.
+### 
 
 In this section the tool for identifying the optimal number of sites is reported. The final output will be, indeed, the Number of Optimal sites. 
 Afterwards this number will be the output of the ME tool that gives actually in output the selection of atoms. Finally, another code will be required whose scope will be to find the CANVAS selection sites closest to the output of ME. 
