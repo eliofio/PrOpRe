@@ -5,10 +5,10 @@
 [**3 - Usage**](#3---usage)  <br />
 [**4 - remove_H_atoms.py**](#4---remove_h_atomspy) <br />
 &emsp; [4.1 - Scope](#41---scope) <br />
-&emsp; [4.2 Requirements](#42---requirements) <br />
-&emsp; [4.3 Usage](#43---usage)  <br />
-&emsp; [4.4 Arguments](#43---arguments)  <br />
-&emsp; [4.5 Output](#45---output)  <br />
+&emsp; [4.2 - Requirements](#42---requirements) <br />
+&emsp; [4.3 - Usage](#43---usage)  <br />
+&emsp; [4.4 - Arguments](#43---arguments)  <br />
+&emsp; [4.5 - Output](#45---output)  <br />
 
 
 
