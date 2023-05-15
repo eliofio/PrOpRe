@@ -19,7 +19,7 @@
 &emsp; [6.1 - Scope](#61---scope)   <br />
 &emsp; [6.2 - Tasks](#62---requirements)   <br />
 &emsp; [6.3 - "Density" Task](#63---density-task)  <br />
-&emsp;&nbsp [6.3.1 - Requirements](#631---requirements)  <br />
+&emsp;&nbsp; [6.3.1 - Requirements](#631---requirements)  <br />
 &emsp;&emsp; [6.3.2 - Usage](#632---usage)  <br />
 &emsp;&emsp; [6.3.3 - Arguments](#633---arguments) <br />
 
