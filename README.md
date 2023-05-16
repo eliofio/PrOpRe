@@ -186,7 +186,7 @@ For better comprehension, **Figure 1** illustrates the flux diagram representing
 <img src="4-5-6.jpg" alt="Scheme" width="550">
 </div>
 <div align = "center">
-<b>Figure 1</b> - <i> Schematic representation of Relevance and Resolution points calculation. Two nested for loop are required: the external one is done on the number of retained sites (N<sub>s</sub>), the more internal one is on the "M" random mappings at fixed number of retained sites.</i>
+<b>Figure 1</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over _M_ random mappings at a fixed number of retained sites.</i>
 </div>
 
 
