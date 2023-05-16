@@ -114,7 +114,7 @@ For a more comprehensive understanding of the program's functionality and implem
 * **`Hs-Hk-plot`**: this code serves a dual purpose:
     * Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. 
     * Calculating the optimal number of sites for a biomolecule based on an atomistic trajectory, with the aim of minimizing the loss of information when atoms are decimated.
-Further details regarding the functionality and usage of this code will be provided in **Section 6**.
+Further details regarding the functionality and usage of this code will be provided in **[Section 6](#6---hs-hk-plotpy)**.
 
 Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. Additionally, it is crucial to avoid moving the scripts outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs which will be displayed on the screen.
 
