@@ -109,7 +109,7 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
     * 1<sup>st</sup> row: values of Resolution ($H_s$); 
     * 2<sup>nd</sup> row: values of Relevance ($H_k$); 
     * 3<sup>rd</sup> row: number of retained sites for that specific $H_s$ and $H_k$ values. 
-For a more comprehensive understanding of the program's functionality and implementation details, please refer to **Section 5** in this documentation.
+For a more comprehensive understanding of the program's functionality and implementation details, please refer to [**Section 5**](#5---resrel-mpipy) in this documentation.
  
 * **`Hs-Hk-plot`**: this code serves a dual purpose:
     * Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. 
