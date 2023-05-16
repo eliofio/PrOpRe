@@ -56,11 +56,7 @@ In this section, we present the tool for identifying the optimal number of sites
 
 # 2 - Requirements
 
-* **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
-  The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
-  If you are working on _Linux_ or _MacOs_ system, Python3 should be already installed. 
-  On the other hand, if you are using Windows operating system, it is not certain for its presence.
-  Please, be care of working with Python3 (3.7 or 3.9 is the best choice) as the code could return an error if using Python2.
+* **`Python3`**: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a _Linux_ or _macOS_ system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided [here](https://docs.python-guide.org/starting/installation/). Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior.
   
 * **`Python3 Libraries`**: The most of libraries used in these codes are installed by default by python after first installation. However, four of them usually require a subsequent installation: 
 
