@@ -58,26 +58,25 @@ In this section, we present the tool for identifying the optimal number of sites
 
 * **`Python3`**: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a _Linux_ or _macOS_ system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided [here](https://docs.python-guide.org/starting/installation/). Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior.
   
-* **`Python3 Libraries`**: The most of libraries used in these codes are installed by default by python after first installation. However, four of them usually require a subsequent installation: 
+* **`Python3 libraries`**: Python 3 comes with a wide range of built-in libraries that are installed by default. However, there are certain libraries that may need to be installed separately. Here are four libraries used in this code that typically require subsequent installation:
 
-   * [**`MDAnalysis`**](https://www.mdanalysis.org): It is an open source Python library that helps you to quickly write your own analysis algorithm 
-                       for studying trajectories produced by the most popular simulation packages. 
+   * [**`MDAnalysis`**](https://www.mdanalysis.org): It is an open source Python library that helps to quickly write your own analysis algorithm 
+                                                     for studying trajectories produced by the most popular simulation packages. 
          
-   * [**`NumPy`**](https://numpy.org): It  stands for _Numerical Python_ and it is a Python library used for working with arrays. 
-                  It also has functions for working in domain of linear algebra, fourier transform, and matrices. 
-                  NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.   
+   * [**`NumPy`**](https://numpy.org): It  stands for _Numerical Python_ and it a fundamental library for numerical computing in Python. 
+                                       It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions 
+                                       to operate on these arrays efficiently. It also has functions for working in domain of linear algebra and fourier transform. 
+                                       NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.            
               
    * [**`Matplotlib`**](https://matplotlib.org): It is a low level graph plotting library in python that serves as a visualization utility created by John D. Hunter. 
-                       It is open source and we can use it freely. Moreover, Matplotlib is mostly written in python, a few segments are written in C,
-                       Objective-C and Javascript for Platform compatibility.
-                   
+                                                 It is open source and we can use it freely. Moreover, Matplotlib is mostly written in python, 
+                                                 a few segments are written in C, Objective-C and Javascript for Platform compatibility.
+                                  
    * [**`SciPy`**](https://scipy.org): It is a free and open-source Python library used for scientific computing and technical computing. 
-                  It was created by Travis Oliphant. SciPy contains modules for optimization, linear algebra, integration, interpolation, 
-                  special functions, FFT, signal and image processing, ODE solvers and other tasks common in science and engineering.
+                                       It was created by Travis Oliphant. SciPy contains modules for optimization, linear algebra, integration, 
+                                       interpolation, special functions, FFT, signal and image processing, ODE solvers and other tasks common 
+                                       in science and engineering.
 
-
-              
-                   
       To install the lastest stable releases with conda do:
       
       ```bash 
