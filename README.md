@@ -49,16 +49,8 @@ Building upon the aforementioned approach, our goal is to identify the optimal n
 
 * The CANVAS model, available on a GitHub repository and implemented in Python, allows for the modeling of biomolecules at three levels of resolution as described earlier. It requires the output from the Mapping Entropy tool as input.
 
-### CHATgpt
-#In this section, we present the tool for identifying the optimal number of sites. The final output will be the Number of Optimal Sites. Subsequently, this number will serve as #input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to #the output of the Mapping Entropy tool.
 
-#This automated process will facilitate the coarsening of proteins using the CANVAS model.
-### 
-
-In this section the tool for identifying the optimal number of sites is reported. The final output will be, indeed, the Number of Optimal sites. 
-Afterwards this number will be the output of the ME tool that gives actually in output the selection of atoms. Finally, another code will be required whose scope will be to find the CANVAS selection sites closest to the output of ME. 
-
-In this way the process of coarsening protein with a CANVAS model will be completely automatized. 
+In this section, we present a tool for identifying the optimal number of sites. The final output will be the number of optimal sites. Subsequently, this number will serve as input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to the output of the Mapping Entropy tool. This automated process will facilitate the coarsening of proteins using the CANVAS model.
 
 <br/>
 
