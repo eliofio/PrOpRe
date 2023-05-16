@@ -102,30 +102,31 @@ In this section, we present the tool for identifying the optimal number of sites
 # 3 - Usage 
 
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI-py` and `Hs-Hk-plot.py` in succession by using Python3: 
-* **`remove_H_atoms.py`**: has the preliminary scope of removing all the hydrogen atoms  from both the reference file  and the trajectory one. The reason lies in the fact that, in the calculation of the RMDS map and in particular in the calculation of Resolution and Relevance after keeping a group of atoms, it is preferable to not consider the hydrogens, as they are not heavy-atoms. This code can be ignored if having  reference and trajectory without hydrogen atoms. Details can be found in **Sec. 4**. 
 
-* **`ResRel-MPY.py`**: This is the core program beacuse has the scope of calculating the Relevance-Resolution (changing the number of sites and for different mappings) points after calculating the RSD map among each frame and the other ones (an allignment between a couple of frames is required every time). Basically, it writes a file splitted in 3 rows:
-    * 1st row: values of Resolution (Hs); 
-    * 2nd row: values of Relevance (Hk); 
-    * 3rd row: number of retained sites for that specific Hs and Hk. 
-Details can be found in **Sec. 5**. 
-  
-* **`Hs-Hk-plot`**: this code has a dual purpose:
-    * Drawing a saving different plot regard Resolution and Relevance, slope, and histogram of frequencies 
-    * Calculating the optimal number of sites of a biomolcule starting from an atomistic trajectory, such that the loss of information after decimating atoms is minimized.
-Details will be provided in **Sec. 6**.
+* **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if your reference and trajectory files already exclude hydrogen atoms, you can disregard this code. Additional details can be found in **Section 4**.
 
-Before running the python scripts, read carefully the next section that provides a detailed explaination of each task and argument. Moreover, take care to not moving them outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs and it is printed on screen.
+* **`ResRel-MPY.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
+    * 1<sup>st</sup> row: values of Resolution ($H_s$); 
+    * 2<sup>nd</sup> row: values of Relevance ($H_k$); 
+    * 3<sup>rd</sup> row: number of retained sites for that specific $H_s$ and $H_k$ values. 
+For a more comprehensive understanding of the program's functionality and implementation details, please refer to **Section 5** in this documentation.
+ 
+* **`Hs-Hk-plot`**: this code serves a dual purpose:
+    * Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. 
+    * Calculating the optimal number of sites for a biomolecule based on an atomistic trajectory, with the aim of minimizing the loss of information when atoms are decimated.
+Further details regarding the functionality and usage of this code will be provided in **Section 6**.
+
+Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. Additionally, it is crucial to avoid moving the scripts outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs which will be displayed on the screen.
 
 <br/>
 
 # 4 - remove_H_atoms.py
 
 ## 4.1 - Scope 
-This script has the preliminary, but important, scope of removing all the hydrogen atoms (H, H1, H2, HW, etc...) from both the reference file (usually 'gro' or 'pdf', 'psf', etc...) and the trajectory one ('xtc', 'trr', 'dcd', 'gro', 'lammpstrj', etc...). Hydrogen atoms in a protein move and rotate more compared to heavy atoms. This is because hydrogen atoms have a much smaller mass than heavy atoms like carbon, nitrogen, and oxygen. This phenomenon is known as the reduced mass effect and is an important factor in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. For this reason, in the calculation of the RSD map, on of the key points for computing Resolution and Relevance after keeping a group of atoms, it is recommended to avoid hydrogens. If you already have reference and trajectory without hydrogen, this code can be ignored.
+This script serves a preliminary yet significant purpose of removing all hydrogen atoms (`H`, `H1`, `H2`, `HW`,...) from both the reference file (typically `gro`, `pdb`, `xyz`, `psf`, etc.) and the trajectory file (`xtc`, `trr`, `dcd`, `gro`, `lammpstrj`,...). Hydrogen atoms in proteins exhibit greater movement and rotation compared to heavy atoms such as carbon, nitrogen, and oxygen. This behavior is attributed to the significantly smaller mass of hydrogen atoms. Known as the reduced mass effect, this phenomenon plays a crucial role in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. Therefore, in the computation of the RSD map and the subsequent determination of Resolution and Relevance, it is advisable to exclude hydrogen atoms. If your reference and trajectory files already lack hydrogen atoms, you can ignore this code.
 
 ## 4.2 - Requirements
-This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
+This script requires two mandatory files: the coordinate/topology file epresenting the all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). No optional arguments are available. 
 
 
 ## 4.3 - Usage
@@ -139,23 +140,28 @@ python3 remove_H_atoms.py -r <Coordinate FILE> -t <Trajectory FILE>
 python3 remove_H_atoms.py --ref <Coordinate FILE> --traj <Trajectory FILE>
 ```
 
-A short explaination of arguments is provided by launching the command `python3 remove_H_atoms.py -h` or `python3 remove_H_atoms.py --help`. Alternatively, for printing a short usage message, please type: `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -u`
+To obtain a brief explanation of the arguments, you can execute the command `python3 remove_H_atoms.py -h` or `python3 remove_H_atoms.py --help`. Additionally, if you wish to print a concise usage message, you can use either `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -u`.
 
-Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
+However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument.
 
 
 ## 4.4 - Arguments
-As shown in **Sec. 4** the coordinate/topology file of all-atom structure of the biomolecule (`gro`, `pdb`, `xyz`, `psf`, ...), and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...) are always, mandatory. Moreover, no optional arguments are available. A short explaination of the above mentioned files is the following:
+As described in **Section 4**, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:
 
-* **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ...) 
 
-* **`Trajectory FILE`**: Mandatory File containing the trajectory of the biomolecule (trr, dcd, lammpstrj, gro, ...)
+* **`Coordinate FILE`**: This file is mandatory and it that contains the atom coordinates. It can be in formats such as _xyz_, _gro_, _pdb_, _psf_, etc. It provides information on the positions of the atoms and their connectivity.
 
-Examples are reported in **Sec. XX**
+* **`Trajectory FILE`**: This file is mandatory and it contains the trajectory information of the biomolecule. It can be in formats such as _trr_, _dcd_, _lammpstrj_, _gro_, etc.  It provides information on how the biomolecule moves over time.
 
 
 ## 4.5 - Output
-The output of the program are the coordinate file (_`Reference_noH.gro`_) and the trajectory (_`Trajectory_noH.xtc`_) after removing all the hydrogen atoms. 
+The program produces two output files:
+
+1. _`Reference_noH.gro`_: This file contains the coordinate data of the biomolecule's all-atom structure after eliminating all the hydrogen atoms. It represents the updated coordinates of the remaining heavy atoms.
+2. _`Trajectory_noH.xtc`_: This file comprises the trajectory data of the biomolecule after the removal of hydrogen atoms. It captures the time-dependent movement of the remaining heavy atoms over the course of the simulation.
+
+
+
 
 
 <br/>
