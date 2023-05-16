@@ -103,7 +103,7 @@ In this section, we present the tool for identifying the optimal number of sites
 
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI-py` and `Hs-Hk-plot.py` in succession by using Python3: 
 
-* **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can disregard this code. Additional details can be found in **[Section 4](#4---remove_h_atomspy)**.
+* **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in **[Section 4](#4---remove_h_atomspy)**.
 
 * **`ResRel-MPI.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
     * 1<sup>st</sup> row: values of Resolution ($H_s$); 
