@@ -186,22 +186,27 @@ For better comprehension, **Figure 1** illustrates the flux diagram representing
 <img src="4-5-6.jpg" alt="Scheme" width="550">
 </div>
 <div align = "center">
-<b>Figure 1</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over _M_ random mappings at a fixed number of retained sites.</i>
+<b>Figure 1</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
 </div>
 
 
 ## 5.2 - Requirements
+To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms `gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). Additionally, four optional arguments can be specified:
 
-This script requires two mandatory files: the coordinate/topology file of all-atom structure of the biomolecule without hydrogen atoms (`gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). On the other hand, four arguments are optional: 
+* _`Nmappings`_: number of random mappings generated at each fixed number of retained sites.
+* _`Nframes`_: number of frames to be read in the trajectory file.
 
-* _`Nmappings`_: Number of random mappings at fixed number of sites retained; 
-* _`Nframes`_: Number of frames read in our trajectory; 
-* _`Nstep`_: Number that describes the step when the number of retained sites is changed;  
-* _`ncpu`_: Number of cpus that will be used for parallizing the calculation of RSD map for each mapping. 
+```
+This parameter allows for controlling the granularity of the reduction in the number of retained sites during the calculation, considering the specific number of mappings conducted. 
+```
+
+* _`Nstep`_: step that describes the decrement in the number of sites to be retained, starting from $N_{\text{atoms}}-1$, during the calculation. 
+* _`ncpu`_: number of CPUs to be used for parallelizing the calculation of the RSD map for each mapping.
+
 
 ## 5.3 - Usage 
 
-In order to launch the **ResRel-MPI.py** scripts, the command-line is the following:
+To run the **ResRel-MPI.py** script, the command-line is the following:
 
 ```sh
 python3 ResRel-MPI.py -r <Reference_noH.gro> -t <Trajectory_noH.xtc> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] 
@@ -210,21 +215,24 @@ python3 ResRel-MPI.py -r <Reference_noH.gro> -t <Trajectory_noH.xtc> [-m <NMappi
 
 python3 remove_H_atoms.py --ref <Reference_noH.gro> --traj <Trajectory_noH.xtc> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>]
 ```
+> **NOTE: Please note that the "Reference_noH.gro" and "Trajectory_noH.xtc" files mentioned here refer to the output files obtained after running the `remove_H_atoms.py` script. It is crucial to remove hydrogen atoms from the files for accurate calculation of Resolution and Relevance points. Although this code does not throw an error if hydrogen atoms are present, their excessive movement and rotation can adversely affect the calculation. Please ensure that you have removed hydrogen atoms from the files before proceeding with the calculation.
 
-> **NOTE: Please, take in account that "Reference_noH.gro" and "Trajectory_noH.xtc" - i.e. the reference coordinate file and the trajectory one without hydrogen atoms, respectively - are the output files obtained after launching remove_H_atoms.py. This code does not return an error, if using files with hydrogens. However, in order that the calculation of Resolution and Relevance points for each mapping works good, it is necessary to remove H atoms beacuse the latter are not heavy atoms, and thus they move and rotate too much. Please, take care of it.**
+To obtain a brief explanation of the arguments, you can execute the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Additionally, if you wish to print a concise usage message, you can use either `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`.
 
-A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`.
+However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument.
 
-Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
 
 ## 5.4 - Arguments
+In **Section 5**, it is emphasized that the coordinate file (_Reference_noH.gro_) and the trajectory (_Trajectory_noH.xtc_) of the all-atom structure of the biomolecule without hydrogen atoms are always required inputs. These files provide the necessary information for the calculation.  On the other hand, the number of mappings at fixed number of sites (_Nmappings_), the number of frames to be read from trajectory (_Nframes_), and the step that describes the decrement in the number of sites to be retained (_Nstep_) are optional arguments. The following is the summary of the different files and input parameters required by the code:
 
-As shown in **Sec. 5** the coordinate file and the trajectory of all-atom structure of the biomolecule without hydrogens (_Reference_noH.gro_ and _Trajectory_noH.xtc_, respectively) are, always, mandatory. On the other hand, the number of mappings at fixed number of sites (Nmappings), the number of frames read from trajectory (Nframes), and the step corresponing at the variation of the number of sites (Nstep) are optional arguments. A short explaination of the above mentioned files is the following:
+* **`Coordinate FILE noH`**: This is a mandatory file (`-r/--ref`) containing the atom coordinates of the biomolecule _without_ hydrogen atoms (in formats such as xyz, gro, pdb, psf, etc.). If the "remove_H_atoms.py" script is used, the default name for this file is _Reference_noH.gro_.
 
-* **`Coordinate FILE noH`**: Mandatory File (`-r/--ref`) of atom Coordinates **without** hydrogen atoms (xyz, gro, pdb, psf, ...). If using "remove_H_atoms,py" code, then the file is by default called _Reference_noH.gro_; 
+* **`Trajectory FILE noH`**: This is another mandatory file (`-t/--traj`) containing the trajectory of the biomolecule _without_ hydrogen atoms (in formats such as trr, dcd, lammpstrj, gro, etc.). If the "remove_H_atoms.py" script is used, the default name for this file is _Trajectory_noH.gro_.
 
-* **`Trajectory FILE noH`**: Mandatory File (`-t/--traj`) containing the trajectory of the biomolecule **without** hydrogens (trr, dcd, lammpstrj, gro, ...). If using "remove_H_atoms,py" code, then the file is by default called _Trajectory_noH.gro_; 
+NMappings: This is an optional argument (-m/--mapp) that specifies the number of random mappings M at a fixed number of retained sites. The default value is M=50. This parameter affects the number of combinations that will be chosen randomly with respect to the total number of atoms. Changing this value will result in more or fewer combinations being chosen.
+
+
 
 * **`NMappings`**: Optional argument (`-m/--mapp`) that specifies the number of random mappings _M_ at fixed number of sites retained. Any integer number higher than 0 is accepted. The default value is _M = 50_. For a fixed number of sites the code choses randomly _M_ combinations with respect the total number of atoms. Changing such value, more or less combinations are chosen; 
 
