@@ -18,20 +18,15 @@
 [**6 - Hs-Hk-plot.py**](#6---hs-hk-plotpy)  <br />
 &emsp; [6.1 - Scope](#61---scope)
 &emsp;&emsp;&emsp; [6.2 - Tasks](#62---tasks) 
-&emsp;&emsp;&emsp; [6.3 - "Density" Task](#63---density-task)
-&emsp;&emsp;&emsp; [6.4 - "Bin" Task](#64---bin-task)
+&emsp;&emsp;&emsp; [**6.3 - "Density" Task**](#63---density-task)
+&emsp;&emsp;&ensp; [**6.4 - "Bin" Task**](#64---bin-task)
 &emsp;&emsp;&emsp; [6.5 - Output](#65---output)<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&thinsp; [6.3.1 - Requirements](#631---requirements)
 &emsp;&emsp;&nbsp;&nbsp;&thinsp;&thinsp; [6.4.1 - Requirements](#641---requirements)  <br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&thinsp; [6.3.2 - Usage](#632---usage) 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [6.4.2 - Usage](#642---usage) <br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&thinsp; [6.3.3 - Arguments](#633---arguments) 
-
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [6.4.2 - Usage](#642---usage) <br/ >
-&emsp; [6.4 - "Bin" Task](#64---bin-task)  <br />
-&emsp;&emsp; [6.4.1 - Requirements](#641---requirements)  <br />
-&emsp;&emsp; [6.4.2 - Usage](#642---usage)  <br />
-&emsp;&emsp; [6.4.3 - Arguments](#643---arguments) <br />
-&emsp; [6.5 - Output](#65---output) 
+&emsp;&emsp;&emsp;&emsp; [6.4.3 - Arguments](#643---arguments) <br />
 
 
 
