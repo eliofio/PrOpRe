@@ -1,25 +1,27 @@
 # Contents 
 
-[**1 - Introduction**](#1---introduction) <br />
-[**2 - Requirements**](#2---requirements) <br />
-[**3 - Usage**](#3---usage)  <br />
+[**1 - Introduction**](#1---introduction) <br /><br />
+[**2 - Requirements**](#2---requirements) <br /><br />
+[**3 - Usage**](#3---usage)  <br /><br />
 [**4 - remove_H_atoms.py**](#4---remove_h_atomspy) <br />
-&emsp; [4.1 - Scope](#41---scope) <br />
-&emsp; [4.2 - Requirements](#42---requirements) <br />
-&emsp; [4.3 - Usage](#43---usage)  <br />
-&emsp; [4.4 - Arguments](#44---arguments)  <br />
-&emsp; [4.5 - Output](#45---output)  <br />
+&emsp; [4.1 - Scope](#41---scope) 
+&emsp; [4.2 - Requirements](#42---requirements) 
+&emsp; [4.3 - Usage](#43---usage) 
+&emsp; [4.4 - Arguments](#44---arguments)
+&emsp; [4.5 - Output](#45---output)  <br /><br />
 [**5 - ResRel-MPI.py**](#5---resrel-mpipy) <br />
-&emsp; [5.1 - Scope](#51---scope) <br />
-&emsp; [5.2 - Requirements](#52---requirements) <br />
-&emsp; [5.3 - Usage](#53---usage)  <br />
-&emsp; [5.4 - Arguments](#54---arguments)  <br />
-&emsp; [5.5 - Output](#55---output)  <br />
+&emsp; [5.1 - Scope](#51---scope)
+&emsp; [5.2 - Requirements](#52---requirements)
+&emsp; [5.3 - Usage](#53---usage)
+&emsp; [5.4 - Arguments](#54---arguments)
+&emsp; [5.5 - Output](#55---output)  <br /><br />
 [**6 - Hs-Hk-plot.py**](#6---hs-hk-plotpy)  <br />
-&emsp; [6.1 - Scope](#61---scope)   <br />
-&emsp; [6.2 - Tasks](#62---tasks)   <br /> 
-&emsp; [6.3 - "Density" Task](#63---density-task)  <br />
-&emsp;&emsp; [6.3.1 - Requirements](#631---requirements)  <br />
+&emsp; [6.1 - Scope](#61---scope)
+&emsp; [6.2 - Tasks](#62---tasks) 
+&emsp; [6.3 - "Density" Task](#63---density-task)
+&emsp; [6.4 - "Bin" Task](#64---bin-task)
+&emsp; [6.5 - Output](#65---output)<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[6.3.1 - Requirements](#631---requirements)  <br />
 &emsp;&emsp; [6.3.2 - Usage](#632---usage)  <br />
 &emsp;&emsp; [6.3.3 - Arguments](#633---arguments) <br />
 &emsp; [6.4 - "Bin" Task](#64---bin-task)  <br />
