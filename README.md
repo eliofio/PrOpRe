@@ -177,7 +177,7 @@ This program serves as the core component for calculating Resolution-Relevance (
 4. Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed. Based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed.
 5. Steps 4 is repeated for a specified number _M_ of mappings (by default, _M = 50_).
 6. Gradually reducing the number _N_ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
-7. Finally, a complete curve of H<sub>s</sub>—H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
+7. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
 
 For better comprehension, **Figure 1** illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the HH<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
 
