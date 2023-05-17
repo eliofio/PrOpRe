@@ -230,8 +230,16 @@ In **Section 5**, it is emphasized that the coordinate file (_Reference_noH.gro_
 
 * **`Trajectory FILE noH`**: This is another mandatory file (`-t/--traj`) containing the trajectory of the biomolecule _without_ hydrogen atoms (in formats such as trr, dcd, lammpstrj, gro, etc.). If the "remove_H_atoms.py" script is used, the default name for this file is _Trajectory_noH.gro_.
 
-NMappings: This is an optional argument (-m/--mapp) that specifies the number of random mappings M at a fixed number of retained sites. The default value is M=50. This parameter affects the number of combinations that will be chosen randomly with respect to the total number of atoms. Changing this value will result in more or fewer combinations being chosen.
+NMappings: This is an optional argument (`-m/--mapp`) that specifies the number of random mappings _M_, namely the number of combinations that will be chosen randomly, at a fixed number of retained sites. Each mapping represents a unique combination of atoms. By default, the value of Nmappings $M$ is set to 50, meaning that 50 random mappings will be chosen. However, you have the flexibility to adjust this value according to your specific needs. Increasing the value of Nmappings will result in a greater number of random mappings being generated, while decreasing it will yield fewer mappings. Choosing a higher value for Nmappings can provide a more comprehensive exploration of different atom combinations, but it will also increase the computational time required for the calculation. Conversely, selecting a lower value will reduce the computational burden but may result in a less exhaustive sampling of mappings. By adjusting the Nmappings argument, you can strike a balance between computational efficiency and the level of exploration of different mappings that suits your specific requirements. The default value is $M=50$ can
 
+The default value is $M=50$. Changing this value will result in more or fewer combinations being chosen.
+
+
+By default, the value of Nmappings is set to 50, meaning that 50 random mappings will be chosen. However, you have the flexibility to adjust this value according to your specific needs. Increasing the value of Nmappings will result in a greater number of random mappings being generated, while decreasing it will yield fewer mappings.
+
+Choosing a higher value for Nmappings can provide a more comprehensive exploration of different atom combinations, but it will also increase the computational time required for the calculation. Conversely, selecting a lower value will reduce the computational burden but may result in a less exhaustive sampling of mappings.
+
+By adjusting the Nmappings argument, you can strike a balance between computational efficiency and the level of exploration of different mappings that suits your specific requirements.
 
 
 * **`NMappings`**: Optional argument (`-m/--mapp`) that specifies the number of random mappings _M_ at fixed number of sites retained. Any integer number higher than 0 is accepted. The default value is _M = 50_. For a fixed number of sites the code choses randomly _M_ combinations with respect the total number of atoms. Changing such value, more or less combinations are chosen; 
