@@ -254,6 +254,7 @@ The output of the code includes two files:
 
 A short explaination of arguments is provided by launching the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Alternatively, for printing a short usage message, please type: `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`
 
+<br />
 
 # 6 - Hs-Hk-plot.py 
 
