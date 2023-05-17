@@ -169,15 +169,15 @@ The program produces two output files:
 # 5 - ResRel-MPI.py 
 
 ## 5.1 - Scope 
-This program serves as the core component for calculating Resolution-Relevance (H<sub>s</sub>-H<sub>k</sub>) points, which involves varying the number of retained sites and different mappings. The calculation process involves several steps:
+This program serves as the core component for calculating Resolution-Relevance ($H_s$ - $H_k$) points, which involves varying the number of retained sites and different mappings. The calculation process involves several steps:
 
 1. Calculation of the all-atom _RSD map_ between each frame and the other frames, requiring alignment between each frame pair.
 2. Construction of a dendrogram based on the all-atom RSD map of the trajectory using the average linkage UPGMA algorithm.
 3. Cutting the dendrogram to determine the cutoff value that allows for the distinction of all atomistic conformations.
-4. Starting with a number of retained sites equal to $N_{\text{atoms}}-1$, a random mapping is proposed. Based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed.
-5. Steps 4 is repeated for a specified number _M_ of mappings (by default, _M = 50_).
-6. Gradually reducing the number _N_ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
-7. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
+4. Starting with a number of retained sites equal to $N_{\text{atoms}}-1$, a random mapping is proposed. Based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the $H_s$ - $H_k$ point is computed.
+5. Steps 4 is repeated for a specified number $M$ of mappings (by default, $M = 50$).
+6. Gradually reducing the number $N$ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
+7. Finally, a complete curve of $H_s$ - $H_k$ points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
 
 For better comprehension, **Figure 1** illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the Hs-Hk points: the outer loop iterates over the number of retained sites ($N_s$), while the inner loop performs $M$ random mappings at a fixed number of retained sites.
 
