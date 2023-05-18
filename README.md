@@ -106,9 +106,9 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
 * **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in **[Section 4](#4---remove_h_atomspy)**.
 
 * **`ResRel-MPI.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
-    * 1<sup>st</sup> row: values of Resolution ($H_s$); 
-    * 2<sup>nd</sup> row: values of Relevance ($H_k$); 
-    * 3<sup>rd</sup> row: number of retained sites for that specific $H_s$ and $H_k$ values. 
+    * 1<sup>st</sup> row: values of Resolution (<b>H<sub>s</sub></b>); 
+    * 2<sup>nd</sup> row: values of Relevance (<b>H<sub>k</sub></b>); 
+    * 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and $H<sub>k</sub> values. 
 For a more comprehensive understanding of the program's functionality and implementation details, please refer to **[Section 5](#5---resrel-mpipy)** in this documentation.
  
 * **`Hs-Hk-plot`**: this code serves a dual purpose:
@@ -219,7 +219,7 @@ However, it is strongly recommended to read the following section attentively be
 
 
 ## 5.4 - Arguments
-In **Section 5**, it is emphasized that the coordinate file (_Reference_noH.gro_) and the trajectory (_Trajectory_noH.xtc_) of the all-atom structure of the biomolecule without hydrogen atoms are always required inputs. These files provide the necessary information for the calculation. On the other hand, the number of mappings at fixed number of sites (_Nmappings_), the number of frames to be read from trajectory (_Nframes_), and the step that describes the decrement in the number of sites to be retained (_Nstep_) are optional arguments. The following is the summary of the different files and input parameters required by the code:
+In **[Section 5](#5---resrel-mpipy)**, it is emphasized that the coordinate file (_Reference_noH.gro_) and the trajectory (_Trajectory_noH.xtc_) of the all-atom structure of the biomolecule without hydrogen atoms are always required inputs. These files provide the necessary information for the calculation. On the other hand, the number of mappings at fixed number of sites (_Nmappings_), the number of frames to be read from trajectory (_Nframes_), and the step that describes the decrement in the number of sites to be retained (_Nstep_) are optional arguments. The following is the summary of the different files and input parameters required by the code:
 
 * **`Coordinate FILE noH`**: This is a mandatory file (`-r/--ref`) containing the atom coordinates of the biomolecule _without_ hydrogen atoms (in formats such as xyz, gro, pdb, psf, etc.). If the "remove_H_atoms.py" script is used, the default name for this file is _Reference_noH.gro_.
 
