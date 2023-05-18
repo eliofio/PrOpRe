@@ -229,7 +229,7 @@ In **[Section 5](#5---resrel-mpipy)**, it is emphasized that the coordinate file
 
 <div align="center">
 
-<img src="mappings.jpg" alt="Scheme" width="550">
+<img src="mappings .jpg" alt="Scheme" width="550">
 </div>
 <div align = "center">
 <b>Figure 2</b> - <i> Pictorial representation of mapping when choosing a subset of atoms. At the top, the total number of atoms is 10, whereas 3 different mappings are proposed when selecting 9 atoms out of 10. In the middle and in the bottom, 7 and 5 atoms are chosen, respectively.</i>
