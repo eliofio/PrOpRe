@@ -146,7 +146,7 @@ However, it is strongly recommended to read the following section attentively be
 
 
 ## 4.4 - Arguments
-As described in **Section 4**, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:
+As described in **[Section 4](#4---remove_h_atomspy)**, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:
 
 
 * **`Coordinate FILE`**: This file is mandatory and it that contains the atom coordinates. It can be in formats such as _xyz_, _gro_, _pdb_, _psf_, etc. It provides information on the positions of the atoms and their connectivity.
@@ -191,11 +191,11 @@ For better comprehension, **Figure 1** illustrates the flux diagram representing
 
 
 ## 5.2 - Requirements
-To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms `gro`, `pdb`, `xyz`, `psf`, ...) and the trajectory file in any format (`lammpstrj`, `dcd`, `trr`, `xtc`, ...). Additionally, four optional arguments can be specified:
+To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms _gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_lammpstrj_, _dcd_, _trr_, _xtc_, ...). Additionally, four optional arguments can be specified:
 
 * _`Nmappings`_: number of random mappings generated at each fixed number of retained sites.
 * _`Nframes`_: number of frames to be read in the trajectory file.
-* _`Nstep`_: step that describes the decrement in the number of sites to be retained, starting from $N_{\text{atoms}}-1$, during the calculation. 
+* _`Nstep`_: step that describes the decrement in the number of sites to be retained, starting from N<sub>atoms</sub> - 1, during the calculation. 
 * _`ncpu`_: number of CPUs to be used for parallelizing the calculation of the RSD map for each mapping.
 
 
