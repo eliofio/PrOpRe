@@ -108,7 +108,7 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
 * **`ResRel-MPI.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
     * 1<sup>st</sup> row: values of Resolution (<b>H<sub>s</sub></b>); 
     * 2<sup>nd</sup> row: values of Relevance (<b>H<sub>k</sub></b>); 
-    * 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and $H<sub>k</sub> values. 
+    * 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and H<sub>k</sub> values. 
 For a more comprehensive understanding of the program's functionality and implementation details, please refer to **[Section 5](#5---resrel-mpipy)** in this documentation.
  
 * **`Hs-Hk-plot`**: this code serves a dual purpose:
