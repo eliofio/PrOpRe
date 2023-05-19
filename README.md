@@ -287,7 +287,7 @@ The Relevance and Resolution plot consists of a total of _N_ points, with the de
    <img src="density.jpg" alt="Scheme" width="800">
    </div>
    <div align = "center">
-   <b>Fig.2</b> - <i> Pictorial representation.</i>
+   <b>Fig.2</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; (b) shows the division of the x-axes into intervals of variable lenght, each one containing 5 points (_D = 5_). (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
    </div>
                                         
 
