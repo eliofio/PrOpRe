@@ -198,7 +198,7 @@ For better comprehension of the steps above mentioned, **Figure 2** illustrates 
 <img src="4-5-6.jpg" alt="Scheme" width="550"> 
 </div>
 <div align = "center">
-<b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
+<figurecaption style="font-size: 9px;"><b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i></<figurecaption>
 </div>
 
 
