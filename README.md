@@ -269,30 +269,19 @@ A short explaination of arguments is provided by launching the command `python3 
 # 6 - Hs-Hk-plot.py 
 
 ## 6.1 - Scope 
-In this study, the main goal is to find the optimal number of sites when coarsening protein. To accomplish this, we start by simplifying the Resolution & Relevance curve. This curve represents the relationship between the Resolution (Hs) and Relevance (Hk) values for different sets of sites. Different mappings of same number of retained sites have the same colors (as show in **Figure X**). 
+In this study, the main goal is to find the optimal number of sites when coarsening protein. To accomplish this, we start by simplifying the Resolution & Relevance curve. This curve represents the relationship between the Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) values for different sets of sites. Different mappings of same number of retained sites have the same colors (as show in **Figure X**). 
 
-To simplify the curve, we compute the average values for Resolution (Hs_avg) and Relevance (Hk_avg). These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula Delta(Y)/Delta(X), where Y represents Relevance (Hk_avg) and X represents Resolution (Hs_avg).
+To simplify the curve, we compute the average values for Resolution $\(\overline{H_s}\)$ and Relevance $\(\overline{H_k}\)$. These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula ΔY/ΔX, where _Y_ represents Relevance $\(\bar{H_k}\)$ and _X_ represents Resolution $\(\bar{H_s}\)$.
 
 In the existing literature, it is suggested that the partition where the sum of Resolution (Hs) and Relevance (Hk) is the largest occurs when μ = -1. This observation aligns with Zipf's law. In this context, it implies that the optimal tradeoff between the simplicity of the representation (low resolution) and its informative nature (high relevance) occurs when the slope μ = -1. This point represents the sweet spot where the protein coarsening achieves the best balance between retaining important information and minimizing complexity.
 
 After identifying the point with a slope closest to -1, we can determine the specific Resolution (Hs) and Relevance (Hk) points falling within that chosen interval. Each point within that interval corresponds to a specific number of retained sites. Therefore, the optimal number of sites can be determined by identifying the Relevance and Resolution points that have the highest occurrence in terms of the number of retained sites.
 
-This code serves a dual purpose:
-
-1. **Plotting data**. The code generates and saves four plots:
-
-  * `Resolution & Relevance Plot`: This plot displays the Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points, with the same color representing points obtained from the same number of retained sites but different mappings. Additionally, a zoomed-in region of interest is shown where the slope is close to -1, providing a detailed view of that area.
-  * `Zoomed Relevance & Resolution Curve`: This plot focuses specifically on the region where the slope is -1, providing a closer look at the relationship between Relevance and Resolution in the region of our interest. 
-  * `Slope vs. Index`: This plot shows the slope values plotted against an increasing index ranging from 1 to the total number of points. This visualization helps identify any patterns or trends in the slope values.
-  * `Histogram of Frequencies`: This plot displays the frequency distribution of the number of sites with different occurrences. It provides insights into the distribution of retained sites and their frequencies.
-  
-2. **Optimal Number of Sites Calculation**. The code also calculates the optimal number of sites for a biomolecule based on an Resolution and relevance plot analysis. The goal is to minimize the loss of information after reducing the number of atoms. The result of this calculation is reported in the file "Opt-number-of-sites.txt". This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity.
-
 
 ## 6.2 - Tasks 
 The Relevance and Resolution plot consists of a total of _N_ points, with the default value being approximately 10000 points when using default optional arguments (_NMappings_ = 50, _Nframes_ = 1000, _Nstep_ = 0.5%). One example is reported in **Figure 4**, where it is possible to appreciate the Resolution and Relevance points with different colors according with the value of the number of retained sites. To determine the optimal number of sites, the Resolution & Relevance curve needs to be simplified. This simplification involves computing average values for Resolution ($\bar H_s$) and Relevance ($\bar H_k$). There are two different ways to perform this calculation:
 
-* **`density`**: When using this option, the x-axis representing Resolution ($H_s$) is divided into $X$ intervals, each containing the same number of points ($D$). The default value for $D$ is 100, but you can adjust it using the `-d` flag if needed (look for _`DensityPoints`_ argument in **Section 6.3.3**). It is important to note that the interval length is not fixed. Instead, the goal is to maintain a consistent density of $H_s$-$H_k$ points within each interval. By doing so, the computation of average values for Resolution ($H_s$) and Relevance ($H_k$) is based on an equal density of points, ensuring fairness in the calculation process. In each interval, the average values for $H_s$ and $H_k$ are computed, denoted as $Hs_{\text{avg}}$ and $Hk_{\text{avg}}$. By employing the density option, the calculation of average values considers the distribution of points and provides a more accurate representation of the average behavior of the Relevance and Resolution plot across different intervals. Overall, the density option offers a fair and precise approach for computing the average values of $H_s$ and $H_k$, taking into account the varying density of points along the Relevance and Resolution plot.
+* **`density`**: When using this option, the x-axis representing Resolution ($H_s$) is divided into $X$ intervals, each containing the same number of points (_D_). The default value for $D$ is 100, but you can adjust it using the `-d` flag if needed (look for _`DensityPoints`_ argument in **Section 6.3.3**). It is important to note that the interval length is not fixed. Instead, the goal is to maintain a consistent density of $H_s$-$H_k$ points within each interval. By doing so, the computation of average values for Resolution ($H_s$) and Relevance ($H_k$) is based on an equal density of points, ensuring fairness in the calculation process. In each interval, the average values for $H_s$ and $H_k$ are computed, denoted as $Hs_{\text{avg}}$ and $Hk_{\text{avg}}$. By employing the density option, the calculation of average values considers the distribution of points and provides a more accurate representation of the average behavior of the Relevance and Resolution plot across different intervals. Overall, the density option offers a fair and precise approach for computing the average values of $H_s$ and $H_k$, taking into account the varying density of points along the Relevance and Resolution plot.
                                         
    <div align="center">
    <img src="density.jpg" alt="Scheme" width="800">
@@ -407,14 +396,12 @@ In the "bin" task, there are several arguments that can be used. These arguments
 ## 6.5 - Output
 This code generates 4 PDF plots and a TXT file as output:
 
-* _`Reso.pdf`_: A plot showing the Resolution and Relevance curve, where points with the same color indicate Hs-Hk points from the same number of retained sites and different mappings. This plot also includes a zoomed-in region where the slope $\mu$ is close to -1.
+* _`Reso.pdf`_: This plot displays the Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points, with the same color representing points obtained from the same number of retained sites but different mappings. Additionally, a zoomed-in region of interest is shown where the slope μ is close to -1, providing a detailed view of that area.
 
-* _`Zoom-Reso.pdf`_:Zoom-Reso.pdf: A zoomed-in plot of the Relevance and Resolution curve (Hk-Hs) in the windows where the slope is -1.
+* _`Zoom-Reso.pdf`_: This plot focuses specifically on the region where the slope μ is -1, providing a closer look at the relationship between Relevance and Resolution in the region of our interest. 
 
-* _`slope.pdf`_: A plot of the slope values against an increasing index (from 1 to N points).
+* _`slope.pdf`_: A plot of the slope values against an increasing index (from 1 to N points). This plot shows the slope μ values plotted against an increasing index ranging from 1 to the total number of points. This visualization provides a closer look at the relationship between Relevance and Resolution in the region of our interest.
 
-* _`histo_Nsites.pdf`_ A histogram of frequencies, which shows the number of sites with more occurrences.
+* _`histo_Nsites.pdf`_: This plot displays the frequency distribution of the number of sites with different occurrences. It provides insights into the distribution of retained sites and their frequencies.
 
-* _`Opt-number-of-sites.txt`_: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized.
-
-
+* _`Opt-number-of-sites.txt`_: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized. This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity.
