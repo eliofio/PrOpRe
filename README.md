@@ -29,7 +29,7 @@
 &emsp;&emsp;&emsp;&emsp; [6.4.3 - Arguments](#643---arguments) <br />
 
 
-[Fig1]("mappings.jpg")
+[Fig1](mappings.jpg)
 # 1 - Introduction
 When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).
 
