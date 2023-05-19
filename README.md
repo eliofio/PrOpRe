@@ -179,11 +179,11 @@ This program serves as the core component for calculating Resolution-Relevance (
 6. Gradually reducing the number _N_ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
 7. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
 
-For better comprehension, **Figure 1** illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
+For better comprehension, **[Figure 1](okee)** illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
 
 <div align="center">
 
-<img src="4-5-6.jpg" alt="Scheme" width="550">
+<img src="4-5-6.jpg" alt="Scheme" width="550" title="okee"> 
 </div>
 <div align = "center">
 <b>Figure 1</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
