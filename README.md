@@ -173,26 +173,31 @@ This program serves as the core component for calculating Resolution-Relevance (
 1. Calculation of the all-atom _RSD map_ between each frame and the other frames, requiring alignment between each frame pair.
 2. Construction of a dendrogram based on the all-atom RSD map of the trajectory using the average linkage UPGMA algorithm.
 3. Cutting the dendrogram to determine the cutoff value that allows for the distinction of all atomistic conformations.
-4. Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed (example in **Figure 2**). Then, the _RSD map_ of such subset of atoms is calculated. Finally, based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed.
-5. Steps 4 is repeated for a specified number _M_ of mappings (by default, _M = 50_).
-6. Gradually reducing the number _N_ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
-7. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
+4. Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed: in this context, "mapping" refers to the process of simplifying or reducing the complexity of a protein structure by selecting a subset of atoms as schematically shown in **Figure 1**.    
+5. According with the mapping proposed, the _RSD map_ of such subset of atoms is calculated. Then, based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed.
+6. Steps 5 is repeated for a specified number _M_ of mappings (by default, _M = 50_).
+7. Gradually reducing the number _N_ of retained sites, steps 4, 5 and 6 are iterated until no atoms are retained.
+8. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
 
-For better comprehension, <a href="#popo">Figure 1</a> illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
+
+  <div align="center">
+
+  <img src="mappings.jpg" alt="Scheme" width="700">
+  </div>
+  <div align = "center">
+  <b>Figure 1</b> - <i> Pictorial representation of different random mapping when choosing a subset of atoms. The total number of atoms is 10, whereas 3 different mappings are proposed when selecting (a) 9 atoms out of 10, (b) 7 atoms and (c) 5 atoms. Transparent circles correspond at the decimated atoms, while the dark blue ones are the atoms that will be retained.</i>
+  </div>
+
+
+For better comprehension, **Figure 2** illustrates the flux diagram representing steps 4-5-6-7, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
 
 <div align="center">
 
 <img src="4-5-6.jpg" alt="Scheme" width="550"> 
 </div>
 <div align = "center">
-<b>Figure 1</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
+<b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
 </div>
-
-
-![Figure 1](4-5-6.jpg){#lalune}
-
-
-
 
 
 ## 5.2 - Requirements
