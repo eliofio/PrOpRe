@@ -291,7 +291,7 @@ The Relevance and Resolution plot consists of a total of _N_ points, with the de
    </div>
                                         
 
-* **`bin`**: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as _W_. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired as specified in **Section 6.4.3** (specifically _NumberWindows_ argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as **bin**, is thus defined as _1/W_. This means that the entire range of Resolution is divided into _W_ equally spaced windows, and the bin size within each window is determined accordingly. In each window, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> $\(\overline H_k\)$ is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the `density` option, if choosing the `bin` task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. 
+* **`bin`**: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as _W_. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired as specified in **Section 6.4.3** (specifically _NumberWindows_ argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as **bin**, is thus defined as _1/W_. This means that the entire range of Resolution is divided into _W_ equally spaced windows, and the bin size within each window is determined accordingly. In each window, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> $\(denoted as \overline H_k\)$ is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the `density` option, if choosing the `bin` task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. 
 
    <div align="center">
    <img src="bin.jpg" alt="Scheme" width="800">
@@ -305,10 +305,10 @@ Based on the selected option, you should refer to the appropriate section. If yo
 ## 6.3 - "Density" Task 
 
 ### 6.3.1 - Requirements 
-The _`density`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.txt**. This file contains the values of resolution ($H_s$), relevance ($H_k$), and the number of retained sites associated with each Hs and Hk point. Additionally, there are two optional arguments:
+The _`density`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.txt**. This file contains the values of resolution (H<sub>s</sub>), relevance (H<sub>k</sub>), and the number of retained sites associated with each H<sub>s</sub> and H<sub>k</sub> point. Additionally, there are two optional arguments:
 
 * _`DensityPoints`_: An integer that specifies the desired number of points in each variable-length interval.
-* _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $Hs_{\text{avg}}$ and $Hk_{\text{avg}}$ being close to -1.
+* _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $\overline H_s$ and $\overline H_k$ having slope close to -1.
 
 For more detailed information on these arguments, please refer to **Section 6.3.3**.
 
@@ -323,7 +323,7 @@ python3 Hs-Hk-plot.py density -f <Hs-Hk-Nsites-${ProteinName}.txt> [-d <density>
    
 python3 Hs-Hk-plot.py density --file <Hs-Hk-Nsites-${ProteinName}.txt> [--DensityPoints <density>] [--SlopeRange <range>] 
 ```
-> **NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in Section 5. This file contains the values of resolution (Hs), relevance (Hk), and the number of retained sites associated with each Hs and Hk point.**
+> **NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in Section 5. This file contains the values of resolution (Hs), relevance (Hk), and the number of retained sites associated with each <b>H<sub>s</sub></b> and <b>H<sub>k</sub></b> point.**
 
 To obtain further information and execute the "Hs-Hk-plot.py" script with the "density" option, please type on terminal `python3 Hs-Hk-plot.py density`
 
