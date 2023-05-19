@@ -269,6 +269,14 @@ A short explaination of arguments is provided by launching the command `python3 
 # 6 - Hs-Hk-plot.py 
 
 ## 6.1 - Scope 
+In this study, the main goal is to find the optimal number of sites when coarsening protein. To accomplish this, we start by simplifying the Resolution & Relevance curve. This curve represents the relationship between the Resolution (Hs) and Relevance (Hk) values for different sets of sites. Different mappings of same number of retained sites have the same colors (as show in **Figure X**). 
+
+To simplify the curve, we compute the average values for Resolution (Hs_avg) and Relevance (Hk_avg). These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula Delta(Y)/Delta(X), where Y represents Relevance (Hk_avg) and X represents Resolution (Hs_avg).
+
+In the existing literature, it is suggested that the partition where the sum of Resolution (Hs) and Relevance (Hk) is the largest occurs when μ = -1. This observation aligns with Zipf's law. In this context, it implies that the optimal tradeoff between the simplicity of the representation (low resolution) and its informative nature (high relevance) occurs when the slope μ = -1. This point represents the sweet spot where the protein coarsening achieves the best balance between retaining important information and minimizing complexity.
+
+After identifying the point with a slope closest to -1, we can determine the specific Resolution (Hs) and Relevance (Hk) points falling within that chosen interval. Each point within that interval corresponds to a specific number of retained sites. Therefore, the optimal number of sites can be determined by identifying the Relevance and Resolution points that have the highest occurrence in terms of the number of retained sites.
+
 This code serves a dual purpose:
 
 1. **Plotting data**. The code generates and saves four plots:
