@@ -29,7 +29,6 @@
 &emsp;&emsp;&emsp;&emsp; [6.4.3 - Arguments](#643---arguments) <br />
 
 
-[Fig1](mappings.jpg)
 # 1 - Introduction
 When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).
 
@@ -179,7 +178,7 @@ This program serves as the core component for calculating Resolution-Relevance (
 6. Gradually reducing the number _N_ of retained sites, steps 4 and 5 are iterated until no atoms are retained.
 7. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
 
-For better comprehension, [Figure 1](#etichetta_caption) illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
+For better comprehension, [Figure 1](#ciao) illustrates the flux diagram representing steps 4-5-6, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
 
 <div align="center">
 
@@ -190,9 +189,10 @@ For better comprehension, [Figure 1](#etichetta_caption) illustrates the flux di
 </div>
 
 
+
 <figure>
   <img src="4-5-6.jpg" alt="Scheme" width="550"> 
-  <figcaption id="etichetta_caption">Testo della caption</figcaption>
+  <figcaption id="ciao">Testo della caption</figcaption>
 </figure>
 
 
