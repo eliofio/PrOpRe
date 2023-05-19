@@ -187,19 +187,20 @@ This program serves as the core component for calculating Resolution-Relevance (
   <div align = "center">
   <b>Figure 1</b> - <i> Pictorial representation of different random mapping when choosing a subset of atoms. The total number of atoms is 10, whereas 3 different mappings are proposed when selecting (a) 9 atoms out of 10, (b) 7 atoms and (c) 5 atoms. Transparent circles correspond at the decimated atoms, while the dark blue ones are the atoms that will be retained.</i>
   </div>
-  
-  <br />
 
+  <br/><br/>
 
 For better comprehension of the steps above mentioned, **Figure 2** illustrates the flux diagram representing steps 4-5-6-7, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
 
-<div align="center">
 
+<div align="center">
+  
 <img src="4-5-6.jpg" alt="Scheme" width="550"> 
 </div>
 <div align = "center">
-<figurecaption style="font-size: 9px;"><b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i></<figurecaption>
+<b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
 </div>
+
 
 
 ## 5.2 - Requirements
@@ -237,17 +238,7 @@ In **[Section 5](#5---resrel-mpipy)**, it is emphasized that the coordinate file
 
 * **`Trajectory FILE noH`**: This is another mandatory file (`-t/--traj`) containing the trajectory of the biomolecule _without_ hydrogen atoms (in formats such as trr, dcd, lammpstrj, gro, etc.). If the "remove_H_atoms.py" script is used, the default name for this file is _Trajectory_noH.gro_.
 
-* **`NMappings`** **(default: 50)**: This is an optional argument (`-m/--mapp`) that specifies the number of random mappings _M_, namely the number of combinations that will be chosen randomly, at a fixed number of retained sites. Each mapping represents a unique combination of atoms (**Figure 2**). By default, the value of _Nmappings_ (i.e. _M_) is set to 50, meaning that 50 random mappings will be chosen. However, you have the flexibility to adjust this value according to your specific needs. Increasing the value of _Nmappings_ will result in a greater number of random mappings being generated, while decreasing it will yield fewer mappings. Choosing a higher value for _Nmappings_ can provide a more comprehensive exploration of different atom combinations, but it will also increase the computational time required for the calculation. Conversely, selecting a lower value will reduce the computational burden but may result in a less exhaustive sampling of mappings. By adjusting the Nmappings argument, you can strike a balance between computational efficiency and the level of exploration of different mappings that suits your specific requirements. The default value of _Nmappings_, which is set to 50, (_M = 50_) serves as a good compromise between the two factors. You can adjust the Nmappings value according to your specific needs and the available computational resources.
-
-  <div align="center">
-
-  <img src="mappings.jpg" alt="Scheme" width="700">
-  </div>
-  <div align = "center">
-  <b>Figure 2</b> - <i> Pictorial representation of different random mapping when choosing a subset of atoms. The total number of atoms is 10, whereas 3 different mappings are proposed when selecting (a) 9 atoms out of 10, (b) 7 atoms and (c) 5 atoms.</i>
-  </div>
-
-<br/>
+* **`NMappings`** **(default: 50)**: This is an optional argument (`-m/--mapp`) that specifies the number of random mappings _M_, namely the number of combinations that will be chosen randomly, at a fixed number of retained sites. Each mapping represents a unique combination of atoms (**Figure 1**). By default, the value of _Nmappings_ (i.e. _M_) is set to 50, meaning that 50 random mappings will be chosen. However, you have the flexibility to adjust this value according to your specific needs. Increasing the value of _Nmappings_ will result in a greater number of random mappings being generated, while decreasing it will yield fewer mappings. Choosing a higher value for _Nmappings_ can provide a more comprehensive exploration of different atom combinations, but it will also increase the computational time required for the calculation. Conversely, selecting a lower value will reduce the computational burden but may result in a less exhaustive sampling of mappings. By adjusting the Nmappings argument, you can strike a balance between computational efficiency and the level of exploration of different mappings that suits your specific requirements. The default value of _Nmappings_, which is set to 50, (_M = 50_) serves as a good compromise between the two factors. You can adjust the Nmappings value according to your specific needs and the available computational resources.
 
 * **`Nframes`** **(default: 1000)**: This is an optional parameter (`-f/--frames`) that allows you to specify the number of frames _F_ to be read from the trajectory. The program ensures that this exact number of frames is included in the analysis, spanning the entire trajectory. To achieve this, an initial number of frames will be discarded, and the trajectory will be read at regular intervals. The default value for _Nframes_ is set to 1000, meaning that 1000 frames will be considered for the analysis. However, you have the flexibility to adjust this value according to your specific requirements. Any integer number less than the original number of frames in the trajectory is accepted. If you set the _Nframes_ argument to the string "_all_", indicated by `-f all`, the program will read every frame available in the trajectory. While this option allows for a comprehensive analysis of the entire trajectory, it's important to note that the calculation of the RSD (Root Squared Deviation) map involves a computational complexity proportional to the square of the number of frames (Nframes<sup>2</sup>). Consequently, increasing the number of frames will significantly increase the computation time. The ability to read more frames depends on the number of cores available in a single node of your computing environment. If you have a higher number of cores, you can process more frames efficiently. However, it is crucial to exercise caution when choosing the value of _Nframes_ or selecting the "all" option, as the computational resources required can grow substantially. Consider your specific analysis needs, the computational resources at your disposal, and the desired trade-off between computational time and analysis comprehensiveness when selecting the appropriate value for _Nframes_.
 
