@@ -189,18 +189,14 @@ For better comprehension, <a href="#popo">Figure 1</a> illustrates the flux diag
 </div>
 
 
+![Figure 1](4-5-6.jpg){#lalune}
+
+
 
 
 
 ## 5.2 - Requirements
 To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms _gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_lammpstrj_, _dcd_, _trr_, _xtc_, ...). Additionally, four optional arguments can be specified:
-
-
-<figure>
-  <div align = "center">
-  <img src="4-5-6.jpg" alt="Scheme" width="550"> 
-  <figcaption id="popo">Testo della caption</figcaption>
-</figure>
 
 * _`Nmappings`_: number of random mappings generated at each fixed number of retained sites.
 * _`Nframes`_: number of frames to be read in the trajectory file.
