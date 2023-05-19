@@ -197,6 +197,7 @@ To run this script, two mandatory files are required: the coordinate/topology fi
 
 
 <figure>
+  <div align = "center">
   <img src="4-5-6.jpg" alt="Scheme" width="550"> 
   <figcaption id="popo">Testo della caption</figcaption>
 </figure>
