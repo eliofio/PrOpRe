@@ -274,11 +274,13 @@ In this study, the main goal is to find the optimal number of sites when coarsen
 
 <div align="center">
   
-<img src="ResRel.jpg" alt="Scheme" width="550"> 
+<img src="ResRel.jpg" alt="Scheme" width="500"> 
 </div>
 <div align = "center">
 <b>Figure 3</b> - <i> Relevance vs. Resolution plot. The color gradually goes between yellow and blue. yellow is indicative of low number of retained sites (in this case less than 300 atoms), whereas dark blue is indicative of high number of retained sites (close to 1600, i.e the total number of atoms in the specific example of Kinase trajectory). Moreover, it is important to underline that different mappings of same number of retained sites have the same colors.</i>
 </div>
+
+<br/>
 
 
 To simplify the curve, we compute the average values for Resolution $\(\overline H_s\)$ and Relevance $\(\overline H_k\)$. These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula _ΔY/ΔX_, where _Y_ represents the average Relevance points $\(\overline H_k\)$ and _X_ represents avevage Resolution $\(\overline H_s\)$ points. 
