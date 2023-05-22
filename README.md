@@ -201,7 +201,7 @@ For better comprehension of the steps above mentioned, **Figure 2** illustrates 
 <b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
 </div>
 
-
+<br/><br/>
 
 ## 5.2 - Requirements
 To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms _gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_lammpstrj_, _dcd_, _trr_, _xtc_, ...). Additionally, four optional arguments can be specified:
