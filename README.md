@@ -103,20 +103,27 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
 
 <div align ="justify">
 <ul>
-<li> **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in <a href="#4---remove_h_atomspy">Section 4</a> </li>.
+<li> <b><code>remove_H_atoms.py</code></b>: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in <a href="#4---remove_h_atomspy"><b>Section 4</b></a>. </li>
+
+<li> <b><code>ResRel-MPI.py</code></b>: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
+    <ul>
+     <li> 1<sup>st</sup> row: values of Resolution (<b>H<sub>s</sub></b>);</li> 
+     <li> 2<sup>nd</sup> row: values of Relevance (<b>H<sub>k</sub></b>); </li>
+     <li> 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and H<sub>k</sub> values.</li>
+    </ul>  
+For a more comprehensive understanding of the program's functionality and implementation details, please refer to <a href="#5---resrel-mpipy"><b>Section 5</b></a> in this documentation.
+</li>
+ 
+<li> <b><code>Hs-Hk-plot</code></b>: this code serves a dual purpose:
+    <ul>
+    <li> Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. </li>
+    <li> Calculating the optimal number of sites for a biomolecule based on an atomistic trajectory, with the aim of minimizing the loss of information when atoms are decimated. </li>
+    </ul>
+Further details regarding the functionality and usage of this code will be provided in <a href="#6---hs-hk-plotpy"<b>Section 6</b></a>.
+</li>
+
 </ul>
 </div>
-
-* **`ResRel-MPI.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
-    * 1<sup>st</sup> row: values of Resolution (<b>H<sub>s</sub></b>); 
-    * 2<sup>nd</sup> row: values of Relevance (<b>H<sub>k</sub></b>); 
-    * 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and H<sub>k</sub> values. 
-For a more comprehensive understanding of the program's functionality and implementation details, please refer to **[Section 5](#5---resrel-mpipy)** in this documentation.
- 
-* **`Hs-Hk-plot`**: this code serves a dual purpose:
-    * Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. 
-    * Calculating the optimal number of sites for a biomolecule based on an atomistic trajectory, with the aim of minimizing the loss of information when atoms are decimated.
-Further details regarding the functionality and usage of this code will be provided in **[Section 6](#6---hs-hk-plotpy)**.
 
 Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. Additionally, it is crucial to avoid moving the scripts outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs which will be displayed on the screen.
 
