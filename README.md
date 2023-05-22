@@ -180,16 +180,20 @@ The program produces two output files:
 # 5 - ResRel-MPI.py 
 
 ## 5.1 - Scope 
-This program serves as the core component for calculating Resolution-Relevance (H<sub>s</sub>-H<sub>k</sub>) points, which involves varying the number of retained sites and different mappings. The calculation process involves several steps:
+<p align="justify"> This program serves as the core component for calculating Resolution-Relevance (H<sub>s</sub>-H<sub>k</sub>) points, which involves varying the number of retained sites and different mappings. The calculation process involves several steps:</p>
 
-1. Calculation of the all-atom _RSD map_ between each frame and the other frames, requiring alignment between each frame pair.
-2. Construction of a dendrogram based on the all-atom RSD map of the trajectory using the average linkage UPGMA algorithm.
-3. Cutting the dendrogram to determine the cutoff value that allows for the distinction of all atomistic conformations.
-4. Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed: in this context, "mapping" refers to the process of simplifying or reducing the complexity of a protein structure by selecting a subset of atoms as schematically shown in **Figure 1**.    
-5. According with the mapping proposed, the _RSD map_ of such subset of atoms is calculated. Then, based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed.
-6. Steps 5 is repeated for a specified number _M_ of mappings (by default, _M = 50_).
-7. Gradually reducing the number _N_ of retained sites, steps 4, 5 and 6 are iterated until no atoms are retained.
-8. Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look **[Section 6](#6---hs-hk-plotpy)**).
+<div align ="justify">
+<ol>
+<li> Calculation of the all-atom _RSD map_ between each frame and the other frames, requiring alignment between each frame pair. </li>
+<li> Construction of a dendrogram based on the all-atom RSD map of the trajectory using the average linkage UPGMA algorithm. </li>
+<li> Cutting the dendrogram to determine the cutoff value that allows for the distinction of all atomistic conformations. </li>
+<li> Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed: in this context, "mapping" refers to the process of simplifying or reducing the complexity of a protein structure by selecting a subset of atoms as schematically shown in <b>Figure 1</b>. </li>    
+<li> According with the mapping proposed, the _RSD map_ of such subset of atoms is calculated. Then, based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed. </li>
+  <li> Steps 5 is repeated for a specified number <i>M</i> of mappings (by default, <i>M = 50</i>). </li>
+<li> Gradually reducing the number _N_ of retained sites, steps 4, 5 and 6 are iterated until no atoms are retained.< /li>
+<li> Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look <a href="#6---hs-hk-plotpy"><b>Section 6</b></a>. </li>
+</ol>
+</div>
 
 
   <div align="center">
