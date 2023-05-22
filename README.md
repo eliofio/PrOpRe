@@ -190,7 +190,7 @@ The program produces two output files:
 <li> Starting with a number of retained sites equal to N<sub>atoms</sub> - 1, a random mapping is proposed: in this context, "mapping" refers to the process of simplifying or reducing the complexity of a protein structure by selecting a subset of atoms as schematically shown in <b>Figure 1</b>. </li>    
 <li> According with the mapping proposed, the _RSD map_ of such subset of atoms is calculated. Then, based on the pre-determined cutoff, the number of clusters at that cutoff is enstablished for this configuration, and the H<sub>s</sub>-H<sub>k</sub> point is computed. </li>
 <li> Steps 5 is repeated for a specified number <i>M</i> of mappings (by default, <i>M = 50</i>). </li>
-<li> Gradually reducing the number _N_ of retained sites, steps 4, 5 and 6 are iterated until no atoms are retained.< /li>
+<li> Gradually reducing the number _N_ of retained sites, steps 4, 5 and 6 are iterated until no atoms are retained.</li>
 <li> Finally, a complete curve of H<sub>s</sub>-H<sub>k</sub> points is drawn, ready for analysis, with the primary goal of calculating the optimal number of sites (look <a href="#6---hs-hk-plotpy"><b>Section 6</b></a>. </li>
 </ol>
 </div>
