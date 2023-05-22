@@ -587,7 +587,7 @@ cd test-${name}
 python3 ../$PYTHONDIR/Hs-Hk-plot.py bin -f Hs-Hk-Nsites-${name}.txt -w 100 -s closest
 ```
 
-<p align="justify"> The output files of each test can be also found in `PrOpRe/output-files/` directory. </p>
+<p align="justify"> The output files of each test can be also found in <b><code>PrOpRe/output-files/</code></b> directory. </p>
 
 <br />
 
