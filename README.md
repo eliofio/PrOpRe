@@ -512,8 +512,8 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 <p align="justify"> Hereafter, for the sake of clarity, only three examples are reported. </p> 
 
 ```perl
-# The reference and trajectory files, namely 1igd_noH.gro and 1igd_noH.xtc, have already been processed to exclude hydrogen atoms.
-# As a result, the script "remove_H_atoms.py" was not utilized in this context.
+# The reference and trajectory files, namely 1igd_noH.gro and 1igd_noH.xtc, have already been processed 
+# to exclude hydrogen atoms. As a result, the script "remove_H_atoms.py" was not utilized in this context.
 
 ####
 name="1igd_noH"
@@ -566,8 +566,8 @@ python3 ../$PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt -d 200
 ```
 
 ```perl
-# The reference and trajectory files, namely 1knt_noH.gro and 1knt_noH.xtc, have already been processed to exclude hydrogen atoms.
-# As a result, the script "remove_H_atoms.py" was not utilized in this context.
+# The reference and trajectory files, namely 1knt_noH.gro and 1knt_noH.xtc, have already been processed 
+# to exclude hydrogen atoms. As a result, the script "remove_H_atoms.py" was not utilized in this context.
 
 ####
 name="1knt_noH"
