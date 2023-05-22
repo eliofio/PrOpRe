@@ -351,7 +351,8 @@ The Relevance and Resolution plot consists of a total of <i>N</i> points, with t
    </div>
    <div align = "justify">
    <b>Figure 5</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; b) shows the division of the x-axes into 6 intervals of same lenght (W = 6, bin = 1/W), each one containing a variable number of points; (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
-
+   </div>
+  
 </ul>
 </div>
 
@@ -363,12 +364,16 @@ The Relevance and Resolution plot consists of a total of <i>N</i> points, with t
 ## 6.3 - "Density" Task 
 
 ### 6.3.1 - Requirements 
-The _`density`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.txt**. This file contains the values of resolution (H<sub>s</sub>), relevance (H<sub>k</sub>), and the number of retained sites associated with each H<sub>s</sub> and H<sub>k</sub> point. Additionally, there are two optional arguments:
+<p align="justify"> The <i><code>density</code></i> task requires one mandatory file: <b>Hs-Hk-Nsites-${ProteinName}.txt</b>. This file contains the values of resolution (H<sub>s</sub>), relevance (H<sub>k</sub>), and the number of retained sites associated with each H<sub>s</sub> and H<sub>k</sub> point. Additionally, there are two optional arguments: </p>
 
-* _`DensityPoints`_: An integer that specifies the desired number of points in each variable-length interval.
-* _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $\overline H_s$ and $\overline H_k$ having slope close to -1.
+<div align = "justify">
+<ul>  
+<li> _`DensityPoints`_: An integer that specifies the desired number of points in each variable-length interval. </li>
+<li> _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of H̅<sub>s</sub> and H̅<sub>k</sub> having slope close to -1. </li>
+</ul>
 
-For more detailed information on these arguments, please refer to **[Section 6.3.3](#633---arguments)**.
+  
+<p align="justify"> For more detailed information on these arguments, please refer to <b><a href="#633---arguments">Section 6.3.3</a></b>. </p>
 
 
 ### 6.3.2 - Usage 
