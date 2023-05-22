@@ -156,12 +156,15 @@ To obtain a brief explanation of the arguments, you can execute the following co
 
 
 ## 4.4 - Arguments
-As described in **[Section 4](#4---remove_h_atomspy)**, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:
+<p align="justify"> As described in <a href="#4---remove_h_atomspy"><b>Section 4</b></a>, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:</p>
 
+<div align ="justify">
+<ul>
+<li> <b><code>Coordinate FILE</code></b>: This file is mandatory and it that contains the atom coordinates. It can be in formats such as <i>xyz</i>, <i>gro</i>, <i>pdb</i>, <i>psf</i>, etc. It provides information on the positions of the atoms and their connectivity.
 
-* **`Coordinate FILE`**: This file is mandatory and it that contains the atom coordinates. It can be in formats such as _xyz_, _gro_, _pdb_, _psf_, etc. It provides information on the positions of the atoms and their connectivity.
-
-* **`Trajectory FILE`**: This file is mandatory and it contains the trajectory information of the biomolecule. It can be in formats such as _trr_, _dcd_, _lammpstrj_, _gro_, etc.  It provides information on how the biomolecule moves over time.
+<li> <b><code>Trajectory FILE</code></b>: This file is mandatory and it contains the trajectory information of the biomolecule. It can be in formats such as <i>trr</i>, <i>dcd</i>, <i>lammpstrj</i>, <i>gro</i>, etc.  It provides information on how the biomolecule moves over time.
+</ul>
+</div>
 
 
 ## 4.5 - Output
