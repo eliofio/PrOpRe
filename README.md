@@ -464,7 +464,7 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 
 <div align = "justify">
 <ul> 
-  <li> <b><code>Hs-Hk-Nsites-${ProteinName}.txt</code></b>: This is a mandatory argument (<code>-f/--file</code>) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (<i>N</i>) associated with each H<sub>s</sub> and H<sub>k</sub> point. The file is organized in three rows, where each row contains the respective values separated by spaces.</li>
+<li> <b><code>Hs-Hk-Nsites-${ProteinName}.txt</code></b>: This is a mandatory argument (<code>-f/--file</code>) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (<i>N</i>) associated with each H<sub>s</sub> and H<sub>k</sub> point. The file is organized in three rows, where each row contains the respective values separated by spaces.</li>
     
   ```
     ----------------------------------------------------
@@ -475,11 +475,9 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
   ```
 
 <br>
-<li> <b><code>NumberWindows</code></b>: This is an optional argument (<code>-w/--NumberWindows</code>) that specifies the number of intervals into which the x-axis (Resolution) is divided. The length of each interval is fixed, while the number of points falling within each interval can vary. This is illustrated schematically in <b>Figure 5</b>. By default, the value of <i>W</i> is set to 50, but you can modify it using the <code>-w</code> flag if desired. Since the Resolution axis ranges from 0 to 1 by definition, the length of each interval, also referred to as <i>bin</i>, is thus defined as <i>1/W</i>. Within intervals of the same bin size, the average value of H<sub>s</sub> (denoted as H̅<sub>s</sub>) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as H̅<sub>k</sub>) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. <li><br>
-
+<li> <b><code>NumberWindows</code></b>: This is an optional argument (<code>-w/--NumberWindows</code>) that specifies the number of intervals into which the x-axis (Resolution) is divided. The length of each interval is fixed, while the number of points falling within each interval can vary. This is illustrated schematically in <b>Figure 5</b>. By default, the value of <i>W</i> is set to 50, but you can modify it using the <code>-w</code> flag if desired. Since the Resolution axis ranges from 0 to 1 by definition, the length of each interval, also referred to as <i>bin</i>, is thus defined as <i>1/W</i>. Within intervals of the same bin size, the average value of H<sub>s</sub> (denoted as H̅<sub>s</sub>) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as H̅<sub>k</sub>) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. </li><br>
 
 <li> <b><code>SlopeRange</code></b>: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
-
      <ul>
      <li> <ins><i>Percentage Range</i></ins>: By default, the argument is set as a range close to -1 in terms of percentage. The default range spans from -1.10 to -0.90, which corresponds to a 10% range. Within this range, the rightmost value with a higher resolution is chosen. It is generally preferred to select a range with values close to -1: selecting a higher percentage range could result in values that are too far from -1 and therefore not optimal for finding the best interval on the average curve and, consequently, the optimal number of sites. </li>
      <li> <ins><i>Closest Value</i></ins>: Alternatively, you can specify the argument as "closest" (<code>-s closest</code>) to identify the closest value of the slope to -1. This option allows you to find the specific point on the curve that has the slope closest to -1. </li>
@@ -489,14 +487,16 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 </div>
 
 ## 6.5 - Output
-This code generates 4 PDF plots and a TXT file as output:
+<p align="justify"> This code generates 4 PDF plots and a TXT file as output: </p>
 
-* _`Reso.pdf`_: This plot displays the Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points, with the same color representing points obtained from the same number of retained sites but different mappings. Additionally, a zoomed-in region of interest is shown where the slope μ is close to -1, providing a detailed view of that area.
+<div align = "justify">
+<ul> 
+<li> <i><code>Reso.pdf</code></i>: This plot displays the Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points, with the same color representing points obtained from the same number of retained sites but different mappings. Additionally, a zoomed-in region of interest is shown where the slope μ is close to -1, providing a detailed view of that area.</li><br>
 
-* _`Zoom-Reso.pdf`_: This plot focuses specifically on the region where the slope μ is -1, providing a closer look at the relationship between Relevance and Resolution in the region of our interest. 
+<li> <i><code>Zoom-Reso.pdf</code></i>: This plot focuses specifically on the region where the slope μ is -1, providing a closer look at the relationship between Relevance and Resolution in the region of our interest. </li><br>
 
-* _`slope.pdf`_: A plot of the slope values against an increasing index (from 1 to N points). This plot shows the slope μ values plotted against an increasing index ranging from 1 to the total number of points. This visualization provides a closer look at the relationship between Relevance and Resolution in the region of our interest.
+<li> <i><code>slope.pdf</code></i>: A plot of the slope values against an increasing index (from 1 to N points). This plot shows the slope μ values plotted against an increasing index ranging from 1 to the total number of points. This visualization provides a closer look at the relationship between Relevance and Resolution in the region of our interest. </li><br>
 
-* _`histo_Nsites.pdf`_: This plot displays the frequency distribution of the number of sites with different occurrences. It provides insights into the distribution of retained sites and their frequencies.
+<li> <i><code>histo_Nsites.pdf</code></i>: This plot displays the frequency distribution of the number of sites with different occurrences. It provides insights into the distribution of retained sites and their frequencies. </li><br>
 
-* _`Opt-number-of-sites.txt`_: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized. This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity.
+<li> <i><code>Opt-number-of-sites.txt</code></i>: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized. This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity. </li><br>
