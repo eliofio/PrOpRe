@@ -396,38 +396,51 @@ python3 Hs-Hk-plot.py density --file <Hs-Hk-Nsites-${ProteinName}.txt> [--Densit
 
 
 ### 6.3.3 - Arguments 
-In the "density" task, there are several arguments that can be used. These arguments (one mandatory and two optional) are as follows:
+<p align="justify"> In the "density" task, there are several arguments that can be used. These arguments (one mandatory and two optional) are as follows: </p>
 
-* **`Hs-Hk-Nsites-${ProteinName}.txt`**: This is a mandatory argument (`-f/--file`) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (_N_) associated with each Hs and Hk point. The file is organized in three rows, where each row contains the respective values separated by spaces.
-  ```
+<div align = "justify">
+<ul> 
+<li> <b><code>Hs-Hk-Nsites-${ProteinName}.txt</code></b>: This is a mandatory argument (<code>-f/--file</code>) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (<i>N</i>) associated with each H<sub>s</sub> and H<sub>k</sub> point. The file is organized in three rows, where each row contains the respective values separated by spaces.</li>
+  
+  
     ----------------------------------------------------
     | Hs-1       Hs-2       Hs-3       .....  Hs-N     |
     | Hk-1       Hk-2       Hk-3       .....  Hk-N     |
     | Nsites-1   Nsites-2   Nsites-3   .....  Nsites-N |
     ----------------------------------------------------
-  ```
+
   
-* **`DensityPoints`**: This is an optional argument (`-d/--DensityPoints`) that specifies the number of points _D_ that fall within each interval of variable length. By default, the value is set to 100. The density of points within each interval is used to compute the average values of H<sub>s</sub> $\(\overline H_s\)$ and H<sub>k</sub> $\(\overline H_k\)$. Using this argument, you can easily change the default value to suit your needs.
+<li> <b><code>DensityPoints</code></b>: This is an optional argument (<code>-d/--DensityPoints</code>) that specifies the number of points <i>D</i> that fall within each interval of variable length. By default, the value is set to 100. The density of points within each interval is used to compute the average values of H<sub>s</sub> (denoted as H̅<sub>s</sub>) and H<sub>k</sub> (denoted as  H̅<sub>k</sub>). Using this argument, you can easily change the default value to suit your needs. </li>
 
-* **`SlopeRange`**: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
-     * _Percentage Range_: By default, the argument is set as a range close to -1 in terms of percentage. The default range spans from -1.10 to -0.90, which corresponds to a 10% range. Within this range, the rightmost value with a higher resolution is chosen. It is generally preferred to select a range with values close to -1: selecting a higher percentage range could result in values that are too far from -1 and therefore not optimal for finding the best interval on the average curve and, consequently, the optimal number of sites.  
-     * _Closest Value_: Alternatively, you can specify the argument as "closest" (`-s closest`) to identify the closest value of the slope to -1. This option allows you to find the specific point on the curve that has the slope μ closest to -1.
-
-
+<li> <b><code>SlopeRange</code></b>: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
+     <ul>
+     <li> <ins><i> Percentage Range </i></ins>: By default, the argument is set as a range close to -1 in terms of percentage. The default range spans from -1.10 to -0.90, which corresponds to a 10% range. Within this range, the rightmost value with a higher resolution is chosen. It is generally preferred to select a range with values close to -1: selecting a higher percentage range could result in values that are too far from -1 and therefore not optimal for finding the best interval on the average curve and, consequently, the optimal number of sites. </li>
+     <li> <ins><i> Closest Value </i></ins>: Alternatively, you can specify the argument as "closest" (<code>-s closest</code>) to identify the closest value of the slope to -1. This option allows you to find the specific point on the curve that has the slope μ closest to -1. </li>
+     </ul> 
+</li>
+</ul>  
+</div>       
+       
 
 ## 6.4 - "bin" Task 
 
 ### 6.4.1 - Requirements 
-The _`bin`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.txt**. This file contains the values of resolution (H<sub>s</sub>), relevance (H<sub>k</sub>), and the number of retained sites associated with each H<sub>s</sub> and H<sub>k</sub> point. Additionally, there are two optional arguments:
+<p align="justify"> The <i><code>bin</code></i> task requires one mandatory file: <b>Hs-Hk-Nsites-${ProteinName}.txt</b>. This file contains the values of resolution (H<sub>s</sub>), relevance (H<sub>k</sub>), and the number of retained sites associated with each H<sub>s</sub> and H<sub>k</sub> point. Additionally, there are two optional arguments:
 
-* _`NumberWindows`_: This argument is an integer value that determines the number of windows or intervals into which the x-axis (Resolution) is divided. While the number of windows is fixed, the density of points within each window may vary. Unlike the "density" option, where the density of points is kept constant, using the "bin" option, different windows may contain different numbers of data points, resulting in variable density across the intervals.
+<div align = "justify">
+<ul> 
+  <li> <i><code>NumberWindows</code></i>: This argument is an integer value that determines the number of windows or intervals into which the x-axis (Resolution) is divided. While the number of windows is fixed, the density of points within each window may vary. Unlike the "density" option, where the density of points is kept constant, using the "bin" option, different windows may contain different numbers of data points, resulting in variable density across the intervals. </li>
 
-* _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $\overline H_s$ and $\overline H_k$ having slope μ close to -1.
+<li> <i><code>SlopeRange</code></i>: Specifies the range within which the best interval is determined based on the average curve of H̅<sub>s</sub> and H̅<sub>k</sub> having slope μ close to -1. </li>
+</ul>
+</div>
 
-All the details of the arguments just described are prvided in **[Section 6.4.3](#643---arguments)**.
+<p align="justify"> All the details of the arguments just described are prvided in <b><a href="#643---arguments">Section 6.4.3</a></b>. </p>
+
+
 
 ### 6.4.2 - Usage 
-To run the **Hs-Hk-plot.py** script with the **bin** task, the command-line is the following:
+<p align="justify"> To run the <b>Hs-Hk-plot.py</b> script with the <b>bin</b> task, the command-line is the following: </p>
 
 ```sh
 python3 Hs-Hk-plot.py bin -f <Hs-Hk-Nsites-${ProteinName}.txt> [-w <nWindows>] [-s <range>] 
@@ -436,9 +449,15 @@ python3 Hs-Hk-plot.py bin -f <Hs-Hk-Nsites-${ProteinName}.txt> [-w <nWindows>] [
    
 python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWindows <nWindows>] [--SlopeRange <range>] 
 ```
-> **NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in [Section 5](#5---resrel-mpipy). This file contains the values of resolution (<b>H<sub>s</sub></b>), relevance (<b>H<sub>k</sub></b>), and the number of retained sites associated with each <b>H<sub>s</sub></b> and <b>H<sub>k</sub></b> point.**
+<blockquote> 
+<p align="justify">
+<b>NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in <b><a href="#5---resrel-mpipy">Section 5</a></b>. This file contains the values of resolution (<b>H<sub>s</sub></b>), relevance (<b>H<sub>k</sub></b>), and the number of retained sites associated with each <b>H<sub>s</sub></b> and <b>H<sub>k</sub></b> point.</b>
+</p>
+</blockquote> 
 
-To obtain further information and execute the "Hs-Hk-plot.py" script with the "bin" option, please type on terminal `python3 Hs-Hk-plot.py bin`
+
+
+<p align="justify"> To obtain further information and execute the "Hs-Hk-plot.py" script with the "bin" option, please type on terminal <code>python3 Hs-Hk-plot.py bin</code> </p>
 
 ### 6.4.3 - Arguments 
 In the "bin" task, there are several arguments that can be used. These arguments (one mandatory and two optional) are as follows:
