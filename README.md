@@ -123,14 +123,16 @@ Further details regarding the functionality and usage of this code will be provi
 </ul>
 </div>
 
-<p align="justify"> Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. Additionally, it is crucial to avoid moving the scripts outside the main folder (`ResRel-identification-Optimal-N-Sites/`) otherwise a fatal error occurs which will be displayed on the screen.</p>
+<p align="justify"> Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. Additionally, it is crucial to avoid moving the scripts outside the main folder (<code>ResRel-identification-Optimal-N-Sites/</code>) otherwise a fatal error occurs which will be displayed on the screen.</p>
 
 <br/>
 
 # 4 - remove_H_atoms.py
 
-## 4.1 - Scope 
-This script serves a preliminary yet significant purpose of removing all hydrogen atoms (with typical atom names such as _H_, _H1_, _H2_, _HW_,...) from both the reference file (commonly found in formats like _gro_, _pdb_, _xyz_, _psf_,...) and the trajectory file (tipically in format _xtc_, _trr_, _dcd_, _gro_, _lammpstrj_,...). Hydrogen atoms in proteins exhibit greater movement and rotation compared to heavy atoms such as carbon, nitrogen, and oxygen. This behavior is attributed to the significantly smaller mass of hydrogen atoms. Known as the reduced mass effect, this phenomenon plays a crucial role in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. Therefore, in the computation of the RSD map and the subsequent determination of Resolution and Relevance, it is advisable to exclude hydrogen atoms. If your reference and trajectory files already lack hydrogen atoms, you can ignore this code.
+## 4.1 - Scope
+<p align="justify">
+This script serves a preliminary yet significant purpose of removing all hydrogen atoms (with typical atom names such as <i>H</i>, <i>H1</i>, <i>H2</i>, <i>HW</i>,...) from both the reference file (commonly found in formats like <i>gro</i>, <i>pdb</i>, <i>xyz</i>, <i>psf</i>,...) and the trajectory file (tipically in format <i>xtc</i>, <i>trr</i>, <i>dcd</i>, <i>gro</i>, <i>lammpstrj</i>,...). Hydrogen atoms in proteins exhibit greater movement and rotation compared to heavy atoms such as carbon, nitrogen, and oxygen. This behavior is attributed to the significantly smaller mass of hydrogen atoms. Known as the reduced mass effect, this phenomenon plays a crucial role in protein dynamics. The mobility of hydrogen atoms can influence the three-dimensional structure and stability of the protein. Therefore, in the computation of the RSD map and the subsequent determination of Resolution and Relevance, it is advisable to exclude hydrogen atoms. If your reference and trajectory files already lack hydrogen atoms, you can ignore this code.
+</p>  
 
 ## 4.2 - Requirements
 This script requires two mandatory files: the coordinate/topology file epresenting the all-atom structure of the biomolecule (_gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_xtc_, _trr_, _dcd_, _gro_, _lammpstrj_, ...). No optional arguments are available. 
