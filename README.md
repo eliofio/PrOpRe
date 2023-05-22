@@ -30,11 +30,6 @@
 
 
 # 1 - Introduction
-<a href="#5---resrel-mpipy"><b>Section 5</b></a>
-<a href="#5---resrel-mpipy"><strong>Section 5</strong></a>
-<a href="#5---resrel-mpipy">Section 5</a>
-<b><a href="#5---resrel-mpipy">Section 5</a></b>
-
 <p align="justify"> When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).</p> 
 
 <p align="justify"> The CANVAS strategy leverages the blurred and approximate nature of coarse-grained models to identify effective sites based on a user-provided input, and determines the interactions among them based on the molecule’s structure and all-atom force field, making it unnecessary to run reference simulations. This strategy makes the parametrisation of the model practically instantaneous, and allows the modulation of the system’s resolution in a quasi-continuous manner across the structure, from all-atom to (very) coarse-grained. Most notably, the interaction between regions of the system at different resolution (including the solvent) is accounted for and straightforward to set up, allowing the seamless implementation in standard MD software packages (e.g. GROMACS or LAMMPS).</p> 
@@ -107,7 +102,7 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
 
 <div align ="justify">
 <ul>
-<li> <b><code>remove_H_atoms.py</code></b>: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in <a href="#4---remove_h_atomspy">Section 4</a>. </li><br>
+<li> <b><code>remove_H_atoms.py</code></b>: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in <b><a href="#4---remove_h_atomspy">Section 4</a></b>. </li><br>
 
 <li> <b><code>ResRel-MPI.py</code></b>: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
     <ul>
@@ -115,14 +110,14 @@ The typical usage of the program consists in a call to `remove_H_atoms.py`, `Res
      <li> 2<sup>nd</sup> row: values of Relevance (<b>H<sub>k</sub></b>); </li>
      <li> 3<sup>rd</sup> row: number of retained sites for that specific H<sub>s</sub> and H<sub>k</sub> values.</li>
     </ul>  
-For a more comprehensive understanding of the program's functionality and implementation details, please refer to <a href="#5---resrel-mpipy"><b>Section 5</b></a> in this documentation.</li><br>
+For a more comprehensive understanding of the program's functionality and implementation details, please refer to <b><a href="#5---resrel-mpipy">Section 5</a></b> in this documentation.</li><br>
  
 <li> <b><code>Hs-Hk-plot</code></b>: this code serves a dual purpose:
     <ul>
     <li> Drawing a saving various plots related to Resolution and Relevance, slope, and histogram of frequencies. </li>
     <li> Calculating the optimal number of sites for a biomolecule based on an atomistic trajectory, with the aim of minimizing the loss of information when atoms are decimated. </li>
     </ul>
-Further details regarding the functionality and usage of this code will be provided in <a href="#6---hs-hk-plotpy"><b>Section 6</b></a>. </li><br>
+Further details regarding the functionality and usage of this code will be provided in <b><a href="#6---hs-hk-plotpy">Section 6</a></b>. </li><br>
 
 </ul>
 </div>
@@ -175,8 +170,12 @@ To obtain a brief explanation of the arguments, you can execute the following co
 ## 4.5 - Output
 The program produces two output files:
 
-1. _`Reference_noH.gro`_: This file contains the coordinate data of the biomolecule's all-atom structure after eliminating all the hydrogen atoms. It represents the updated coordinates of the remaining heavy atoms.
-2. _`Trajectory_noH.xtc`_: This file comprises the trajectory data of the biomolecule after the removal of hydrogen atoms. It captures the time-dependent movement of the remaining heavy atoms over the course of the simulation.
+<div align ="justify">
+<ol>
+  <li> <i><code>Reference_noH.gro</code></i>: This file contains the coordinate data of the biomolecule's all-atom structure after eliminating all the hydrogen atoms. It represents the updated coordinates of the remaining heavy atoms.
+<li> <i><code>Trajectory_noH.xtc</code></i>: This file comprises the trajectory data of the biomolecule after the removal of hydrogen atoms. It captures the time-dependent movement of the remaining heavy atoms over the course of the simulation.
+</ol>
+</div>
 
 
 
