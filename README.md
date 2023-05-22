@@ -33,6 +33,7 @@
 <a href="#5---resrel-mpipy"><b>Section 5</b></a>
 <a href="#5---resrel-mpipy"><strong>Section 5</strong></a>
 <a href="#5---resrel-mpipy">Section 5</a>
+<b><a href="#5---resrel-mpipy">Section 5</a></b>
 
 <p align="justify"> When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).</p> 
 
