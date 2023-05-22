@@ -368,16 +368,16 @@ The Relevance and Resolution plot consists of a total of <i>N</i> points, with t
 
 <div align = "justify">
 <ul>  
-<li> _`DensityPoints`_: An integer that specifies the desired number of points in each variable-length interval. </li>
-<li> _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of H̅<sub>s</sub> and H̅<sub>k</sub> having slope close to -1. </li>
+<li> <i><code>DensityPoints</code></i>: An integer that specifies the desired number of points in each variable-length interval. </li>
+<li> <i><code>SlopeRange</code></i>: Specifies the range within which the best interval is determined based on the average curve of H̅<sub>s</sub> and H̅<sub>k</sub> having slope close to -1. </li>
 </ul>
-
+</div>
   
 <p align="justify"> For more detailed information on these arguments, please refer to <b><a href="#633---arguments">Section 6.3.3</a></b>. </p>
 
 
 ### 6.3.2 - Usage 
-To run the **Hs-Hk-plot.py** script with **density** task, the command-line is the following:
+<p align="justify"> To run the <b>Hs-Hk-plot.py</b> script with <b>density</b> task, the command-line is the following:</p>
 
 ```sh
 python3 Hs-Hk-plot.py density -f <Hs-Hk-Nsites-${ProteinName}.txt> [-d <density>] [-s <range>] 
@@ -386,9 +386,13 @@ python3 Hs-Hk-plot.py density -f <Hs-Hk-Nsites-${ProteinName}.txt> [-d <density>
    
 python3 Hs-Hk-plot.py density --file <Hs-Hk-Nsites-${ProteinName}.txt> [--DensityPoints <density>] [--SlopeRange <range>] 
 ```
-> **NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in [Section 5](#5---resrel-mpipy). This file contains the values of resolution (<b>H<sub>s</sub></b>), relevance (<b>H<sub>k</sub></b>), and the number of retained sites associated with each <b>H<sub>s</sub></b> and <b>H<sub>k</sub></b> point.**
+<blockquote> 
+  <p align="justify">
+  <b>NOTE: Please note that the file "Hs-Hk-Nsites-${ProteinName}.txt" mentioned is the output of the "ResRel-MPI.py" script, as described in detail in <b><a href="#5---resrel-mpipy">Section 5</a></b>. This file contains the values of resolution (<b>H<sub>s</sub></b>), relevance (<b>H<sub>k</sub></b>), and the number of retained sites associated with each <b>H<sub>s</sub></b> and <b>H<sub>k</sub></b> point.</b>  
+  </p>  
+</blockquote> 
 
-To obtain further information and execute the "Hs-Hk-plot.py" script with the "density" option, please type on terminal `python3 Hs-Hk-plot.py density`
+<p align="justify"> To obtain further information and execute the "Hs-Hk-plot.py" script with the "density" option, please type on terminal <code>python3 Hs-Hk-plot.py density</code> </p>
 
 
 ### 6.3.3 - Arguments 
