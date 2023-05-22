@@ -499,4 +499,36 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 
 <li> <i><code>histo_Nsites.pdf</code></i>: This plot displays the frequency distribution of the number of sites with different occurrences. It provides insights into the distribution of retained sites and their frequencies. </li><br>
 
-<li> <i><code>Opt-number-of-sites.txt</code></i>: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized. This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity. </li><br>
+<li> <i><code>Opt-number-of-sites.txt</code></i>: A text file that provides a summary of the arguments used and, more importantly, the optimal number of sites for a biomolecule derived from an atomistic trajectory, such that the loss of information after decimating atoms is minimized. This information is valuable for determining the appropriate number of retained sites that balances the preservation of essential structural information with the reduction in computational complexity. </li>
+</ul>
+</div>
+
+<br/>
+
+# 7 - Examples 
+
+Inside the <code>tests/</code> directory there is the complete list of example files for a lot of proteins, allowing the user to try the three code in succession. 
+
+Hereafter, for the sake of clarity, only three examples are reported. 
+
+```perl
+# 1igd_noH.gro and 1igd_noH.xtc is the reference and trajectory file already without H atoms, respectively. 
+# Thus, only "remove_H_atoms.py" has not been used
+
+####
+name="1igd_noH"
+PYTHONDIR=../PYTHON-scripts
+inputDIR=../input-files/${name}
+
+
+### ResRel
+python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc
+python3 $PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt
+
+rm -r test-${name}
+mkdir test-${name}
+
+mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
+```
+
+
