@@ -135,7 +135,7 @@ This script serves a preliminary yet significant purpose of removing all hydroge
 </p>  
 
 ## 4.2 - Requirements
-This script requires two mandatory files: the coordinate/topology file epresenting the all-atom structure of the biomolecule (_gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_xtc_, _trr_, _dcd_, _gro_, _lammpstrj_, ...). No optional arguments are available. 
+<p align="justify"> This script requires two mandatory files: the coordinate/topology file epresenting the all-atom structure of the biomolecule (<i>gro</i>, <i>pdb</i>, <i>xyz</i>, <i>psf</i>, ...) and the trajectory file in any format (<i>xtc</i>, <i>trr</i>, <i>dcd</i>, <i>gro</i>, <i>lammpstrj</i>, ...). No optional arguments are available.</p>  
 
 
 ## 4.3 - Usage
@@ -149,9 +149,11 @@ python3 remove_H_atoms.py -r <Coordinate FILE> -t <Trajectory FILE>
 python3 remove_H_atoms.py --ref <Coordinate FILE> --traj <Trajectory FILE>
 ```
 
-To obtain a brief explanation of the arguments, you can execute the following command in your terminal: `python3 remove_H_atoms.py -h` or `python3 remove_H_atoms.py --help`. Additionally, if you wish to print a concise usage message, you can use either `python3 remove_H_atoms.py` or `python3 remove_H_atoms.py -u`.
+<p align="justify">
+To obtain a brief explanation of the arguments, you can execute the following command in your terminal: <code>python3 remove_H_atoms.py -h</code> or <code>python3 remove_H_atoms.py --help</code>. Additionally, if you wish to print a concise usage message, you can use either <code>python3 remove_H_atoms.py</code> or <code>python3 remove_H_atoms.py -u</code>.
+</p>
 
-However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument.
+<p align="justify"> However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument.</p>
 
 
 ## 4.4 - Arguments
