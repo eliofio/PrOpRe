@@ -523,12 +523,14 @@ inputDIR=../input-files/${name}
 
 ### ResRel
 python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc
-python3 $PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt
 
 rm -r test-${name}
 mkdir test-${name}
-
 mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
+
+### Hs-Hk-plot (DENSITY OPTION)
+cd test-${name}
+python3 ../$PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt
 ```
 
 
