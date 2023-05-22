@@ -274,14 +274,15 @@ In this study, the main goal is to find the optimal number of sites when coarsen
 
 <div align="center">
   
-<img src="ResRel.jpg" alt="Scheme" width="500"> 
+<img src="ResRel.jpg" alt="Scheme" width="450"> 
 </div>
-<div align = "center">
-<b>Figure 3</b> - <i> Relevance vs. Resolution plot. The color gradually goes between yellow and blue. yellow is indicative of low number of retained sites (in this case less than 300 atoms), whereas dark blue is indicative of high number of retained sites (close to 1600, i.e the total number of atoms in the specific example of Kinase trajectory). Moreover, it is important to underline that different mappings of same number of retained sites have the same colors.</i>
+<div align = "justify">
+  <b>Figure 3</b> - <i> Relevance (H<sub>k</sub>) vs. Resolution (H<sub>s</sub>) plot obtained for Adenylate Kinase trajectory. The plot showcases a gradient transitioning from yellow to blue: the yellow hue represents H<sub>s</sub>-H<sub>k</sub> points corresponding to a low number of retained sites (in this case, fewer than 300 atoms). On the other hand, the dark blue color indicates H<sub>s</sub>-H<sub>k</sub> points associated with a high number of retained sites (close to 1600, which is the total number of atoms in the specific example). It is worth noting that different mappings with the same number of retained sites will have the same colors.</i>
 </div>
 
-<br/>
+<br/><br/>
 
+Relevance (H<sub>k</sub>) versus Resolution (H<sub>s</sub>) plot is generated for the Adenylate Kinase trajectory. The plot showcases a gradient transitioning from yellow to blue, where the yellow hue represents H<sub>s</sub>-H<sub>k</sub> points corresponding to a low number of retained sites (specifically, fewer than 300 atoms). On the other hand, the dark blue color represents H<sub>s</sub>-H<sub>k</sub> points associated with a high number of retained sites, nearing 1600 atoms, which is the total count for this particular example. It is important to note that different mappings exhibiting the same number of retained sites will exhibit identical colors in the plot.
 
 To simplify the curve, we compute the average values for Resolution $\(\overline H_s\)$ and Relevance $\(\overline H_k\)$. These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula _ΔY/ΔX_, where _Y_ represents the average Relevance points $\(\overline H_k\)$ and _X_ represents avevage Resolution $\(\overline H_s\)$ points. 
 
@@ -298,17 +299,17 @@ The Relevance and Resolution plot consists of a total of _N_ points, with the de
    <div align="center">
    <img src="density.jpg" alt="Scheme" width="800">
    </div>
-   <div align = "center">
+   <div align = "justify">
    <b>Figure 4</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; (b) shows the division of the x-axes into intervals of variable lenght, each one containing 5 points (D = 5); (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
    </div>
                                         
 
-* **`bin`**: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as _W_. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired as specified in **Section 6.4.3** (specifically _NumberWindows_ argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as **bin**, is thus defined as _1/W_. This means that the entire range of Resolution is divided into _W_ equally spaced windows, and the bin size within each window is determined accordingly (**Figure 5**). In each window, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as $\overline H_k$) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the `density` option, if choosing the `bin` task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. 
+* **`bin`**: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as _W_. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired as specified in **[Section 6.4.3](#643---arguments)** (specifically _NumberWindows_ argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as **bin**, is thus defined as _1/W_. This means that the entire range of Resolution is divided into _W_ equally spaced windows, and the bin size within each window is determined accordingly (**Figure 5**). In each window, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as $\overline H_k$) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the `density` option, if choosing the `bin` task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. 
 
    <div align="center">
    <img src="bin.jpg" alt="Scheme" width="800">
    </div>
-   <div align = "center">
+   <div align = "justify">
    <b>Figure 5</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; b) shows the division of the x-axes into 6 intervals of same lenght (W = 6, bin = 1/W), each one containing a variable number of points; (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
    </div>
 
@@ -322,7 +323,7 @@ The _`density`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.
 * _`DensityPoints`_: An integer that specifies the desired number of points in each variable-length interval.
 * _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $\overline H_s$ and $\overline H_k$ having slope close to -1.
 
-For more detailed information on these arguments, please refer to **Section 6.3.3**.
+For more detailed information on these arguments, please refer to **[Section 6.3.3](#633---arguments)**.
 
 
 ### 6.3.2 - Usage 
@@ -369,7 +370,7 @@ The _`bin`_ task requires one mandatory file: **Hs-Hk-Nsites-${ProteinName}.txt*
 
 * _`SlopeRange`_: Specifies the range within which the best interval is determined based on the average curve of $\overline H_s$ and $\overline H_k$ having slope μ close to -1.
 
-All the details of the arguments just described are prvided in **Section 6.4.3**.
+All the details of the arguments just described are prvided in **[Section 6.4.3](#643---arguments)**.
 
 ### 6.4.2 - Usage 
 To run the **Hs-Hk-plot.py** script with the **bin** task, the command-line is the following:
