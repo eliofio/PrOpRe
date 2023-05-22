@@ -409,8 +409,8 @@ python3 Hs-Hk-plot.py density --file <Hs-Hk-Nsites-${ProteinName}.txt> [--Densit
     | Nsites-1   Nsites-2   Nsites-3   .....  Nsites-N |
     ----------------------------------------------------
 
-  
-<li> <b><code>DensityPoints</code></b>: This is an optional argument (<code>-d/--DensityPoints</code>) that specifies the number of points <i>D</i> that fall within each interval of variable length. By default, the value is set to 100. The density of points within each interval is used to compute the average values of H<sub>s</sub> (denoted as H̅<sub>s</sub>) and H<sub>k</sub> (denoted as  H̅<sub>k</sub>). Using this argument, you can easily change the default value to suit your needs. </li>
+<br>  
+<li> <b><code>DensityPoints</code></b>: This is an optional argument (<code>-d/--DensityPoints</code>) that specifies the number of points <i>D</i> that fall within each interval of variable length. By default, the value is set to 100. The density of points within each interval is used to compute the average values of H<sub>s</sub> (denoted as H̅<sub>s</sub>) and H<sub>k</sub> (denoted as  H̅<sub>k</sub>). Using this argument, you can easily change the default value to suit your needs. </li><br>
 
 <li> <b><code>SlopeRange</code></b>: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
      <ul>
@@ -460,9 +460,12 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 <p align="justify"> To obtain further information and execute the "Hs-Hk-plot.py" script with the "bin" option, please type on terminal <code>python3 Hs-Hk-plot.py bin</code> </p>
 
 ### 6.4.3 - Arguments 
-In the "bin" task, there are several arguments that can be used. These arguments (one mandatory and two optional) are as follows:
+<p align="justify"> In the "bin" task, there are several arguments that can be used. These arguments (one mandatory and two optional) are as follows: </p>
 
-* **`Hs-Hk-Nsites-${ProteinName}.txt`**: This is a mandatory argument (`-f/--file`) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (_N_) associated with each H<sub>s</sub> and H<sub>k</sub> point. The file is organized in three rows, where each row contains the respective values separated by spaces.
+<div align = "justify">
+<ul> 
+  <li> <b><code>Hs-Hk-Nsites-${ProteinName}.txt</code></b>: This is a mandatory argument (<code>-f/--file</code>) that corresponds at the input file "Hs-Hk-Nsites-${ProteinName}.txt" (output of 'ResRel-MPI.py' code). The file contains the values of Resolution (H<sub>s</sub>), Relevance (H<sub>k</sub>), and the number of sites (<i>N</i>) associated with each H<sub>s</sub> and H<sub>k</sub> point. The file is organized in three rows, where each row contains the respective values separated by spaces.</li>
+    
   ```
     ----------------------------------------------------
     | Hs-1       Hs-2       Hs-3       .....  Hs-N     |
@@ -471,14 +474,19 @@ In the "bin" task, there are several arguments that can be used. These arguments
     ----------------------------------------------------
   ```
 
-* **`NumberWindows`**: This is an optional argument (`-w/--NumberWindows`) that specifies the number of intervals into which the x-axis (Resolution) is divided. The length of each interval is fixed, while the number of points falling within each interval can vary. This is illustrated schematically in **Figure 5**. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired. Since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as _bin_, is thus defined as _1/W_. Within intervals of the same bin size, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as $\overline H_k$) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window.
+<br>
+<li> <b><code>NumberWindows</code></b>: This is an optional argument (<code>-w/--NumberWindows</code>) that specifies the number of intervals into which the x-axis (Resolution) is divided. The length of each interval is fixed, while the number of points falling within each interval can vary. This is illustrated schematically in <b>Figure 5</b>. By default, the value of <i>W</i> is set to 50, but you can modify it using the <code>-w</code> flag if desired. Since the Resolution axis ranges from 0 to 1 by definition, the length of each interval, also referred to as <i>bin</i>, is thus defined as <i>1/W</i>. Within intervals of the same bin size, the average value of H<sub>s</sub> (denoted as H̅<sub>s</sub>) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as H̅<sub>k</sub>) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. <li><br>
 
 
-* **`SlopeRange`**: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
+<li> <b><code>SlopeRange</code></b>: This is an optional argument that determines how to find the best interval on the average curve with slope μ close to -1 for computing the optimal number of sites. the slope  μ = -1 is associated to the point of optimal tradeoff between parsimony of the representation (low resolution) and its informativeness (high relevance). There are two ways to define this argument:
 
-     * _Percentage Range_: By default, the argument is set as a range close to -1 in terms of percentage. The default range spans from -1.10 to -0.90, which corresponds to a 10% range. Within this range, the rightmost value with a higher resolution is chosen. It is generally preferred to select a range with values close to -1: selecting a higher percentage range could result in values that are too far from -1 and therefore not optimal for finding the best interval on the average curve and, consequently, the optimal number of sites.  
-     * _Closest Value_: Alternatively, you can specify the argument as "closest" (`-s closest`) to identify the closest value of the slope to -1. This option allows you to find the specific point on the curve that has the slope closest to -1.
-
+     <ul>
+     <li> <ins><i>Percentage Range</i></ins>: By default, the argument is set as a range close to -1 in terms of percentage. The default range spans from -1.10 to -0.90, which corresponds to a 10% range. Within this range, the rightmost value with a higher resolution is chosen. It is generally preferred to select a range with values close to -1: selecting a higher percentage range could result in values that are too far from -1 and therefore not optimal for finding the best interval on the average curve and, consequently, the optimal number of sites. </li>
+     <li> <ins><i>Closest Value</i></ins>: Alternatively, you can specify the argument as "closest" (<code>-s closest</code>) to identify the closest value of the slope to -1. This option allows you to find the specific point on the curve that has the slope closest to -1. </li>
+     </ul>
+</li>
+</ul>
+</div>
 
 ## 6.5 - Output
 This code generates 4 PDF plots and a TXT file as output:
