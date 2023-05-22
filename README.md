@@ -30,79 +30,80 @@
 
 
 # 1 - Introduction
-When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).
+<p align="justify"> When coarsening biomolecules, the identification of the optimal number of sites to minimize information loss from an all-atom conformation is a challenging task. Several coarse-grained and multi-resolution models have been developed to tackle this issue, and one promising model is CANVAS (Coarse-grained Anisotropic Network model for VAriable resolution Simulation).</p> 
 
-The CANVAS strategy leverages the blurred and approximate nature of coarse-grained models to identify effective sites based on a user-provided input, and determines the interactions among them based on the molecule’s structure and all-atom force field, making it unnecessary to run reference simulations. This strategy makes the parametrisation of the model practically instantaneous, and allows the modulation of the system’s resolution in a quasi-continuous manner across the structure, from all-atom to (very) coarse-grained. Most notably, the interaction between regions of the system at different resolution (including the solvent) is accounted for and straightforward to set up, allowing the seamless implementation in standard MD software packages (e.g. GROMACS or LAMMPS).
-
-In CANVAS model three levels of resolution are employed: `all-atom` where all the atoms of the system are token in account; `medium-grained` where the backbone atoms are retained and treated as CG beads; and finally `coarse-grained` where only the C<sub>α</sub> atoms are kept and modelled as CG beads. 
-
-However, this approach requires prior knowledge of the system's chemistry and biology to determine which parts necessitate a fully atomistic description, namely in which part of the system the chemical details have a significant impact. Answering this question can be challenging.
-
-Recently, a new method called **Resolution and Relevance** has been developed to identify the optimal resolution level that balances simplicity and informativeness. This framework, also known as critical variable selection, allows for the identification of important variables without prior knowledge or assumptions about their nature. The core idea behind this approach is that the generative model underlying empirical samples can be inferred from the distribution of their frequencies, i.e., the number of times different outcomes occur in the dataset.
-
-Building upon the aforementioned approach, our goal is to identify the optimal number of sites for multi-resolution protein descriptions using the CANVAS model. This project involves the combination of three methods/software: Relevance and Resolution, Mapping Entropy, and CANVAS: 
-
-* The **`Relevance and Resolution software`**, written in Python, aims to determine the optimal number of sites for biomolecule coarse-graining.
-
-* The **`Mapping Entropy tool`**, written in C, takes the optimal number of sites as input and returns the site selection that minimizes information loss during the reduction of degrees of freedom in a system.
-
-* The **`CANVAS model`**, available on a GitHub repository and implemented in Python, allows for the modeling of biomolecules at three levels of resolution as described earlier. It requires the output from the Mapping Entropy tool as input.
+<p align="justify"> The CANVAS strategy leverages the blurred and approximate nature of coarse-grained models to identify effective sites based on a user-provided input, and determines the interactions among them based on the molecule’s structure and all-atom force field, making it unnecessary to run reference simulations. This strategy makes the parametrisation of the model practically instantaneous, and allows the modulation of the system’s resolution in a quasi-continuous manner across the structure, from all-atom to (very) coarse-grained. Most notably, the interaction between regions of the system at different resolution (including the solvent) is accounted for and straightforward to set up, allowing the seamless implementation in standard MD software packages (e.g. GROMACS or LAMMPS).</p> 
 
 
+<p align="justify"> In CANVAS model three levels of resolution are employed: <code>all-atom</code> where all the atoms of the system are token in account; <code>medium-grained</code> where the backbone atoms are retained and treated as CG beads; and finally <code>coarse-grained</code> where only the C<sub>α</sub> atoms are kept and modelled as CG beads.</p> 
+
+<p align="justify"> However, this approach requires prior knowledge of the system's chemistry and biology to determine which parts necessitate a fully atomistic description, namely in which part of the system the chemical details have a significant impact. Answering this question can be challenging.</p>  
+  
+<p align="justify"> Recently, a new method called <b>Resolution and Relevance</b> has been developed to identify the optimal resolution level that balances simplicity and informativeness. This framework, also known as critical variable selection, allows for the identification of important variables without prior knowledge or assumptions about their nature. The core idea behind this approach is that the generative model underlying empirical samples can be inferred from the distribution of their frequencies, i.e., the number of times different outcomes occur in the dataset.</p>
+
+<p align="justify"> Building upon the aforementioned approach, our goal is to identify the optimal number of sites for multi-resolution protein descriptions using the CANVAS model. This project involves the combination of three methods/software: Relevance and Resolution, Mapping Entropy, and CANVAS:</p>
+
+<div align ="justify">
+<ul>
+<li>The <b><code>Relevance and Resolution software</code></b>, written in Python, aims to determine the optimal number of sites for biomolecule coarse-graining.</li><br/>
+
+<li> The <b><code>Mapping Entropy tool</code></b>, written in C, takes the optimal number of sites as input and returns the site selection that minimizes information loss during the reduction of degrees of freedom in a system.</li><br/>
+  
+<li> The <b><code>CANVAS model</code></b>, available on a GitHub repository and implemented in Python, allows for the modeling of biomolecules at three levels of resolution as described earlier. It requires the output from the Mapping Entropy tool as input.</li>
+</ul>
+</div>
+
+<p align="justify">
 In this section, we present the tool for identifying the optimal number of sites. Subsequently, this number will serve as input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to the output of the Mapping Entropy tool. This automated process will facilitate the coarsening of proteins using the CANVAS model.
+</p>
 
 <br/>
 
 # 2 - Requirements
-
-* **`Python3`**: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a _Linux_ or _macOS_ system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided [here](https://docs.python-guide.org/starting/installation/). Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior.
+<div align ="justify">
+<ul>
   
-* **`Python3 libraries`**: Python 3 comes with a wide range of built-in libraries that are installed by default. However, there are certain libraries that may need to be installed separately. Here are four libraries used in this code that typically require subsequent installation:
+<li> <b><code>Python3</code></b>: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a <i>Linux</i> or <i>macOS</i> system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided <a href="https://docs.python-guide.org/starting/installation/">here</a>. Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior. </li><br/>
+  
+<li> <b><code>Python3 libraries</code></b>: Python 3 comes with a wide range of built-in libraries that are installed by default. However, there are certain libraries that may need to be installed separately. Here are four libraries used in this code that typically require subsequent installation:<br/><br/>
+    <ul>
+    <li> <a href="https://www.mdanalysis.org"> <b><code>MDAnalysis</code></b> </a>: It is an open source Python library that helps to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages.</li>
+    <li> <a href="https://numpy.org"> <b><code>NumPy</code></b> </a>: It  stands for <i>Numerical Python</i> and it a fundamental library for numerical computing in Python. It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays efficiently. It also has functions for working in domain of linear algebra and fourier transform. NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.</li>     
+    <li> <a href="https://matplotlib.org"> <b><code>Matplotlib</code></b> </a>: It is a low level graph plotting library in python that serves as a visualization utility created by John D. Hunter. It is open source and we can use it freely. Moreover, Matplotlib is mostly written in python, a few segments are written in C, Objective-C and Javascript for Platform compatibility.</li> 
+    <li> <a href="https://scipy.org"> <b><code>SciPy</code></b> </a>: It is a free and open-source Python library used for scientific computing and technical computing. It was created by Travis Oliphant. SciPy contains modules for optimization, linear algebra, integration, interpolation, special functions, FFT, signal and image processing, ODE solvers and other tasks common in science and engineering.</li>  
+    </ul>
+ 
+  To install the lastest stable releases with conda do:
 
-   * [**`MDAnalysis`**](https://www.mdanalysis.org): It is an open source Python library that helps to quickly write your own analysis algorithm 
-                                                     for studying trajectories produced by the most popular simulation packages. 
-         
-   * [**`NumPy`**](https://numpy.org): It  stands for _Numerical Python_ and it a fundamental library for numerical computing in Python. 
-                                       It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions 
-                                       to operate on these arrays efficiently. It also has functions for working in domain of linear algebra and fourier transform. 
-                                       NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.            
-              
-   * [**`Matplotlib`**](https://matplotlib.org): It is a low level graph plotting library in python that serves as a visualization utility created by John D. Hunter. 
-                                                 It is open source and we can use it freely. Moreover, Matplotlib is mostly written in python, 
-                                                 a few segments are written in C, Objective-C and Javascript for Platform compatibility.
-                                  
-   * [**`SciPy`**](https://scipy.org): It is a free and open-source Python library used for scientific computing and technical computing. 
-                                       It was created by Travis Oliphant. SciPy contains modules for optimization, linear algebra, integration, 
-                                       interpolation, special functions, FFT, signal and image processing, ODE solvers and other tasks common 
-                                       in science and engineering.
-
-      To install the lastest stable releases with conda do:
-      
-      ```bash 
+  
       conda config --add channels conda-forge
    
       conda install mdanalysis
       conda install numpy
       conda install matplotlib
       conda install scipy
-      ```
+    
    
-      On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
+  On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
 
-      ```bash
+      
       pip3 install --upgrade MDAnalysis
       pip3 install numpy
       pip3 install matplotlib
       pip3 install scipy
-      ```
+      
+</li>
+</ul>
+</div>
    
 <br/>
 
 # 3 - Usage 
-
 The typical usage of the program consists in a call to `remove_H_atoms.py`, `ResRel-MPI.py` and `Hs-Hk-plot.py` in succession by using Python3: 
 
-* **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in **[Section 4](#4---remove_h_atomspy)**.
+<div align ="justify">
+<ul>
+<li> **`remove_H_atoms.py`**: It has the preliminary purpose of removing all hydrogen atoms from both the reference file and the trajectory file. The reason for this step is that, in the calculation of the Root Square Deviation (RSD) map, which is a key component for computing the Resolution and Relevance, it is preferable to exclude hydrogen atoms as they are not heavy atoms. It is important to note that if the reference and trajectory files already exclude hydrogen atoms, you can ignore this code. Additional details can be found in <a href="#4---remove_h_atomspy">Section 4</a> </li>.
 
 * **`ResRel-MPI.py`**: This is the core program beacuse has the scope of calculating the Relevance and Resolution points (changing the number of sites and exploring different mappings) by analyzing the RSD map among each frame and the other ones. The program generates an output file with three rows of data:
     * 1<sup>st</sup> row: values of Resolution (<b>H<sub>s</sub></b>); 
