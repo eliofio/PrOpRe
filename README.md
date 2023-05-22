@@ -184,7 +184,7 @@ This program serves as the core component for calculating Resolution-Relevance (
 
   <img src="mappings.jpg" alt="Scheme" width="700">
   </div>
-  <div style="text-align: justify; font-size: 8px;">
+  <div align ="justify">
   <b>Figure 1</b> - <i> Pictorial representation of different random mapping when choosing a subset of atoms. The total number of atoms is 10, whereas 3 different mappings are proposed when selecting (a) 9 atoms out of 10, (b) 7 atoms and (c) 5 atoms. Transparent circles correspond at the decimated atoms, while the dark blue ones are the atoms that will be retained.</i>
   </div>
 
