@@ -86,7 +86,6 @@ In this section, we present the tool for identifying the optimal number of sites
    
   On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
 
-      
       pip3 install --upgrade MDAnalysis
       pip3 install numpy
       pip3 install matplotlib
@@ -206,7 +205,7 @@ The program produces two output files:
 
   <br/><br/>
 
-For better comprehension of the steps above mentioned, **Figure 2** illustrates the flux diagram representing steps 4-5-6-7, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs _M_ random mappings at a fixed number of retained sites.
+<p align="justify"> For better comprehension of the steps above mentioned, <b>Figure 2</b> illustrates the flux diagram representing steps 4-5-6-7, demonstrating that two nested for-loops are required to calculate all the H<sub>s</sub>-H<sub>k</sub> points: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop performs <i>M</i> random mappings at a fixed number of retained sites.</p>
 
 
 <div align="center">
@@ -220,13 +219,16 @@ For better comprehension of the steps above mentioned, **Figure 2** illustrates 
 <br/><br/>
 
 ## 5.2 - Requirements
-To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms _gro_, _pdb_, _xyz_, _psf_, ...) and the trajectory file in any format (_lammpstrj_, _dcd_, _trr_, _xtc_, ...). Additionally, four optional arguments can be specified:
+<p align="justify"> To run this script, two mandatory files are required: the coordinate/topology file of the biomolecule without hydrogen atoms <i>gro</i>, <i>pdb</i>, <i>xyz</i>, <i>psf</i>, ...) and the trajectory file in any format (<i>lammpstrj</i>, <i>dcd</i>, <i>trr</i>, <i>xtc</i>, ...). Additionally, four optional arguments can be specified:</p>
 
-* _`Nmappings`_: number of random mappings generated at each fixed number of retained sites.
-* _`Nframes`_: number of frames to be read in the trajectory file.
-* _`Nstep`_: step that describes the decrement in the number of sites to be retained, starting from N<sub>atoms</sub> - 1, during the calculation. 
-* _`ncpu`_: number of CPUs to be used for parallelizing the calculation of the RSD map for each mapping.
-
+<div align = "justify">
+<ul>  
+<li> <i><code>Nmappings</code></i>: number of random mappings generated at each fixed number of retained sites.</li>
+<li> <i><code>Nframes</code></i>: number of frames to be read in the trajectory file.</li>
+<li> <i><code>Nstep</code></i>: step that describes the decrement in the number of sites to be retained, starting from N<sub>atoms</sub> - 1, during the calculation.</li> 
+<li> <i><code>ncpu</code></i>: number of CPUs to be used for parallelizing the calculation of the RSD map for each mapping.</li>
+</ul>
+</div>
 
 ## 5.3 - Usage 
 
@@ -239,11 +241,15 @@ python3 ResRel-MPI.py -r <Reference_noH.gro> -t <Trajectory_noH.xtc> [-m <NMappi
 
 python3 remove_H_atoms.py --ref <Reference_noH.gro> --traj <Trajectory_noH.xtc> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>]
 ```
-> **NOTE: Please note that the "Reference_noH.gro" and "Trajectory_noH.xtc" files mentioned here refer to the output files obtained after running the `remove_H_atoms.py` script. It is crucial to remove hydrogen atoms from the files for accurate calculation of Resolution and Relevance points. Although this code does not throw an error if hydrogen atoms are present, their excessive movement and rotation can adversely affect the calculation. Please ensure that you have removed hydrogen atoms from the files before proceeding with the calculation.**
+<blockquote> 
+  <p align="justify">
+<b>NOTE: Please note that the "Reference_noH.gro" and "Trajectory_noH.xtc" files mentioned here refer to the output files obtained after running the <code>remove_H_atoms.py</code> script. It is crucial to remove hydrogen atoms from the files for accurate calculation of Resolution and Relevance points. Although this code does not throw an error if hydrogen atoms are present, their excessive movement and rotation can adversely affect the calculation. Please ensure that you have removed hydrogen atoms from the files before proceeding with the calculation.</b>
+  </p>
+</blockquote>
 
-To obtain a brief explanation of the arguments, you can execute the command `python3 ResRel-MPI.py -h` or `python3 ResRel-MPI.py --help`. Additionally, if you wish to print a concise usage message, you can use either `python3 ResRel-MPI.py` or `python3 ResRel-MPI.py -u`.
+<p align="justify"> To obtain a brief explanation of the arguments, you can execute the command <code>python3 ResRel-MPI.py -h</code> or <code>python3 ResRel-MPI.py --help</code>. Additionally, if you wish to print a concise usage message, you can use either <code>python3 ResRel-MPI.py</code> or <code>python3 ResRel-MPI.py -u</code>.</p>
 
-However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument.
+<p align="justify"> However, it is strongly recommended to read the following section attentively before running the Python scripts as it provides a comprehensive explanation of each argument. </p>
 
 
 
