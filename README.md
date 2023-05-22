@@ -274,7 +274,7 @@ In this study, the main goal is to find the optimal number of sites when coarsen
 
 <div align="center">
   
-<img src="ResRel.jpg" alt="Scheme" width="450"> 
+<img src="ResRel.jpg" alt="Scheme" width="400"> 
 </div>
 <div align = "justify">
   <b>Figure 3</b> - <i> Relevance (H<sub>k</sub>) vs. Resolution (H<sub>s</sub>) plot obtained for Adenylate Kinase trajectory. The plot showcases a gradient transitioning from yellow to blue: the yellow hue represents H<sub>s</sub>-H<sub>k</sub> points corresponding to a low number of retained sites (in this case, fewer than 300 atoms). On the other hand, the dark blue color indicates H<sub>s</sub>-H<sub>k</sub> points associated with a high number of retained sites (close to 1600, which is the total number of atoms in the specific example). It is worth noting that different mappings with the same number of retained sites will have the same colors.</i>
@@ -303,6 +303,7 @@ The Relevance and Resolution plot consists of a total of _N_ points, with the de
    <b>Figure 4</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; (b) shows the division of the x-axes into intervals of variable lenght, each one containing 5 points (D = 5); (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
    </div>
                                         
+<br/><br/>
 
 * **`bin`**: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as _W_. By default, the value of _W_ is set to 50, but you can modify it using the `-w` flag if desired as specified in **[Section 6.4.3](#643---arguments)** (specifically _NumberWindows_ argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as **bin**, is thus defined as _1/W_. This means that the entire range of Resolution is divided into _W_ equally spaced windows, and the bin size within each window is determined accordingly (**Figure 5**). In each window, the average value of H<sub>s</sub> (denoted as $\overline H_s$) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as $\overline H_k$) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the `density` option, if choosing the `bin` task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. 
 
@@ -312,6 +313,8 @@ The Relevance and Resolution plot consists of a total of _N_ points, with the de
    <div align = "justify">
    <b>Figure 5</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; b) shows the division of the x-axes into 6 intervals of same lenght (W = 6, bin = 1/W), each one containing a variable number of points; (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
    </div>
+
+<br/><br/>
 
 Based on the selected option, you should refer to the appropriate section. If you choose the `density` option, please refer to **[Section 6.3](#63---density-task)**. If you choose the `bin` option, please refer to **[Section 6.4](#64---bin-task)**.
 
