@@ -318,11 +318,13 @@ The output of the code includes two files:
 <br/><br/>
 
 
-<p align="justify"> To simplify the curve, we compute the average values for Resolution $\(\overline H_s\)$ and Relevance $\(\overline H_k\)$. These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula _ΔY/ΔX_, where _Y_ represents the average Relevance points $\(\overline H_k\)$ and _X_ represents avevage Resolution $\(\overline H_s\)$ points. </p>
+<p align="justify"> To simplify the curve, we compute the average values for Resolution (<b>H̅<sub>s</sub></b>) and Relevance (<b>H̅<sub>k</sub></b>). These average values provide a smoother representation of the overall trend in the data. Next, we analyze the slope between each pair of consecutive points on the average curve. The slope is calculated using the formula <i>ΔY/ΔX</i>, where <i>Y</i> represents the average Relevance points (<b>H̅<sub>k</sub></b>) and <i>X</i> represents average Resolution (<b>H̅<sub>s</sub></b>) points. </p>
 
-In the existing literature, it is suggested that the partition where the sum of Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) is the largest occurs when the slope μ = -1. This observation aligns with Zipf's law. In this context, it implies that the optimal tradeoff between the simplicity of the representation (low resolution) and its informative nature (high relevance) occurs when the slope μ = -1. This point represents the sweet spot where the protein coarsening achieves the best balance between retaining important information and minimizing complexity.
+<p align="justify">
+In the existing literature, it is suggested that the partition where the sum of Resolution (<b>H̅<sub>s</sub></b>) and Relevance (<b>H̅<sub>k</sub></b>) is the largest occurs when the slope μ = -1. This observation aligns with Zipf's law. In this context, it implies that the optimal tradeoff between the simplicity of the representation (low resolution) and its informative nature (high relevance) occurs when the slope μ = -1. This point represents the sweet spot where the protein coarsening achieves the best balance between retaining important information and minimizing complexity.</p>
 
-After identifying the point with a slope closest to -1, we can determine the specific Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points falling within that chosen interval. Each point within that interval corresponds to a specific number of retained sites. Therefore, the optimal number of sites can be determined by identifying the Relevance and Resolution points that have the highest occurrence in terms of the number of retained sites.
+<p align="justify">
+After identifying the point with a slope closest to -1, we can determine the specific Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) points falling within that chosen interval. Each point within that interval corresponds to a specific number of retained sites. Therefore, the optimal number of sites can be determined by identifying the Relevance and Resolution points that have the highest occurrence in terms of the number of retained sites.</p>
 
 
 ## 6.2 - Tasks 
