@@ -507,13 +507,13 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 
 # 7 - Examples 
 
-Inside the <code>tests/</code> directory there is the complete list of example files for a lot of proteins, allowing the user to try the three code in succession. 
+<p align="justify"> Inside the <code>tests/</code> directory there is the complete list of example files for a lot of proteins, allowing the user to try the three codes in succession. </p>
 
-Hereafter, for the sake of clarity, only three examples are reported. 
+<p align="justify"> Hereafter, for the sake of clarity, only three examples are reported. </p> 
 
 ```perl
-# 1igd_noH.gro and 1igd_noH.xtc is the reference and trajectory file already without H atoms, respectively. 
-# Thus, only "remove_H_atoms.py" has not been used
+# The reference and trajectory files, namely 1igd_noH.gro and 1igd_noH.xtc, have already been processed to exclude hydrogen atoms.
+# As a result, the script "remove_H_atoms.py" was not utilized in this context.
 
 ####
 name="1igd_noH"
@@ -521,16 +521,77 @@ PYTHONDIR=../PYTHON-scripts
 inputDIR=../input-files/${name}
 
 
-### ResRel
+### 1st part: ResRel
 python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc
 
 rm -r test-${name}
 mkdir test-${name}
 mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
 
-### Hs-Hk-plot (DENSITY OPTION)
+### 2nd part: Hs-Hk-plot (DENSITY OPTION)
 cd test-${name}
 python3 ../$PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt
 ```
 
+```perl
+# ake.gro and ake.xtc are the reference and trajectory files with H atoms.    
 
+###
+name="ake"
+PYTHONDIR=../PYTHON-scripts
+inputDIR=../input-files/${name}
+
+########## 1st part: remove_H_atoms.py ###############
+python3 $PYTHONDIR/remove_H_atoms.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc
+
+mv Reference_noH.gro ../input-files/${name}/${name}_noH.gro
+mv Trajectory_noH.xtc ../input-files/${name}/${name}_noH.xtc
+
+
+########## 2nd part: ResRel.py ###############
+name_noH="${name}_noH"
+
+python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name_noH}.gro -t $inputDIR/${name_noH}.xtc
+
+rm -r test-${name_noH}
+mkdir test-${name_noH}
+
+mv trace_${name_noH}.txt Hs-Hk-Nsites-${name_noH}.txt test-${name_noH}
+
+
+########## 3rd part: Hs-Hk-plot.py (DENSITY OPTION 200 POINTS) ###############
+cd test-${name_noH}
+
+python3 ../$PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt -d 200 
+```
+
+```perl
+# The reference and trajectory files, namely 1knt_noH.gro and 1knt_noH.xtc, have already been processed to exclude hydrogen atoms.
+# As a result, the script "remove_H_atoms.py" was not utilized in this context.
+
+####
+name="1knt_noH"
+PYTHONDIR=../PYTHON-scripts
+inputDIR=../input-files/${name}
+
+
+### 1st part: ResRel (Nmappings = 100, Nframes = 500, Nstep = 1%, Ncpu = 16) 
+python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc -m 100 -f 500 -s 1% -n 16
+
+rm -r test-${name}
+mkdir test-${name}
+mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
+
+### 2nd part: Hs-Hk-plot (BIN OPTION 100 WINDOWS, SlopeRange="closest")
+cd test-${name}
+python3 ../$PYTHONDIR/Hs-Hk-plot.py bin -f Hs-Hk-Nsites-${name}.txt -w 100 -s closest
+```
+
+<p align="justify"> The output files of each test can be also found in `PrOpRe/output-files/` directory. </p>
+
+<br />
+
+
+# 8 - Contacts 
+
+Raffaele Fiorentini: raffaele.fiorentini@unitn.it or elio.fiorentini90@gmail.com
