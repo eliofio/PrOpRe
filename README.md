@@ -509,7 +509,7 @@ python3 Hs-Hk-plot.py bin --file <Hs-Hk-Nsites-${ProteinName}.txt> [--NumeberWin
 
 <p align="justify"> Inside the <code>tests/</code> directory there is the complete list of example files for a lot of proteins, allowing the user to try the three codes in succession. </p>
 
-<p align="justify"> Hereafter, for the sake of clarity, only three examples are reported. </p> 
+<p align="justify"> Hereafter, for the sake of clarity, only four examples are reported. </p> 
 
 ```perl
 # The reference and trajectory files, namely 1igd_noH.gro and 1igd_noH.xtc, have already been processed 
@@ -532,6 +532,26 @@ mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
 cd test-${name}
 python3 ../$PYTHONDIR/Hs-Hk-plot.py density -f Hs-Hk-Nsites-${name}.txt
 ```
+
+```perl
+# The reference and trajectory files, namely 1igd_noH.gro and 1igd_noH.xtc, have already been processed 
+# to exclude hydrogen atoms. As a result, the script "remove_H_atoms.py" was not utilized in this context.
+# A restart is also used in this case, due to interruption of calculation of Resolution and Relevance. 
+
+####
+name="1igd_noH"
+PYTHONDIR=../PYTHON-scripts
+inputDIR=../input-files/${name}
+
+
+### 1st part: ResRel with restart
+python3 $PYTHONDIR/ResRel-MPI.py -r $inputDIR/${name}.gro -t $inputDIR/${name}.xtc -c Hs-Hk-Nsites-${name}.txt  # RESTART 
+
+rm -r test-${name}
+mkdir test-${name}
+mv trace_${name}.txt Hs-Hk-Nsites-${name}.txt test-${name}
+```
+
 
 ```perl
 # ake.gro and ake.xtc are the reference and trajectory files with H atoms.    
