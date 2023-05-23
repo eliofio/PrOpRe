@@ -204,7 +204,7 @@ The program produces two output files:
 
   <div align="center">
 
-  <img src="mappings.jpg" alt="Scheme" width="700">
+  <img src="images/mappings.jpg" alt="Scheme" width="700">
   </div>
   <div align ="justify">
   <b>Figure 1</b> - <i> Pictorial representation of different random mapping when choosing a subset of atoms. The total number of atoms is 10, whereas 3 different mappings are proposed when selecting (a) 9 atoms out of 10, (b) 7 atoms and (c) 5 atoms. Transparent circles correspond at the decimated atoms, while the dark blue ones are the atoms that will be retained.</i>
@@ -217,7 +217,7 @@ The program produces two output files:
 
 <div align="center">
   
-<img src="4-5-6.jpg" alt="Scheme" width="550"> 
+<img src="images/4-5-6.jpg" alt="Scheme" width="550"> 
 </div>
 <div align = "justify">
 <b>Figure 2</b> - <i> Schematic representation of the calculation process for Relevance and Resolution points. This process involves two nested loops: the outer loop iterates over the number of retained sites (N<sub>s</sub>), while the inner loop iterates over 'M' random mappings at a fixed number of retained sites.</i>
@@ -313,7 +313,7 @@ The output of the code includes two files:
 
 <div align="center">
   
-<img src="ResRel.jpg" alt="Scheme" width="400"> 
+<img src="images/ResRel.jpg" alt="Scheme" width="400"> 
 </div>
 <div align = "justify">
   <b>Figure 3</b> - <i> Relevance (H<sub>k</sub>) vs. Resolution (H<sub>s</sub>) plot obtained for Adenylate Kinase trajectory. The plot showcases a gradient transitioning from yellow to blue: the yellow hue represents H<sub>s</sub>-H<sub>k</sub> points corresponding to a low number of retained sites (in this case, fewer than 300 atoms). On the other hand, the dark blue color indicates H<sub>s</sub>-H<sub>k</sub> points associated with a high number of retained sites (close to 1600, which is the total number of atoms in the specific example). It is worth noting that different mappings with the same number of retained sites will have the same colors.</i>
@@ -340,7 +340,7 @@ The Relevance and Resolution plot consists of a total of <i>N</i> points, with t
   <li> <b><code>density</code></b> <b>(recommended task)</b>: When using this option, the x-axis representing Resolution (H<sub>s</sub>) is divided into <i>X</i> intervals, each containing the same number of points (<i>D</i>). The default value for <i>D</i> is 100, but you can adjust it using the <code>-d</code> flag if needed (look for <i><code>DensityPoints</code></i> argument in <b><a href="#633---arguments">Section 6.3.3</a></b>). It is important to note that the interval length is not fixed. Instead, the goal is to maintain a consistent density of H<sub>s</sub>-H<sub>k</sub> points within each interval (<b>Figure 4</b>). By doing so, the computation of average values for Resolution (H<sub>s</sub>) and Relevance (H<sub>k</sub>) is based on an equal density of points, ensuring fairness in the calculation process. In each interval, the average values for Resolution and Relevance are computed, denoted as H̅<sub>s</sub> and H̅<sub>k</sub>. By employing the density option, the calculation of average values considers the distribution of points and provides a more accurate representation of the average behavior of the Relevance and Resolution plot across different intervals. Overall, the density option offers a fair and precise approach for computing the average values of H<sub>s</sub> and H<sub>k</sub>, taking into account the varying density of points along the Relevance and Resolution plot.</li>
                                         
    <div align="center">
-   <img src="density.jpg" alt="Scheme" width="800">
+   <img src="images/density.jpg" alt="Scheme" width="800">
    </div>
    <div align = "justify">
    <b>Figure 4</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; (b) shows the division of the x-axes into intervals of variable lenght, each one containing 5 points (D = 5); (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>
@@ -351,7 +351,7 @@ The Relevance and Resolution plot consists of a total of <i>N</i> points, with t
  <li> <b><code>bin</code></b>: When using the bin option, the x-axis representing Resolution (H<sub>s</sub>) is divided into a fixed number of windows or intervals, denoted as <i>W</i>. By default, the value of <i>W</i> is set to 50, but you can modify it using the <code>-w</code> flag if desired as specified in <b><a href="#643---arguments">Section 6.4.3</a></b> (specifically <i>NumberWindows</i> argument). Each window or interval has the same length, and since the Resolution axis ranges from 0 to 1 by definition, the length of each interval,  also referred to as <b>bin</b>, is thus defined as <i>1/W</i>. This means that the entire range of Resolution is divided into <i>W</i> equally spaced windows, and the bin size within each window is determined accordingly (<b>Figure 5</b>). In each window, the average value of H<sub>s</sub> (denoted as H̅<sub>s</sub>) is obtained at the midpoint of each bin. On the other hand, the average value of H<sub>k</sub> (denoted as H̅<sub>k</sub>) is computed for each window by taking the arithmetic mean of all the Relevance values within that specific window. At difference with the <code>density</code> option, if choosing the <code>bin</code> task the density of points along the Relevance and Resolution plot may vary significantly across the different windows. Some windows may contain a high density of points, while others may have relatively fewer points. As a result, the computation of average values may not be as fair or precise due to the unequal density of points. Therefore, it's advisable to use the bin option with caution and carefully consider the distribution of points along the curve before drawing conclusions from the average values of H<sub>s</sub> and H<sub>k</sub> computed within each window. </li>
 
    <div align="center">
-   <img src="bin.jpg" alt="Scheme" width="800">
+   <img src="images/bin.jpg" alt="Scheme" width="800">
    </div>
    <div align = "justify">
    <b>Figure 5</b> - <i> (a) is a pictorial representation of 30 Relevance and Resolution points; b) shows the division of the x-axes into 6 intervals of same lenght (W = 6, bin = 1/W), each one containing a variable number of points; (c) displays with red circles and blue lines the average curve of Relevance & Resolution.</i>

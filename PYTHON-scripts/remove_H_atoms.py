@@ -19,9 +19,9 @@ import sys
 import argparse
 
 
-# 1.2 Finding the main folder "ResRes-Optimal-NSites", then cut the entire path until "ResRes-Optimal-NSites" and add /lib in order to find our libraries. 
+# 1.2 Finding the main folder "PrOpRe", then cut the entire path until "PrOpRe" and add /lib in order to find our libraries. 
 PYTHONPATH = os.path.abspath(os.getcwd())
-spl_word = "ResRel-identification-Optimal-N-Sites"                                               
+spl_word = "PrOpRe"                               
 python_modules_path = PYTHONPATH.split(spl_word)[0] + spl_word + "/lib"
 sys.path.append(python_modules_path)
 

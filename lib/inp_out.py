@@ -41,16 +41,16 @@ def print_help_removeH():
         
 # Function: it prints the main usage of "ResRel-MPI.py" program
 def print_usage_ResRel():
-    print("Usage: python3 {} -r <Coordinate FILE> -t <Trajectory FILE> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] [-n <nCPU>] ".format(sys.argv[0]))
-    print("   or: python3 {} --ref <Coordinate FILE> --traj <Trajectory FILE> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>] [--ncpu <nCPU>] ".format(sys.argv[0]))
+    print("Usage: python3 {} -r <Coordinate FILE> -t <Trajectory FILE> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] [-n <nCPU>] [-c <RestartFILE>] ".format(sys.argv[0]))
+    print("   or: python3 {} --ref <Coordinate FILE> --traj <Trajectory FILE> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>] [--ncpu <nCPU>] [--checkpoint <RestartFILE>] ".format(sys.argv[0]))
 
     print("\nTry python3 {} -h or {} --help for more information.\n".format(sys.argv[0], sys.argv[0]))
 
 
 # Function: it prints the main help of "ResRel-MPI.py" program 
 def print_help_ResRel():  
-    print("Usage: python3 {} -r <Coordinate FILE> -t <Trajectory FILE> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] [-n <nCPU>] ".format(sys.argv[0]))
-    print("   or: python3 {} --ref <Coordinate FILE> --traj <Trajectory FILE> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>] [--ncpu <nCPU>] ".format(sys.argv[0]))
+    print("Usage: python3 {} -r <Coordinate FILE> -t <Trajectory FILE> [-m <NMappings>] [-f <Nframes>] [-s <Nsteps>] [-n <nCPU>] [-c <RestartFILE>] ".format(sys.argv[0]))
+    print("   or: python3 {} --ref <Coordinate FILE> --traj <Trajectory FILE> [--mapp NMappings>] [--frames <Nframes>] [--step <Nsteps>] [--ncpu <nCPU>] --checkpoint <RestartFILE>] ".format(sys.argv[0]))
     
     print("\n-----------------------------------------------------------------------------------------------------")
 
@@ -104,6 +104,12 @@ def print_help_ResRel():
     print("                                                     If '-n/--ncpu <nCPU>' is set, the code will be parallelized by employing nCPU cores")
     print("                                                     If '-n/--npu <nCPU>' is not set, the code will be parallelized by employing")
     print("                                                     the maximum number of allowed cores in your laptop/cluster\n")
+    print("  [RestartFILE]                   OPTIONAL           Due to the walltime limit on the node of your cluster or other potential factors,")
+    print("                                                     the calculation of Relevance and Resolution points may be interrupted at any time.")
+    print("                                                     However, to ensure continuity, you can utilize the same output file as a restart point,")
+    print("                                                     identified as 'Hs-Hk-Nsites-${ProteinName}.txt'.")
+    print("                                                     This allows the calculation to resume seamlessly from where it was last interrupted.\n")
+
     print("-----------------------------------------------------------------------------------------------------");
     print("Hereafter the list of flags:\n");
 
@@ -114,8 +120,9 @@ def print_help_ResRel():
     print("  [-s] [--step]                   INT/FLOAT + %      1) Percentage of Natoms used as step for the number of retained sites (default = 0.5%)")
     print("  [-s] [--step]                   INT                2) Number corresponding directly to the step for the number of retained sites.") 
     print("  [-n] [--ncpu]                   INT                Integer number corresponding at the number of cores employed for parallelizing the code")
+    print("  [-c] [--checkpoint]             FILE               Restart FILE (Hs-Hk-Nsites-${ProteinName}.txt) from which the calculation of Hs-Hk-N resumes.") 
     print("  [-h] [--help]                                      Give this help list\n")
-
+   
     print("Report bugs to <raffaele.fiorentini@unitn.it>\n")
     
 
@@ -270,12 +277,12 @@ def print_help_bin_HsHkplot():
                
                 
 # Function: It computes the total number of points and it prints a summary of the arguments that will be employed in the calculation of Relevance & Resolution. 
-def print_summary(Natoms, ValueStep, nMapp, TotalFrames, nFrames_read):
+def print_summary(Natoms, ValueStep, nMapp, TotalFrames, nFrames_read, checkpoint):
     print("\n\n\n○ The number of retained sites will range between 1 and {} (Natoms-1) with a step = {}\n".format(Natoms-1, ValueStep))
 
     print("\n○ The number of random mapping for each number of retained sites is NrandomMappings = {}\n".format(nMapp))
 
-    Step_List = [x for x in range(1, Natoms-1, ValueStep)]
+    Step_List = [x for x in range(Natoms-checkpoint, Natoms-2, ValueStep)]
     tot_points = len(Step_List) * nMapp
 
     print("\n○ Thus, the total number of Relevance & Resolution points is tot_points = {}".format(tot_points))

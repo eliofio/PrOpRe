@@ -58,7 +58,7 @@ start_code = datetime.now()
 
 # 1.2 Finding the main folder "ResRes-Optimal-NSites", then cutting the entire path until "ResRes-Optimal-NSites" and adding /lib in order to find our libraries. 
 PYTHONPATH = os.path.abspath(os.getcwd())
-spl_word = "ResRel-identification-Optimal-N-Sites"                                               
+spl_word = "ResRel-Optimal-NSites"                                               
 python_modules_path = PYTHONPATH.split(spl_word)[0] + spl_word + "/lib"
 sys.path.append(python_modules_path)
 
@@ -74,15 +74,16 @@ parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpForm
 
 group_in=parser.add_argument_group("Required Arguments") 
 					                                             
-group_in.add_argument('-r', '--ref',  dest='RefFile',     action='store', metavar = 'FILE', help = argparse.SUPPRESS)       # Mandatory
-group_in.add_argument('-t', '--traj', dest='TrajFile',    action='store', metavar = 'FILE', help = argparse.SUPPRESS)       # Mandatory 
-group_in.add_argument('-h', '--help',   action='help',    help = argparse.SUPPRESS)                                         # Optional
-group_in.add_argument('-m', '--mapp',   dest='nMapp',     metavar = 'INT',     help = argparse.SUPPRESS)                    # Optional 
-group_in.add_argument('-f', '--frames', dest='nFrames',   metavar = 'STR/INT', help = argparse.SUPPRESS)                    # Optional
-group_in.add_argument('-s', '--step',   dest='step',      metavar = 'FLOAT',   help = argparse.SUPPRESS)                    # Optional
-group_in.add_argument('-n', '--ncpu',   dest='NumberCpu', metavar = 'INT',     help = argparse.SUPPRESS)                    # Optional
+group_in.add_argument('-r', '--ref',     dest='RefFile',     action='store', metavar = 'FILE', help = argparse.SUPPRESS)        # Mandatory
+group_in.add_argument('-t', '--traj',    dest='TrajFile',    action='store', metavar = 'FILE', help = argparse.SUPPRESS)        # Mandatory 
+group_in.add_argument('-h', '--help',    action='help',      help = argparse.SUPPRESS)                                          # Optional
+group_in.add_argument('-m', '--mapp',    dest='nMapp',       metavar = 'INT',     help = argparse.SUPPRESS)                     # Optional 
+group_in.add_argument('-f', '--frames',  dest='nFrames',     metavar = 'STR/INT', help = argparse.SUPPRESS)                     # Optional
+group_in.add_argument('-s', '--step',    dest='step',        metavar = 'FLOAT',   help = argparse.SUPPRESS)                     # Optional
+group_in.add_argument('-c', '--checkpoint', dest='RestartFile', action ='store',      metavar = 'FILE', help = argparse.SUPPRESS)  # Optional 
+group_in.add_argument('-n', '--ncpu',    dest='NumberCpu',   metavar = 'INT',     help = argparse.SUPPRESS)                     # Optional
 # --------------------------------------------------------------------------------------------------------------------------------------
-
+ 
 
 
 if __name__ == '__main__':
@@ -124,8 +125,9 @@ if __name__ == '__main__':
     nMapp          = args.nMapp             # Optional
     nFrames_read   = args.nFrames           # Optional
     step           = args.step              # Optional 
-    ncpu           = args.NumberCpu         # Optional 
-
+    RestartFile    = args.RestartFile       # Optional
+    ncpu           = args.NumberCpu         # Optional
+ 
     # 1.10 Checking if mandatory files are present
     mandatory_files_present_ResRel(RefFile, TrajFile)
     
@@ -179,8 +181,13 @@ if __name__ == '__main__':
     ncpu_employed = checking_errors_ncpu_opt_arg(ncpu) 
 
 
-    # 1.19 Printing Summary and returns the total number of points of Resolution and Relevance 
-    tot_points = print_summary(Natoms, ValueStep, nMapp, TotalFrames, nFrames_read)
+    # 1.19 Checking if the optional argument file 'RestartFile' is set. The programs returns an error if this file is not found, or it is empty. 
+    #      Moreover, this file specifies only the number of retained sites reached so far. This is an integer number. Float or string are not allowed.
+    checkpoint = checking_error_restart_opt_arg(RestartFile, ValueStep, Natoms) 
+
+
+    # 1.20 Printing Summary and returns the total number of points of Resolution and Relevance 
+    tot_points = print_summary(Natoms, ValueStep, nMapp, TotalFrames, nFrames_read, checkpoint)
     
 
 
@@ -321,6 +328,12 @@ if __name__ == '__main__':
     # 6.1 For-loop changing the number of retained sites between 1 to Natoms-2 with a step equals to ValueStep 
     #     (to 1/200 of the total number of atoms is the default value). For each value of the atoms that will be decimated (N_removed), 
     #     the number of atoms retained is computed (Natoms_retained) and stored in a list (Natoms_retained_list).
+    #     If RestartFile not present, then checkpoint = Natoms-1; therefore Natoms-checkpoint = 1. And the for-loop starts from 1 
+    #     If RestartFile is present, then checkpoint = last_value_of_retained_sites_found - ValueStep. Therefore, 
+    #     the for loop will start from Natoms-checkpoint, namely from the last number of retained sites, without starting from the beginning. 
+    #     In this case the file created i.e. Hs-Hk-Nsites-${ProteinName}.txt will be appended with the new values of Hs, Hk, and Nsites.              
+
+    Hs_Hk_Nsites_File = "Hs-Hk-Nsites-" + os.path.basename(RefFile)[:-4] + ".txt" 
 
     Hs = []  # Resolution 
     Hk = []  # Relevance
@@ -328,7 +341,7 @@ if __name__ == '__main__':
     Natoms_retained_list = [] 
  
     tot_count = 1 
-    for N_removed in range(1, Natoms-2, ValueStep):                    # FOR LOOP ON NUMBER OF SITES 
+    for N_removed in range(Natoms-checkpoint, Natoms-2, ValueStep):                    # FOR LOOP ON NUMBER OF SITES 
 
         Natoms_retained        = Natoms - N_removed                    # Number retained atoms                                         
         Nrandom_mappings       = nMapp                                 # Number of random mapping (default=50) chosen among those of a combination Comb(Natoms,Natoms_retained)
@@ -498,27 +511,65 @@ if __name__ == '__main__':
             
             time_left = mapp_time * (tot_points - tot_count)
             
-            print("NatomsRetained = {}   ||  NMapping = {}/{}  ||  time = {:3.4f} sec  |||  {}/{}  ||| time left = {:3.4f} sec.".format(Natoms_retained,t+1,Nrandom_mappings,mapp_time,tot_count,tot_points, time_left))#, end="\r")
+            print("NatomsRetained = {}   ||  NMapping = {}/{}  ||  time = {:3.4f} sec  |||  {}/{}  ||| time left = {:3.4f} sec.".format(Natoms_retained, t+1, Nrandom_mappings, mapp_time, tot_count,tot_points, time_left))
             
-            
-            
-            
-                               ###########################
-            #####################  7. Writing Files     ###########################
-                               ###########################
+
+            ### 6.9.11 Writing 'Hs_Hk_Nsites_File' that is the file containing Hs, Hk, and the number of retained sites. denoted as 'Hs-Hk-Nsites-${ProteinName}.txt'
+            ###        This file will be written when the Relevance and Resolution points are computed for each M random mapping (default M = 50)
+            ###        for a fixed number of retained sites. In other words, when the number of retained sites change, then the file will be written 
+            ###        with the M values of Hs,Hk and NSites.
+            ###        If 'Hs_Hk_Nsites_File' does not exist, then it will be created, otherwise will be appended with the new values.   
+
+            if os.path.isfile(Hs_Hk_Nsites_File):           
+                if(t+1 == Nrandom_mappings):
+                    with open(Hs_Hk_Nsites_File, 'r') as h:
+                        lines = h.readlines()
+                    
+                    lines[0] = lines[0].strip() + ' ' + ' '.join(map(str, Hs)) + '\n'
+                    lines[1] = lines[1].strip() + ' ' + ' '.join(map(str, Hk)) + '\n' 
+                    lines[2] = lines[2].strip() + ' ' + ' '.join(map(str, Natoms_retained_list)) + '\n'
+
+                    with open(Hs_Hk_Nsites_File, 'w') as h:
+                        h.writelines(lines)
+
+                    Hs = []
+                    Hk = []
+                    Natoms_retained_list = [] 
+          
+            else: # if not exists:
+                if(t+1 == Nrandom_mappings):
+                    with open(Hs_Hk_Nsites_File, 'w') as h: 
+                        for line in Hs:
+                            h.write(f"{line} ")
+                        h.write("\n")
+
+                        for line in Hk:
+                            h.write(f"{line} ")
+                        h.write("\n")
+
+                        for line in Natoms_retained_list:
+                            h.write(f"{line} ")
+                        h.write("\n")
+                    
+                    Hs = []
+                    Hk = [] 
+                    Natoms_retained_list = []  
+                     
+                               ##############################
+            #####################  7. Writing trace File   ##########################
+                               ##############################
                                
             """
-            Writing two files:
-            a) "trace.txt" gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point 
-               at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point); 
+            Hs-Hk-Nsites-${ProteinName}.txt has been written and updated when the number of retained sites changes. Moreover a second file is written in this section: 
+            
+            "trace_${proteinName}.txt" gives a trace of how many Resolution & Relevance points has already been calculated and the time required for calculating a single point 
+            at fixed number of retained sites (lower the retained sites, lower the time for calculating RSD-map and consequently for computing Hs-Hk point); 
                                
-            b) "Hs-Hk-Nsites" is a file containing  all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. 
-                This file is organized in 3 rows. It will be useful for drawing plots, that is the purpose of "plots.py" script.              
             """
 
             # 7.1 First file: Writing a file whose scope is to know the time required for calculating the value of Hs and Hk given the number of atoms retained
             FileName = "trace_" + os.path.basename(RefFile)[:-4] + ".txt"
-            if(tot_count == 1):  # cancella il file se lo trova solo la prima volta. 
+            if(tot_count == 1):  # remove file only it is found only the first time. 
                 if os.path.exists(FileName):
                     os.remove(FileName)
            
@@ -530,31 +581,7 @@ if __name__ == '__main__':
             
             ###### END FIRST FOR-LOOP (about Nsites)
             
-
-    # 7.2 Writing a file containing all the value of resolution (Hs), relevance (Hk), and the number of sites retained associated to Hs and Hk. This file is organized in 3 rows. 
-
-    FileName2 = "Hs-Hk-Nsites-" + os.path.basename(RefFile)[:-4] + ".txt"
-
-    if os.path.exists(FileName2):
-        os.remove(FileName2)
     
-    with open(FileName2, 'a') as h: 
-        for line in Hs:
-            h.write(f"{line} ")
-        h.write("\n")
-
-        for line in Hk:
-            h.write(f"{line} ")
-        h.write("\n")
-
-        for line in Natoms_retained_list:
-            h.write(f"{line} ")
-        h.write("\n")
-
-    g.close()
-    h.close()
-    
-
     end_code = datetime.now()
     
     print("\n● No errors... 100% completed") 
