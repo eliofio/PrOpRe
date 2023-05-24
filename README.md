@@ -1,3 +1,8 @@
+<div align="center">
+
+<img src="images/PrOpRe-logo.jpg" alt="Scheme" width="950">
+</div>
+
 # Contents 
 
 **[1 - Introduction](#1---introduction)** <br /><br />
