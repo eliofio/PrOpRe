@@ -61,7 +61,7 @@
 </div>
 
 <p align="justify">
-In this section, we present the tool for identifying the optimal number of sites. Subsequently, this number will serve as input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to the output of the Mapping Entropy tool. This automated process will facilitate the coarsening of proteins using the CANVAS model.
+In this section, we present the tool for identifying the optimal number of sites dubbed <b>PrOpRe<b>, an acronym for <code><b>PR</b>otein <b>OP</b>timal <b>RE</b></code>. Subsequently, this number will serve as input for the Mapping Entropy tool, which will provide the atom selection. Finally, an additional code will be necessary to find the CANVAS selection sites that are closest to the output of the Mapping Entropy tool. This automated process will facilitate the coarsening of proteins using the CANVAS model.
 </p>
 
 <br/>
