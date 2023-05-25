@@ -1,5 +1,4 @@
 <div align="center">
-
 <img src="images/PrOpRe-logo.jpg" alt="Scheme" width="950">
 </div>
 
