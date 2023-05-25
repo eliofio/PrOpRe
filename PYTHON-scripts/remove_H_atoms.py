@@ -19,10 +19,24 @@ import sys
 import argparse
 
 
-# 1.2 Finding the main folder "PrOpRe", then cut the entire path until "PrOpRe" and add /lib in order to find our libraries. 
-PYTHONPATH = os.path.abspath(os.getcwd())
-spl_word = "PrOpRe"                               
-python_modules_path = PYTHONPATH.split(spl_word)[0] + spl_word + "/lib"
+# 1.2 Finding the path of the  main folder (usually "PrOpRe") after searching for 'PYTHON-scripts' folder. 
+#     Then, add /lib in order to find our libraries. 
+
+desired_folder_name = "PYTHON-scripts"
+current_directory = os.getcwd()
+desired_path = None
+
+while True:
+    if desired_folder_name in os.listdir(current_directory):
+        desired_path = current_directory
+        break
+    elif current_directory == os.path.dirname(current_directory):
+        print("ERROR. 'PYTHON-script' folder has not been found. Please, check it out...\n")
+        quit()
+    else:
+        current_directory = os.path.dirname(current_directory)
+
+python_modules_path = desired_path + "/lib"
 sys.path.append(python_modules_path)
 
 
