@@ -132,11 +132,11 @@ Further details regarding the functionality and usage of this code will be provi
 <p align="justify"> Before running the Python scripts, it is important to read the next section carefully, as it provides a detailed explanation of each task and argument. </p>
 
 <blockquote> 
-<p align="justify"> <b> IMPORTANT: It is crucial to avoid moving the scripts outside the main folder <code>PrOpRe/</code> or changing its name, otherwise a fatal error occurs which will be displayed on the screen. Indeed, It is crucial that this folder is found; otherwise, the user-libraries, namely <code>PrOpRe/lib/check_errors.py</code>,  <code>PrOpRe/lib/general.py</code>, <code>PrOpRe/lib/inp_out.py</code> and <code>PrOpRe/lib/plot_func.py</code> will not be found. </b></p>
+<p align="justify"> <b> IMPORTANT: It is crucial to avoid moving the scripts outside the main folder <code>PrOpRe/</code>  otherwise a fatal error occurs which will be displayed on the screen and the user-libraries, namely <code>PrOpRe/lib/check_errors.py</code>, <code>PrOpRe/lib/general.py</code>, <code>PrOpRe/lib/inp_out.py</code> and <code>PrOpRe/lib/plot_func.py</code> will not be found. </b></p>
 
-<p align="justify"> <b>Moreover, if you have decided to change the name of the main folder <b><code>PrOpRe/</code></b> to a different name of your choice, you will need to modify the string <code>spl_word = "PrOpRe"</code> in three Python code files (row 24 in "remove_H_atoms.py", and row 61 in "ResRel-MPI.py" and "Hs-Hk-plot.py"). To do this, you should replace "PrOpRe" string with "${new-name-folder}", where ${new-name-folder} represents the new name you have chosen for the folder. </b></p>
+<p align="justify"> <b>Moreover, please do not change the name of folders present in this repository. If you wish to conduct new tests, create your own folder within the main repository. You can nest folders within the main folder without any issues.</b></p>
 
-<p align="justify"> <b>By making this change in all three Python code files , you ensure that the updated folder name is correctly referenced throughout the code. This ensures that any references or dependencies on the main folder are adjusted to reflect the new name, maintaining consistency and preventing any potential errors or issues that may arise from the name change. </b></p>
+
 </blockquote> 
 
 <br/>
