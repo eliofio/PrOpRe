@@ -171,7 +171,7 @@ To obtain a brief explanation of the arguments, you can execute the following co
 
 
 ## 4.4 - Arguments
-<p align="justify"> As described in <a href="#4---remove_h_atomspy"><b>Section 4</b></a>, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:</p>
+<p align="justify"> As described in <b><a href="#4---remove_h_atomspy">Section 4</b></a></b>, both the coordinate/topology file of the all-atom structure of the biomolecule and the trajectory file in any format  are always mandatory. There are no optional arguments available. Here is a brief explanation of the aforementioned files:</p>
 
 <div align ="justify">
 <ul>
